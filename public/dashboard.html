@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UI2Code">
+    <meta name="keywords" content="GUI, code generation">
+    <meta name="author" content="sidongfeng">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Home</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/icomoon/style.css" rel="stylesheet">
+    <link href="plugins/uniform/css/default.css" rel="stylesheet"/>
+    <link href="plugins/switchery/switchery.min.css" rel="stylesheet"/>
+    <link href="plugins/nvd3/nv.d3.min.css" rel="stylesheet">
+    <link href="plugins/ecaps/css/ecaps.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link href="plugins/cropper/css/cropper.min.css" rel="stylesheet">
+    <!-- Custom Theme Styles -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Page Container -->
+<div class="page-container">
+    <!-------------------- Page Sidebar ----------------------->
+    <div class="page-sidebar">
+        <a class="logo-box" href="/">
+            <span>UIED</span>
+            <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
+            <i class="icon-close" id="sidebar-toggle-button-close"></i>
+        </a>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul class="accordion-menu">
+                    <li class="">
+                        <a href="">
+                            <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" id="upload-new-img" data-toggle="modal" data-target="#modal-new-img">
+                            <i class="menu-icon icon-image" style="font-size: 15px"></i><span>New Image</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" id="uikits_sidebar">
+                            <i class="menu-icon icon-flash_on"></i><span>UI Kits</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu" id="menu-uikits">
+                            <!--<li class="components active-page" data-type="0"><a href="javascript:void(0)">Button</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon icon-layers"></i><span>Models</span><i class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu list-group list-group-flush" id="menu-models" style="padding: 0">
+                            <li class="list-group-item my-preview-list" datatype="more" style="text-align: center">
+                                <a href="" class="text-center" data-toggle="modal" data-target="#modal-new-model">
+                                    <i class="icon-plus" style="margin-right: 10px"></i>
+                                    More Models
+                                </a>
+                            </li>
+                            <!--<li class="list-group-item my-preview"><img title="UIED" class="my-preview-img" src="../data/outputs/uied/example2/result.jpg"></li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center btn-gen-code" style="margin-top: 20px;">
+            <a id="btn-export" class="btn btn-primary" style="color: white;" download>Export Result</a>
+        </div>
+    </div><!-- /Page Sidebar -->
+
+    <!-------------------- Page Content ----------------------->
+    <div class="page-content">
+        <!-------------------- Dashboard ----------------------->
+        <div class="page-inner" style="padding: 0">
+            <div id="show_kits" style="display: none; overflow: hidden;">
+                <div class="page-title" style="margin-top: 30px">
+                    <h3 id="name" class="breadcrumb-header"></h3>
+                </div>
+                <!-- Left components box -->
+                <div class="pic">
+                    <!--<ul id="button" class="list-group list-group-flush"></ul>-->
+                </div>
+            </div>
+            <!-- Right sketch box -->
+            <div id="board">
+                <div class="sketch">
+                    <div class="box">
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="page-footer">-->
+            <!--<p>Copyright &copy; 2020. UI2Code All rights reserved.</p>-->
+            <!--</div>-->
+        </div><!-- /Page Inner -->
+
+        <!-------------------- Attribute Management on Right Side ----------------------->
+        <div class="page-right-sidebar" id="main-right-sidebar" style="overflow: auto">
+            <div class="page-right-sidebar-inner">
+                <div class="right-sidebar-top">
+                    <div class="right-sidebar-tabs">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" style="margin-left:15px; width:100%" role="tablist">
+                            <li role="presentation" class="active" id="settings-tab"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Attributes</a></li>
+                            <li><a href="javascript:void(0)" class="right-sidebar-toggle right-sidebar-close" data-sidebar-id="main-right-sidebar"><i class="icon-close close-rightsidebar"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-sidebar-content">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="settings">
+                            <div class="right-sidebar-settings">
+                                <span class="settings-title">Details</span>
+                                <ul class="sidebar-setting-list list-unstyled">
+                                    <li><img class="image thumb" id="right-sidebar-img" src="images/clip/img/2.png"></li>
+                                    <li>
+                                        <span class="settings-option">Type</span>
+                                        <div id="right-sidebar-type" class="float-right w-50"></div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Width</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-width" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Height</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-height" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Left</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-left" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Top</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-top" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button id="return" type="button" class="btn btn-warning" style="margin-right: 10px;">Return</button>
+                                        <button id="apply" type="button" class="btn btn-success">Apply</button>
+                                    </li>
+                                    <li style="text-align: center;">
+                                        <button id="delete" type="button" class="btn btn-danger" style="margin-right: 15px;">DELETE</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------- Attribute Management on Right Side for New Components -------------->
+        <div class="page-right-sidebar" id="main-right-sidebar-component" style="overflow: auto">
+            <div class="page-right-sidebar-inner">
+                <div class="right-sidebar-top">
+                    <div class="right-sidebar-tabs">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist" style="margin-left:15px; width:100%">
+                            <li role="presentation" class="active" id="settings-tab-component"><a href="#settings-component" aria-controls="settings" role="tab" data-toggle="tab">attributes</a></li>
+                            <li><a href="javascript:void(0)" class="right-sidebar-toggle right-sidebar-close" data-sidebar-id="main-right-sidebar-component"><i class="icon-close"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-sidebar-content">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active">
+                            <div class="right-sidebar-settings">
+                                <span class="settings-title">Details</span>
+                                <ul class="sidebar-setting-list list-unstyled">
+                                    <li><img class="image thumb" id="right-sidebar-img-component" src=""></li>
+                                    <li>
+                                        <span class="settings-option">Type</span>
+                                        <div id="right-sidebar-type-component" class="float-right w-50"></div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Width</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-width-component" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Height</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-height-component" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Left</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-left-component" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="settings-option">Top</span>
+                                        <div class="input-group input-group-sm float-right w-50">
+                                            <input id="right-sidebar-top-component" type="text" class="form-control input-sm" placeholder="">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">px</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li style="text-align: center;">
+                                        <button id="add" type="button" class="btn btn-success">Add</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------------------------- Upload New Image --------------------------------->
+        <div id="modal-new-img" class="modal fade" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form id="avatar-form" class="avatar-form">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="avatar-modal-label">Upload UI design</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="avatar-body">
+                                <div class="avatar-upload">
+                                    <input class="avatar-src" name="avatar_src" type="hidden">
+                                    <input class="avatar-data" name="avatar_data" type="hidden">
+                                    <label for="avatarInput" style="line-height: 35px;">Picture</label>
+                                    <button class="btn btn-primary"  type="button" style="height: 35px; float:left;" onClick="$('input[id=avatarInput]').click();">Select Picture</button>
+                                    <span id="avatar-name"></span>
+                                    <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file"></div>
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <canvas class="avatar-wrapper">
+                                        </canvas>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="avatar-preview preview-lg" id="imageHead"></div>
+                                    </div>
+                                </div>
+                                <div class="row avatar-btns">
+                                    <div class="col-md-4" style="text-align: left;">
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary fa fa-large fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5" style="text-align: right;">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary fa fa-search-plus" data-method="zoom" data-option="0.1" title="zoomin"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary fa fa-search-minus" data-method="zoom" data-option="-0.1" title="zoomout"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary fa fa-refresh" data-method="reset" title="reset"></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="submit" id="btn-upload-process" disabled='true' class="btn btn-primary avatar-save" data-toggle="modal" data-target="#modal-new-model" data-dismiss="modal">Process</button>
+                                        <input class="hide" id="submit-btn" name="submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <img class="display-pic" style="display: none;">
+        </div>
+
+        <!--------------------------- Process New Model --------------------------------->
+        <div id="modal-new-model" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Choose Detection Approach</h4>
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <select class="form-control" id="add_method_select" style="height: 40px">
+                            <option value="empty">Select New Detection Method</option>
+                            <option value="uied">UIED</option>
+                            <option value="yolo">YOLO</option>
+                            <option value="faster-rcnn">Faster RCNN</option>
+                        </select>
+                        <div id="uied-parameter" style="display: none;">
+                            <h5>You can adjust key parameters for UIED (or just leave it)</h5>
+                            <p>Gradient Threshold: <span id="para-grad-show">50</span></p>
+                            <input id="para-grad" type="range" min="1" max="100" value="50" class="slider">
+                            <p>Block Selection: <span id="para-block-show">3</span></p>
+                            <input id="para-block" type="range" min="1" max="10" value="3" class="slider">
+                        </div>
+                        <button id="modal_proc_btn_new_model" class="btn btn-primary" style="margin: 20px auto">Process</button>
+                        <button id="modal_proc_btn_new_img" class="btn btn-primary" style="display: none; margin: 20px auto">Process</button>
+                        <p id="modal_proc_status" style="display: none;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- /Page Content -->
+</div><!-- /Page Container -->
+
+
+<!-- Javascripts -->
+<script src="js/plugins/jquery.js"></script>
+<script src="js/plugins/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="plugins/uniform/js/jquery.uniform.standalone.js"></script>
+<script src="plugins/switchery/switchery.min.js"></script>
+<script src="plugins/d3/d3.min.js"></script>
+<script src="plugins/nvd3/nv.d3.min.js"></script>
+<script src="plugins/ecaps/js/ecaps.js"></script>
+
+<script src="plugins/cropper/js/cropper.js"></script>
+
+<!-- Record Processing Result Paths -->
+<div id="inputImgPath" data-value=<%-JSON.stringify(inputImgPath)%>></div>
+<div id="resultPath" data-value=<%-JSON.stringify(outputRoot)%>></div>
+<div id="method" data-value=<%-JSON.stringify(method)%>></div>
+<!-- Custom Javascripts -->
+<script src="js/dashboard.js"></script>
+<script>
+</script>
+
+</body>
+</html>

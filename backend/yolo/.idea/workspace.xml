@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b21a7902-b24f-45ce-ba5d-d4635bf6c5bb" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uied/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../uied/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uied/parameters/parameters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../uied/parameters/parameters.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameters/parameters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/parameters/parameters.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/success.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/success.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Background/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Background/0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/15.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/16.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/22.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/25.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/26.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/26.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/27.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/27.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/32.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/34.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/36.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/37.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/37.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/39.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/40.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/Compo/40.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/18.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/35.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/38.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/41.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/clips/TextView/9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/compo.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/compo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ip/2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ip/2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ip/2_all.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ip/2_all.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ocr/2.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ocr/2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ocr/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/ocr/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../data/outputs/uied/image_2/result.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../data/outputs/uied/image_2/result.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../public/images/screen/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../../public/images/screen/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../server_v2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../server_v2.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1dEaMTW2FGvQn0sVFu9VVwhauXs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\git_file\github\doing\UIED-WebAPP\backend\yolo\path" />
+      <recent name="D:\git_file\github\doing\UIED-WebAPP\backend\yolo\data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.yolo_main_watching">
+    <configuration name="ip_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PyTorch-YOLOv3_cjs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/ip_utils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PyTorch-YOLOv3_cjs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch-YOLOv3_cjs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="yolo_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PyTorch-YOLOv3_cjs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yolo_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="yolo_main_watching" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch-YOLOv3_cjs" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yolo_main_watching.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.yolo_main" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.ip_utils" />
+      <item itemvalue="Python.yolo_main_watching" />
+      <item itemvalue="Python.test2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.yolo_main_watching" />
+        <item itemvalue="Python.test2" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.yolo_main" />
+        <item itemvalue="Python.ip_utils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b21a7902-b24f-45ce-ba5d-d4635bf6c5bb" name="Default" comment="" />
+      <created>1591088292309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591088292309</updated>
+      <workItem from="1591992659219" duration="10155000" />
+      <workItem from="1592004366276" duration="2569000" />
+      <workItem from="1592020436597" duration="6219000" />
+      <workItem from="1592038813017" duration="1166000" />
+      <workItem from="1592254615381" duration="733000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1220" y="278" key="FileChooserDialogImpl" timestamp="1592004130503">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="278" key="FileChooserDialogImpl/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1592004130503" />
+    <state width="592" height="159" key="GridCell.Tab.0.bottom" timestamp="1592261822393">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="592" height="159" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.64.1920.1040@0.0.1280.680" timestamp="1592261822393" />
+    <state width="914" height="277" key="GridCell.Tab.0.bottom/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1592039986231" />
+    <state width="592" height="159" key="GridCell.Tab.0.center" timestamp="1592261822393">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="592" height="159" key="GridCell.Tab.0.center/0.0.1280.680/-1920.64.1920.1040@0.0.1280.680" timestamp="1592261822393" />
+    <state width="914" height="277" key="GridCell.Tab.0.center/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1592039986230" />
+    <state width="592" height="159" key="GridCell.Tab.0.left" timestamp="1592261822393">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="592" height="159" key="GridCell.Tab.0.left/0.0.1280.680/-1920.64.1920.1040@0.0.1280.680" timestamp="1592261822393" />
+    <state width="914" height="277" key="GridCell.Tab.0.left/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1592039986230" />
+    <state width="592" height="159" key="GridCell.Tab.0.right" timestamp="1592261822393">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="592" height="159" key="GridCell.Tab.0.right/0.0.1280.680/-1920.64.1920.1040@0.0.1280.680" timestamp="1592261822393" />
+    <state width="914" height="277" key="GridCell.Tab.0.right/1920.-64.1280.693/0.0.1920.1040@0.0.1920.1040" timestamp="1592039986230" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/ip_utils.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/yolo_main.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/yolo$test.coverage" NAME="test Coverage Results" MODIFIED="1591994546662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yolo$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1592023259705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yolo$yolo_main_watching.coverage" NAME="yolo_main_watching Coverage Results" MODIFIED="1592254620029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
