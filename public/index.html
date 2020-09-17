@@ -343,67 +343,93 @@
         <div class="container">
             <header class="section-header">
                 <h3>Tool</h3>
-                <p class="lead">Convert Your GUI Design Image Or Screenshot To High-Precision Element</p>
             </header>
 
-            <div class="row">
-                <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
-                    <div class="box">
-                        <div class="icon"><i class="ion-ios-world-outline" style="color: #4680ff;"></i></div>
-                        <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal" class="quickstart-modal-btn">Quick Start</a></h4>
-                        <p class="description">Using examples to see how the tool works</p>
+            <!-- UIED -->
+            <div>
+                <div class="text-center mb-5">
+                    <h4 class="text-center lead"><b>GUI Element Detection</b></h4>
+                    <p class="lead">Convert Your GUI Design Image Or Screenshot To High-Precision Element</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="box">
+                            <div class="icon"><i class="ion-ios-world-outline" style="color: #4680ff;"></i></div>
+                            <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal" class="quickstart-modal-btn">Quick Start</a></h4>
+                            <p class="description">Using examples to see how the tool works</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="box">
+                            <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
+                            <h4 class="title"><a href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
+                            <p class="description">Try the tool with your upload UI image</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
-                    <div class="box">
-                        <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
-                        <h4 class="title"><a href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
-                        <p class="description">Try the tool with your upload UI image</p>
-                    </div>
-                </div>
-                <div class="col-md-10 col-lg-10 offset-lg-1">
-                    <div id="display-content" class="box wow fadeInUp hide">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 offset-lg-1">
-                                <img class="display-pic"/>
-                            </div>
-                            <div class="col-lg-6 col-md-6 offset-lg-1">
-                                <form>
-                                    <div id="select-methods-section">
-                                        <h4 class="title">Select a processing method</h4>
-                                        <select class="form-control form-control-lg" id="method-select">
-                                            <option class="methods-opt" value="empty" disabled selected>Select Detection Method</option>
-                                            <optgroup label="Our Approach">
-                                                <option class="methods-opt my-divider" value="uied">UIED</option>
-                                            </optgroup>
-                                            <optgroup label="Deep Learning">
-                                                <option class="methods-opt" value="yolo">YOLO</option>
-                                                <option class="methods-opt" value="frcnn" disabled>Faster RCNN (Disabled due to hardware limitation)</option>
-                                                <option class="methods-opt my-divider" value="centernet" disabled>CenterNet (Disabled due to hardware limitation)</option>
-                                            </optgroup>
-                                            <optgroup label="Image Processing Methods">
-                                                <option class="methods-opt" value="remaui" disabled>REMAUI (Disabled due to hardware limitation)</option>
-                                                <option class="methods-opt" value="xianyu">Xianyu</option>
-                                            </optgroup>
-                                        </select>
+                <div class="row">
+                    <div class="col-md-10 col-lg-10 offset-lg-1">
+                        <div id="display-content" class="box wow fadeInUp hide">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 offset-lg-1">
+                                    <img class="display-pic"/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 offset-lg-1">
+                                    <form>
+                                        <div id="select-methods-section">
+                                            <h4 class="title">Select a processing method</h4>
+                                            <select class="form-control form-control-lg" id="method-select">
+                                                <option class="methods-opt" value="empty" disabled selected>Select Detection Method</option>
+                                                <optgroup label="Our Approach">
+                                                    <option class="methods-opt my-divider" value="uied">UIED</option>
+                                                </optgroup>
+                                                <optgroup label="Deep Learning">
+                                                    <option class="methods-opt" value="yolo">YOLO</option>
+                                                    <option class="methods-opt" value="frcnn" disabled>Faster RCNN (Disabled due to hardware limitation)</option>
+                                                    <option class="methods-opt my-divider" value="centernet" disabled>CenterNet (Disabled due to hardware limitation)</option>
+                                                </optgroup>
+                                                <optgroup label="Image Processing Methods">
+                                                    <option class="methods-opt" value="remaui" disabled>REMAUI (Disabled due to hardware limitation)</option>
+                                                    <option class="methods-opt" value="xianyu">Xianyu</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </form>
+                                    <div id="uied-parameter" style="display: none;">
+                                        <h5>You can adjust key parameters for UIED to change the detection result (or just leave it)</h5>
+                                        <p>Gradient Threshold: <span id="param-grad-show">5</span></p>
+                                        <input id="param-grad" type="range" min="1" max="10" value="5" class="slider">
+                                        <p>Block Threshold: <span id="param-block-show">5</span></p>
+                                        <input id="param-block" type="range" min="1" max="10" value="5" class="slider">
+                                        <p>Component Minimum Area: <span id="param-minarea-show">50</span></p>
+                                        <input id="param-minarea" type="range" min="10" max="200" value="50" class="slider">
                                     </div>
-                                </form>
-                                <div id="uied-parameter" style="display: none;">
-                                    <h5>You can adjust key parameters for UIED to change the detection result (or just leave it)</h5>
-                                    <p>Gradient Threshold: <span id="param-grad-show">5</span></p>
-                                    <input id="param-grad" type="range" min="1" max="10" value="5" class="slider">
-                                    <p>Block Threshold: <span id="param-block-show">5</span></p>
-                                    <input id="param-block" type="range" min="1" max="10" value="5" class="slider">
-                                    <p>Component Minimum Area: <span id="param-minarea-show">50</span></p>
-                                    <input id="param-minarea" type="range" min="10" max="200" value="50" class="slider">
-                                </div>
-                                <div style="text-align: center">
-                                    <button id="btn-process" class="btn my-btn">Process</button>
-                                    <p id="proc-status" class="lead" style="display: none"></p>
-                                    <div class="loader"></div>
-                                    <button id="btn-show-res" class="btn my-btn" style="display: none; margin-top: 0" data-toggle="modal" data-target="#result-modal">Check Result </button>
+                                    <div style="text-align: center">
+                                        <button id="btn-process" class="btn my-btn">Process</button>
+                                        <p id="proc-status" class="lead" style="display: none"></p>
+                                        <div class="loader"></div>
+                                        <button id="btn-show-res" class="btn my-btn" style="display: none; margin-top: 0" data-toggle="modal" data-target="#result-modal">Check Result </button>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI2CODE -->
+            <div class="my-divider"></div>
+            <div class="text-center container">
+                <div class="mb-5">
+                    <h4 class="text-center lead"><b>Web Code Generation</b></h4>
+                    <p class="lead">Generate Web Code (HTML + CSS) from the Input GUI Image</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-lg-8 offset-lg-2 wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="box">
+                            <div class="icon"><i class="ion-gear-b" style="color: #4680ff;"></i></div>
+                            <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal" class="quickstart-modal-btn">Quick Start</a></h4>
+                            <p class="description">Using examples to see how the tool works</p>
                         </div>
                     </div>
                 </div>
