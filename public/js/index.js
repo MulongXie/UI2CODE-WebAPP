@@ -141,7 +141,7 @@ jQuery(document).ready(function( $ ) {
 	# Quick Start with Examples
 	--------------------------------------------------------------*/
 	$(".quickstart-modal-btn").on('click', function() {
-		$(".carousel-inner .img-responsive").on('click', function() {
+		$(".carousel-inner .img-uied").on('click', function() {
 			$(".display-pic").attr('src', this.src);
 			$("#display-content").removeClass("hide");
             $("#display-content").attr('data-type', 'image');
@@ -280,5 +280,10 @@ jQuery(document).ready(function( $ ) {
         // let params = $('.slider');
         // console.log(params[0].id, params[0].value)
     });
+
+
+	/*--------------------------------------------------------------
+	# Code Generation
+	--------------------------------------------------------------*/
 
 });
