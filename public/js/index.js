@@ -140,7 +140,7 @@ jQuery(document).ready(function( $ ) {
 	/*--------------------------------------------------------------
 	# Quick Start with Examples
 	--------------------------------------------------------------*/
-	$(".quickstart-modal-btn").on('click', function() {
+	$("#quickstart-modal-btn").on('click', function() {
 		$(".carousel-inner .img-uied").on('click', function() {
 			$(".display-pic").attr('src', this.src);
 			$("#display-content").removeClass("hide");
@@ -285,5 +285,12 @@ jQuery(document).ready(function( $ ) {
 	/*--------------------------------------------------------------
 	# Code Generation
 	--------------------------------------------------------------*/
+	$('#quickstart-modal-btn-2code').on('click', function () {
+		$(".img-2code").on('click', function () {
+			let url = '/code?codePath=generated-code/'
+			alert(url)
+			$(location).attr('href', url)
+		})
+	})
 
 });

@@ -105,6 +105,15 @@ app.post('/export', function (req, res) {
     });
 });
 
+
+app.get('/code', function (req, res) {
+    console.log(req.query)
+    app.set('view engine', 'ejs');
+    app.set('views', 'public')
+    res.render('code', {codePath: req.query.codePath})
+})
+
+
 app.listen(8000,function(){
     console.log("Working on port 8000");
 });

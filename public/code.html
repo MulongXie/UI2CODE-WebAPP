@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>UIED-Code Generation</title>
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/code.css" rel="stylesheet">
+
+    <script src="js/plugins/jquery.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/code.js"></script>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <div class="row">
+        <div id="code-viewer" class="col-lg-6 viewer-container">
+            <code id="code-html">
+            </code>
+        </div>
+
+        <div id="page-viewer" class="col-lg-6 viewer-container">
+            <iframe class="my-iframe scaled-frame" src="generated-code/xml.html">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>
+
 </body>
 </html>
