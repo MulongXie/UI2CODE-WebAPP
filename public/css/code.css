@@ -18,3 +18,10 @@
 #code-viewer pre{
     margin-bottom: 0;
 }
+
+.html-bracket{
+    color: #55ACEE;
+}
+.html-tag{
+    color: saddlebrown;
+}

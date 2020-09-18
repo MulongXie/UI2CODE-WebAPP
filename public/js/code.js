@@ -5,6 +5,7 @@ $(document).ready(function () {
         let html_text = ''
         for(let i = 0; i < gen_html_lines.length; i ++){
             let line = gen_html_lines[i]
+            console.log((line))
             html_text += '<pre>' + highlighterHTML(line) + '</pre>'
         }
         $('#code-html').html(html_text)
@@ -12,18 +13,41 @@ $(document).ready(function () {
 
     function highlighterHTML(line) {
         let html = ''
+
+        let tag = ''
+        let search_tag = false
         let content = ''
+
         for(let i = 0; i < line.length; i++){
-            if(line[i] == '<'){
-                if(content != ''){
+            let c = line[i]
+
+            if(search_tag){
+                if(c === ' '){
+                    html += '<span class="html-tag">' + tag + c + '</span>'
+                    tag = ''
+                    search_tag = false
+                }
+                else if(c === '>'){
+                    html += '<span class="html-tag">' + tag + '</span>' +
+                        '<span class="html-bracket">' + c + '</span>'
+                    tag = ''
+                    search_tag = false
+                }
+                else {
+                    tag += c
+                }
+            }
+            else if(c === '<'){
+                if(content !== ''){
                     html += '<span>' + content + '</span>'
                     content = ''
                 }
-                html += '<span class="bracket">' + line[i] + '</span>'
+                html += '<span class="html-bracket">' + line[i] + '</span>'
+                search_tag = true
             }
-            else if(line[i] == '>'){
+            else if(c === '>'){
                 html += '<span>' + content + '</span>'
-                html += '<span class="bracket">' + line[i] + '</span>'
+                html += '<span class="html-bracket">' + line[i] + '</span>'
                 content = ''
             }
             else {
