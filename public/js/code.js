@@ -1,26 +1,18 @@
 $(document).ready(function () {
+    /*********************
+    *** Coder Rendering ***
+     *********************/
     // var code_path = $('#code-path').attr('data-value')
-    var code_path = 'generated-code/xml.html'
-    $.get(code_path, function(data){
-        let gen_html_lines = data.split('\n');
-        let html_text = ''
-        for(let i = 0; i < gen_html_lines.length; i ++){
-            let line = gen_html_lines[i]
-            console.log((line))
-            html_text += '<pre>' + highlighterHTML(line) + '</pre>'
-        }
-        $('#HTML').html(html_text)
-    })
-
-    function highlighterHTML(line) {
+    var code_path = 'generated-code'
+    // HTML
+    function renderHTML(line) {
         let html = ''
+        let content = ''
 
         let tag = ''
         let search_tag = false
         let quotation = ''
         let search_quotation = false
-        let content = ''
-
         for(let i = 0; i < line.length; i++){
             let c = line[i]
 
@@ -82,5 +74,48 @@ $(document).ready(function () {
         }
         return html
     }
+    $.get(code_path + '/xml.html', function(data){
+        let gen_html_lines = data.split('\n');
+        let html_text = ''
+        for(let i = 0; i < gen_html_lines.length; i ++){
+            let line = gen_html_lines[i]
+            html_text += '<pre>' + renderHTML(line) + '</pre>'
+        }
+        $('#HTML').html(html_text)
+    })
 
+    // CSS
+    function renderCSS(line){
+        let css = ''
+        for(let i = 0; i < line.length; i++){
+
+        }
+        return line
+    }
+    $.get(code_path + '/xml.css', function(data){
+        let gen_css_lines = data.split('\n');
+        let css_text = ''
+        for(let i = 0; i < gen_css_lines.length; i ++){
+            let line = gen_css_lines[i]
+            css_text += '<pre>' + renderCSS(line) + '</pre>'
+        }
+        $('#CSS').html(css_text)
+    })
+
+
+    /*********************
+     *** Tab Switch Buttons ***
+     *********************/
+    $('.code-viewer-btn').on('click', function () {
+        let language = this.text;
+
+        if(language !== $('.code-viewer:visible').attr('id')){
+            $('.code-viewer-btn').removeClass('active-btn')
+            $(this).addClass('active-btn');
+
+            $('.code-viewer').fadeOut(100).promise().done(function () {
+                $('#' + language).fadeIn(100);
+            });
+        }
+    })
 })
