@@ -1,24 +1,29 @@
-.viewer-container{
-    height: 80vh;
-    border: #55ACEE solid 2px;
-    padding: 20px;
+.main{
+    padding-top: 50px;
 }
-
-.my-iframe{
-    width: 100%;
-    height: 100%;
-    border: #2b669a solid 2px;
-    zoom: 0.1;
-}
-
-#code-viewer{
-    overflow: auto;
-}
-
-#code-viewer pre{
+pre{
     margin-bottom: 0;
 }
 
+
+.panel-body{
+    padding: 0;
+    height: 85vh;
+}
+
+#viewer-page{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#viewer-code-html{
+    overflow: auto;
+}
+
+
+
+/* Display grammar highlight setting */
 .html-bracket{
     color: #55ACEE;
 }
@@ -27,4 +32,8 @@
 }
 .html-quotation{
     color: red;
+}
+
+.panel-primary{
+    /*border: #55ACEE solid 2px;*/
 }

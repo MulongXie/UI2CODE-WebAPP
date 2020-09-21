@@ -8,7 +8,7 @@ $(document).ready(function () {
             console.log((line))
             html_text += '<pre>' + highlighterHTML(line) + '</pre>'
         }
-        $('#code-html').html(html_text)
+        $('#viewer-code-html').html(html_text)
     })
 
     function highlighterHTML(line) {
