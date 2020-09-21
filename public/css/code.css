@@ -1,6 +1,14 @@
 
 pre{
     margin-bottom: 0;
+    counter-increment: line;
+}
+pre:before{
+    content: counter(line);
+    display: inline-block;
+    width: 28px; /* Fixed width */
+    border-right: 1px solid lightgrey;
+    margin-right: 10px;
 }
 
 .navbar{
