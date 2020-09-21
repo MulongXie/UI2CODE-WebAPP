@@ -4,6 +4,7 @@ $(document).ready(function () {
     var code_path = 'generated-code'
     var data_html = ''
     var data_css = ''
+    var data_iframe = ''
 
     /*********************
      *** Nav Options ***
@@ -47,7 +48,7 @@ $(document).ready(function () {
     *** Coder Rendering ***
      *********************/
     // HTML
-    function renderHTML(line) {
+    function renderHTMLLine(line) {
         let html = ''
         let content = ''
 
@@ -116,17 +117,26 @@ $(document).ready(function () {
         }
         return html
     }
-    $.get(code_path + '/xml.html', function(data){
-        data_html = data
+    function renderHTML(data){
         let gen_html_lines = data.split('\n');
-        let html_text = ''
+        let html = ''
         for(let i = 0; i < gen_html_lines.length; i ++){
             let line = gen_html_lines[i]
-            html_text += '<pre>' + renderHTML(line) + '</pre>'
+            line = renderHTMLLine(line)
+            // ignore outside stylesheet
+            if (line.includes('link')){
+                line = '<span class="html-bracket">\t<</span>' +
+                    '<span class="html-tag">style</span>' +
+                    '<span class="html-bracket">></span>' +
+                    'REPLACEME' +
+                    '<span class="html-bracket"><</span>' +
+                    '<span class="html-tag">/style</span>' +
+                    '<span class="html-bracket">></span>'
+            }
+            html += '<pre>' + line + '</pre>'
         }
-        $('#HTML').html(html_text)
-    })
-
+        return html
+    }
     // CSS
     function renderCSS(data){
         let html = ''
@@ -171,12 +181,19 @@ $(document).ready(function () {
         }
         return html
     }
-    $.get(code_path + '/xml.css', function(data){
-        data_css = data
-        let css_text = renderCSS(data)
-        $('#CSS').html(css_text)
-    })
-
+    // Load from files
+    function loadHTMLandCSS(){
+        $.get(code_path + '/xml.css', function(data){
+            data_css = data
+            $('#CSS').html(renderCSS(data_css))
+        })
+        $.get(code_path + '/xml.html', function(data){
+            data_html = data
+            $('#HTML').html(renderHTML(data_html))
+        })
+        $('.page-viewer').attr('src', code_path + '/xml.html')
+    }
+    loadHTMLandCSS()
 
     /*********************
      *** Code Viewer Panel ***
@@ -195,6 +212,10 @@ $(document).ready(function () {
         }
     })
 
+
+    /*********************
+     *** Code Edition ***
+     *********************/
     // Edit code
     $('.btn-edit').on('click', function () {
         if (! $(this).hasClass('active-btn')){
@@ -209,6 +230,17 @@ $(document).ready(function () {
             $('.btn-edit').attr('title', 'Edit the Code')
             $('#btn-run').toggle('slide')
         }
+    })
+    $('.code-viewer').on('input', function () {
+        console.log('aaaaa')
+    })
+
+    // Run the new code
+    $('#btn-run').on('click', function () {
+        let new_html = $('#HTML').text()
+        let new_css = $('#CSS').text()
+
+        $('.page-viewer').attr('srcdoc', new_html)
 
     })
 })
