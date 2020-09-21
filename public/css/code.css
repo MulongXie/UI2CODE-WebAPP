@@ -1,15 +1,45 @@
-.main{
-    padding-top: 50px;
-}
+
 pre{
     margin-bottom: 0;
 }
 
+.navbar{
+    height: 55px;
+    padding-top: 10px;
+    padding-left: 20px;
+    /*position: fixed;*/
+    /*z-index: 1;*/
+}
+
+.my-brand img{
+    max-height: 28px;
+    margin-top: -4px;
+}
+
+.my-brand a{
+    text-decoration: none;
+    color: #337ab7;
+    font-weight: 600;
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.main{
+    /*position: relative;*/
+    /*margin-top: 60px;*/
+    /*z-index: 0;*/
+}
+
+.panel-heading{
+    padding-top: 6px;
+    height: 50px;
+}
 
 .panel-body{
     padding: 0;
     height: 85vh;
 }
+
 
 #viewer-page{
     width: 100%;
@@ -23,10 +53,10 @@ pre{
 
 /* Button style */
 .my-btn{
-    margin-top: 0;
-    padding: 0;
-    height: 20px;
-    width: 80px;
+    margin-top: 3px;
+    padding: 5px;
+    height: 30px;
+    width: 100px;
     background-color: #3399ff;
     color: white;
     text-align: center;
@@ -50,8 +80,4 @@ pre{
 }
 .html-quotation{
     color: red;
-}
-
-.panel-primary{
-    /*border: #55ACEE solid 2px;*/
 }
