@@ -6,7 +6,7 @@ pre{
 pre:before{
     content: counter(line);
     display: inline-block;
-    width: 28px; /* Fixed width */
+    width: 30px; /* Fixed width */
     border-right: 1px solid lightgrey;
     margin-right: 10px;
 }
