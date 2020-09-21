@@ -179,8 +179,9 @@ $(document).ready(function () {
 
 
     /*********************
-     *** Tab Switch Buttons ***
+     *** Code Viewer Panel ***
      *********************/
+    // HTML/CSS Tab Switch Buttons
     $('.code-viewer-btn').on('click', function () {
         let language = this.text;
 
@@ -192,5 +193,22 @@ $(document).ready(function () {
                 $('#' + language).fadeIn(100);
             });
         }
+    })
+
+    // Edit code
+    $('.btn-edit').on('click', function () {
+        if (! $(this).hasClass('active-btn')){
+            $('.code-viewer').attr('contenteditable', true)
+            $('.btn-edit').addClass('active-btn')
+            $('.btn-edit').attr('title', 'Click again to exit editing')
+            $('#btn-run').toggle('slide')
+        }
+        else {
+            $('.code-viewer').attr('contenteditable', false)
+            $('.btn-edit').removeClass('active-btn')
+            $('.btn-edit').attr('title', 'Edit the Code')
+            $('#btn-run').toggle('slide')
+        }
+
     })
 })

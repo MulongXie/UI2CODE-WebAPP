@@ -58,6 +58,10 @@ pre:before{
 
 .material-icons{
     font-weight: bold;
+    transition: 1s;
+}
+.material-icons:hover{
+    transform: rotate(90deg);
 }
 
 /******************
@@ -79,14 +83,14 @@ pre:before{
     height: 85vh;
 }
 
-
 .code-viewer{
     overflow: auto;
-    animation: fadeEffect 1s;
 }
-.active-tab{
-    display: block;
+
+.viewer-container{
+    transition: 0.3s;
 }
+
 
 .page-viewer{
     width: 100%;
@@ -94,8 +98,9 @@ pre:before{
     border: none;
 }
 
+
 /* Button style */
-.my-btn{
+.btn-code{
     margin-top: 3px;
     padding: 5px;
     height: 30px;
@@ -104,7 +109,7 @@ pre:before{
     color: white;
     text-align: center;
 }
-.my-btn:hover{
+.btn-code:hover{
     background: #004a99;
     color: white;
 }
@@ -113,6 +118,14 @@ pre:before{
     color: white;
 }
 
+#btn-edit-panel{
+    color: whitesmoke;
+    margin-left: 5px;
+    padding-top: 8px;
+}
+#btn-edit-panel:hover{
+    background: #55ACEE;
+}
 
 /******************
  *** Code Render ***

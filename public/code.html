@@ -31,11 +31,14 @@
             </div>
         </div>
         <div class="nav navbar-nav navbar-right">
-            <a id="opt-layout" class="btn">
+            <a id="opt-layout" class="btn" data-toggle="tooltip" title="Change Display Layout">
                 <i class="material-icons fa-flip-horizontal">screen_rotation</i>
             </a>
-            <a id="opt-download" class="btn">
+            <a id="opt-download" class="btn" data-toggle="tooltip" title="Download Code">
                 <i class="fa fa-download"></i>
+            </a>
+            <a id="opt-edit" class="btn btn-edit" data-toggle="tooltip" title="Edit the Code">
+                <i class="fa fa-edit"></i>
             </a>
         </div>
     </div>
@@ -49,18 +52,25 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-6">
-                                <h4>CODE</h4>
+                                <h4 style="float: left">CODE</h4>
+
+                                <a id="btn-edit-panel" class="btn btn-edit" data-toggle="tooltip" title="Edit the Code">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <a id="btn-run" class="btn btn-danger" style="display: none">
+                                    Run
+                                </a>
                             </div>
                             <div class="col-xs-6 text-right">
-                                <a class="btn my-btn code-viewer-btn active-btn">HTML</a>
-                                <a class="btn my-btn code-viewer-btn">CSS</a>
+                                <a class="btn btn-code code-viewer-btn active-btn">HTML</a>
+                                <a class="btn btn-code code-viewer-btn">CSS</a>
                             </div>
                         </div>
                     </div>
                     <div id="HTML" class="panel-body code-viewer">
                     </div>
                     <div id="CSS" class="panel-body code-viewer" style="display: none">
-                        CSS
                     </div>
                 </div>
             </div>
