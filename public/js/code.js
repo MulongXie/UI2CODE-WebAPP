@@ -1,6 +1,7 @@
 $(document).ready(function () {
-    var code_path = $('#code-path').attr('data-value')
-    $.get('generated-code/xml.html', function(data){
+    // var code_path = $('#code-path').attr('data-value')
+    var code_path = 'generated-code/xml.html'
+    $.get(code_path, function(data){
         let gen_html_lines = data.split('\n');
         let html_text = ''
         for(let i = 0; i < gen_html_lines.length; i ++){
@@ -8,7 +9,7 @@ $(document).ready(function () {
             console.log((line))
             html_text += '<pre>' + highlighterHTML(line) + '</pre>'
         }
-        $('#viewer-code-html').html(html_text)
+        $('#HTML').html(html_text)
     })
 
     function highlighterHTML(line) {

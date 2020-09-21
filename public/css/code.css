@@ -41,15 +41,17 @@ pre{
 }
 
 
-#viewer-page{
+.code-viewer{
+    overflow: auto;
+    animation: fade 1s;
+}
+
+.page-viewer{
     width: 100%;
     height: 100%;
     border: none;
 }
 
-#viewer-code-html{
-    overflow: auto;
-}
 
 /* Button style */
 .my-btn{
