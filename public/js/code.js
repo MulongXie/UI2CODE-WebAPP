@@ -132,8 +132,12 @@ $(document).ready(function () {
                     '<span class="html-bracket"><</span>' +
                     '<span class="html-tag">/style</span>' +
                     '<span class="html-bracket">></span>'
+
+                html += '<pre style="display: none">' + line + '</pre>'
             }
-            html += '<pre>' + line + '</pre>'
+            else {
+                html += '<pre>' + line + '</pre>'
+            }
         }
         return html
     }
@@ -212,7 +216,6 @@ $(document).ready(function () {
         }
     })
 
-
     /*********************
      *** Code Edition ***
      *********************/
@@ -240,6 +243,8 @@ $(document).ready(function () {
         let new_html = $('#HTML').text()
         let new_css = $('#CSS').text()
 
+        // Embed the new css into html <style>
+        new_html = new_html.replace('REPLACEME', '\n' + new_css + '\n')
         $('.page-viewer').attr('srcdoc', new_html)
 
     })
