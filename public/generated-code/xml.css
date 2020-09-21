@@ -1,8 +1,7 @@
 ul{
 	list-style: None;
 	clear: left;
-	padding-left: 0;
-}
+	padding-left: 0;}
 #block-1{
 	border: solid 2px black;
 	margin-top: 11px;

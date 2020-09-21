@@ -124,8 +124,6 @@ $(document).ready(function () {
         let css_text = ''
 
         let line = ''
-        let tag = ''
-        let content = ''
         let is_content = false
 
         for(let i = 0; i < data.length; i ++){
@@ -154,6 +152,9 @@ $(document).ready(function () {
                     if (c === '}'){
                         is_content = false
                         line = line + '<span class="css-brace">}</span>'
+                    }
+                    else if (c === ':'){
+                        line = '<span class="css-attr">' + line + ':</span>'
                     }
                     else {
                         line += c
