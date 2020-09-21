@@ -16,18 +16,22 @@ pre:before{
  *** Navigation ***
  ******************/
 .navbar{
-    height: 55px;
-    padding-top: 10px;
+    height: 60px;
+    padding-top: 12px;
     padding-left: 20px;
 }
 
 .my-brand img{
     max-height: 28px;
-    margin-top: -4px;
+    margin-top: -9px;
 }
 
 .my-brand a{
     text-decoration: none;
+    height: 100%;
+}
+
+.my-brand span{
     color: #337ab7;
     font-weight: 600;
     font-size: 24px;
@@ -39,7 +43,21 @@ pre:before{
 }
 
 .navbar-right a{
-    margin: 0;
+    margin-top: -8px;
+}
+
+.navbar-right a:hover{
+    background: lightgrey;
+}
+
+.nav i{
+    color: #337ab7;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.material-icons{
+    font-weight: bold;
 }
 
 /******************
