@@ -21,6 +21,24 @@ pre{
     overflow: auto;
 }
 
+/* Button style */
+.my-btn{
+    margin-top: 0;
+    padding: 0;
+    height: 20px;
+    width: 80px;
+    background-color: #3399ff;
+    color: white;
+    text-align: center;
+}
+.my-btn:hover{
+    background: #004a99;
+    color: white;
+}
+.my-btn:focus{
+    background-color: #3399ff;
+    color: white;
+}
 
 
 /* Display grammar highlight setting */
