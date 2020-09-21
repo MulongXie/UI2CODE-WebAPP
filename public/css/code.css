@@ -11,12 +11,14 @@ pre:before{
     margin-right: 10px;
 }
 
+
+/******************
+ *** Navigation ***
+ ******************/
 .navbar{
     height: 55px;
     padding-top: 10px;
     padding-left: 20px;
-    /*position: fixed;*/
-    /*z-index: 1;*/
 }
 
 .my-brand img{
@@ -32,6 +34,17 @@ pre:before{
     margin-left: 5px;
 }
 
+.navbar-right{
+    padding-right: 20px;
+}
+
+.navbar-right a{
+    margin: 0;
+}
+
+/******************
+ *** Main ***
+ ******************/
 .main{
     /*position: relative;*/
     /*margin-top: 60px;*/
@@ -63,7 +76,6 @@ pre:before{
     border: none;
 }
 
-
 /* Button style */
 .my-btn{
     margin-top: 3px;
@@ -84,7 +96,9 @@ pre:before{
 }
 
 
-/* Display grammar highlight setting */
+/******************
+ *** Code Render ***
+ ******************/
 .html-bracket{
     color: #55ACEE;
 }

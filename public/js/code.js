@@ -1,4 +1,29 @@
 $(document).ready(function () {
+
+    /*********************
+     *** Nav Options ***
+     *********************/
+    $('#opt-layout').on('click', function () {
+        let containers = $('.viewer-container')
+
+        // display vertically
+        if (! $('#content').hasClass('vertical')){
+            $('#content').addClass('vertical')
+            containers.removeClass('col-md-6')
+            containers.addClass('col-md-12')
+            // adjust height
+            $('.panel-body').css('height', '40vh')
+        }
+        // display horizontally
+        else {
+            $('#content').removeClass('vertical')
+            containers.removeClass('col-md-12')
+            containers.addClass('col-md-6')
+            // adjust height
+            $('.panel-body').css('height', '85vh')
+        }
+    })
+
     /*********************
     *** Coder Rendering ***
      *********************/
