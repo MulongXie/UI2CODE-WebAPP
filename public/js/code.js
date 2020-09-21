@@ -86,19 +86,82 @@ $(document).ready(function () {
 
     // CSS
     function renderCSS(line){
-        let css = ''
-        for(let i = 0; i < line.length; i++){
+        let html  = ''
 
+        let tag = ''
+        let content = ''
+        let search_content = false
+
+        for(let i = 0; i < line.length; i++){
+            let c = line[i]
+
+            if (!search_content){
+                // content starts
+                if (c === '{'){
+                    search_content = true
+                    html += '<span class="css-tag">' + tag + '</span>'
+                    tag = ''
+                }
+                else {
+                    tag += c
+                }
+            }
+            else{
+                // content ends
+                if (c === '}'){
+                    search_content = false
+                    html += '<span class="css-content">' + content + '</span>'
+                    content = ''
+                }
+                else {
+                    content += c
+                }
+            }
         }
-        return line
+        return html
     }
     $.get(code_path + '/xml.css', function(data){
-        let gen_css_lines = data.split('\n');
         let css_text = ''
-        for(let i = 0; i < gen_css_lines.length; i ++){
-            let line = gen_css_lines[i]
-            css_text += '<pre>' + renderCSS(line) + '</pre>'
+
+        let line = ''
+        let tag = ''
+        let content = ''
+        let is_content = false
+
+        for(let i = 0; i < data.length; i ++){
+            let c = data[i]
+
+            if (c === '\n'){
+                if (is_content){
+                    line = '<span class="css-content">' + line + '</span>'
+                }
+                css_text += '<pre>' + line + '</pre>'
+                line = ''
+            }
+            else{
+                if (!is_content){
+                    // content starts
+                    if (c === '{'){
+                        is_content = true
+                        line = '<span class="css-tag">' + line + '</span><span class="css-brace">{</span>'
+                    }
+                    else {
+                        line += c
+                    }
+                }
+                else{
+                    // content ends
+                    if (c === '}'){
+                        is_content = false
+                        line = line + '<span class="css-brace">}</span>'
+                    }
+                    else {
+                        line += c
+                    }
+                }
+            }
         }
+
         $('#CSS').html(css_text)
     })
 

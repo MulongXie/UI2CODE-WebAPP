@@ -86,3 +86,12 @@ pre{
 .html-quotation{
     color: red;
 }
+.css-tag{
+    color: red;
+}
+.css-content{
+    color: #55ACEE;
+}
+.css-brace{
+    color: saddlebrown;
+}
