@@ -1,8 +1,14 @@
 $(document).ready(function () {
 
+    // var code_path = $('#code-path').attr('data-value')
+    var code_path = 'generated-code'
+    var data_html = ''
+    var data_css = ''
+
     /*********************
      *** Nav Options ***
      *********************/
+    // change display layout
     $('#opt-layout').on('click', function () {
         let containers = $('.viewer-container')
 
@@ -24,11 +30,22 @@ $(document).ready(function () {
         }
     })
 
+    // download files
+    $('#opt-download').on('click', function () {
+        let zip = new JSZip()
+
+        zip.file('xml.html', data_html)
+        zip.file('xml.css', data_css)
+        zip.generateAsync({type:"blob"}, function () {
+        }).then(function(content) {
+            // see FileSaver.js
+            saveAs(content, "code.zip");
+        });
+    })
+
     /*********************
     *** Coder Rendering ***
      *********************/
-    // var code_path = $('#code-path').attr('data-value')
-    var code_path = 'generated-code'
     // HTML
     function renderHTML(line) {
         let html = ''
@@ -100,6 +117,7 @@ $(document).ready(function () {
         return html
     }
     $.get(code_path + '/xml.html', function(data){
+        data_html = data
         let gen_html_lines = data.split('\n');
         let html_text = ''
         for(let i = 0; i < gen_html_lines.length; i ++){
@@ -110,47 +128,11 @@ $(document).ready(function () {
     })
 
     // CSS
-    function renderCSS(line){
-        let html  = ''
-
-        let tag = ''
-        let content = ''
-        let search_content = false
-
-        for(let i = 0; i < line.length; i++){
-            let c = line[i]
-
-            if (!search_content){
-                // content starts
-                if (c === '{'){
-                    search_content = true
-                    html += '<span class="css-tag">' + tag + '</span>'
-                    tag = ''
-                }
-                else {
-                    tag += c
-                }
-            }
-            else{
-                // content ends
-                if (c === '}'){
-                    search_content = false
-                    html += '<span class="css-content">' + content + '</span>'
-                    content = ''
-                }
-                else {
-                    content += c
-                }
-            }
-        }
-        return html
-    }
-    $.get(code_path + '/xml.css', function(data){
-        let css_text = ''
+    function renderCSS(data){
+        let html = ''
 
         let line = ''
         let is_content = false
-
         for(let i = 0; i < data.length; i ++){
             let c = data[i]
 
@@ -158,7 +140,7 @@ $(document).ready(function () {
                 if (is_content){
                     line = '<span class="css-content">' + line + '</span>'
                 }
-                css_text += '<pre>' + line + '</pre>'
+                html += '<pre>' + line + '</pre>'
                 line = ''
             }
             else{
@@ -187,7 +169,11 @@ $(document).ready(function () {
                 }
             }
         }
-
+        return html
+    }
+    $.get(code_path + '/xml.css', function(data){
+        data_css = data
+        let css_text = renderCSS(data)
         $('#CSS').html(css_text)
     })
 
