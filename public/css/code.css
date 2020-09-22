@@ -123,6 +123,7 @@ pre:before{
 #btn-edit-panel{
     color: whitesmoke;
     margin-left: 5px;
+    margin-right: 3px;
     padding-top: 8px;
 }
 #btn-edit-panel:hover{

@@ -227,14 +227,14 @@ $(document).ready(function () {
             $('.btn-edit').addClass('active-btn')
             $('.btn-edit').attr('title', 'Click again to exit editing')
             $('#btn-run').toggle('slide')
-            $('#btn-reload').toggle('slide')
+            // $('#btn-reload').toggle('slide')
         }
         else {
             $('.code-viewer').attr('contenteditable', false)
             $('.btn-edit').removeClass('active-btn')
             $('.btn-edit').attr('title', 'Edit the Code')
             $('#btn-run').toggle('slide')
-            $('#btn-reload').toggle('slide')
+            // $('#btn-reload').toggle('slide')
         }
     })
     $('.code-viewer').on('input', function () {
