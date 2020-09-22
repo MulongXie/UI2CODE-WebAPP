@@ -226,12 +226,14 @@ $(document).ready(function () {
             $('.btn-edit').addClass('active-btn')
             $('.btn-edit').attr('title', 'Click again to exit editing')
             $('#btn-run').toggle('slide')
+            $('#btn-reload').toggle('slide')
         }
         else {
             $('.code-viewer').attr('contenteditable', false)
             $('.btn-edit').removeClass('active-btn')
             $('.btn-edit').attr('title', 'Edit the Code')
             $('#btn-run').toggle('slide')
+            $('#btn-reload').toggle('slide')
         }
     })
     $('.code-viewer').on('input', function () {
@@ -246,6 +248,10 @@ $(document).ready(function () {
         // Embed the new css into html <style>
         new_html = new_html.replace('REPLACEME', '\n' + new_css + '\n')
         $('.page-viewer').attr('srcdoc', new_html)
+    })
 
+    // Reload code
+    $('#btn-reload').on('click', function () {
+        loadHTMLandCSS()
     })
 })
