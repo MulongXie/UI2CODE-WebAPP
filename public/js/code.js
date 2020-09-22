@@ -35,7 +35,8 @@ $(document).ready(function () {
     $('#opt-download').on('click', function () {
         let zip = new JSZip()
 
-        zip.file('xml.html', data_html)
+        let export_html = data_html.replace('<style>REPLACEME</style>', '\n<link rel="stylesheet" href="xml.css">\n')
+        zip.file('xml.html', export_html)
         zip.file('xml.css', data_css)
         zip.generateAsync({type:"blob"}, function () {
         }).then(function(content) {
@@ -242,12 +243,12 @@ $(document).ready(function () {
 
     // Run the new code
     $('#btn-run').on('click', function () {
-        let new_html = $('#HTML').text()
-        let new_css = $('#CSS').text()
+        data_html = $('#HTML').text()
+        data_css = $('#CSS').text()
 
         // Embed the new css into html <style>
-        new_html = new_html.replace('REPLACEME', '\n' + new_css + '\n')
-        $('.page-viewer').attr('srcdoc', new_html)
+        let iframe = data_html.replace('REPLACEME', '\n' + data_css + '\n')
+        $('.page-viewer').attr('srcdoc', iframe)
     })
 
     // Reload code
