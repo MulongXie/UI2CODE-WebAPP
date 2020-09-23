@@ -4,7 +4,6 @@ $(document).ready(function () {
     var code_path = 'generated-code'
     var data_html = ''
     var data_css = ''
-    var data_iframe = ''
 
     /*********************
      *** Nav Options ***
@@ -227,14 +226,14 @@ $(document).ready(function () {
             $('.btn-edit').addClass('active-btn')
             $('.btn-edit').attr('title', 'Click again to exit editing')
             $('#btn-run').toggle('slide')
-            // $('#btn-reload').toggle('slide')
+            $('#btn-reload').toggle('slide')
         }
         else {
             $('.code-viewer').attr('contenteditable', false)
             $('.btn-edit').removeClass('active-btn')
             $('.btn-edit').attr('title', 'Edit the Code')
             $('#btn-run').toggle('slide')
-            // $('#btn-reload').toggle('slide')
+            $('#btn-reload').toggle('slide')
         }
     })
 
@@ -249,15 +248,20 @@ $(document).ready(function () {
     $('#btn-reload').on('click', function () {
         loadHTMLandCSS()
     })
-
-
-    /*********************
-     *** PageViewer Iframe on the Left ***
-     *********************/
-    // Render the iframe page
-    function init_iframe(){
-        // Embed the new css into html <style>
-        data_iframe = data_html.replace('REPLACEME', '\n' + data_css + '\n')
-        $('.page-viewer').attr('srcdoc', data_iframe)
-    }
 })
+
+/*********************
+ *** PageViewer Iframe on the Left ***
+ *********************/
+// Render the iframe page
+function init_iframe(){
+    let code_html = $('#HTML').text()
+    let code_css = $('#CSS').text()
+
+    // Add element class
+    code_css += '.ele-active{\n\tbackground: red;\n\topacity: 0.5;\n}'
+
+    // Embed the new css into html <style>
+    let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
+    $('.page-viewer').attr('srcdoc', iframe)
+}

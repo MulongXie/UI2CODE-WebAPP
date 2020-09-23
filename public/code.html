@@ -46,8 +46,6 @@
 
 <main class="main">
 
-    <button id="test" class="btn btn-primary">btn</button>
-
     <div id="content" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 viewer-container">
@@ -65,7 +63,7 @@
                                     Run
                                 </a>
 
-                                <a id="btn-reload" class="btn btn-danger" style="font-size: 12px">
+                                <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">
                                     Reload
                                 </a>
                             </div>
@@ -111,10 +109,19 @@
 
 <script>
     $(window).on('load', function () {
+        // init_iframe()
+        let pre_element = ''
         $('.page-viewer').contents().find('body').click(function (event) {
-            console.log(event.target)
-            event.target.style.background = 'red'
+            let element = $(event.target)
+            console.log('html', element[0].outerHTML)
+
+            if (pre_element !== ''){
+                pre_element.removeClass('ele-active')
+            }
+            element.addClass('ele-active')
+            pre_element = element
         })
+
     })
 </script>
 
