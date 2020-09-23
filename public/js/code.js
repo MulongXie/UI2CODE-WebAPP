@@ -255,4 +255,24 @@ $(document).ready(function () {
     $('#btn-reload').on('click', function () {
         loadHTMLandCSS()
     })
+
+
+    /*********************
+     *** PageViewer Iframe ***
+     *********************/
+    // let page = document.getElementsByClassName('page-viewer')[0].contentWindow.document
+    // console.log(page.getElementById('block-2'))
+
+    // let page = $('.page-viewer').contents()
+    // page.find('.div-16').click(function (){
+    //     alert('change')
+    // })
+
+    // $('#test').on('click', function () {
+    //     // let iframe = document.getElementsByClassName('page-viewer')[0].contentWindow.document
+    //     // console.log(iframe.getElementById('block-2'))
+    //
+    //     let page = $('.page-viewer').contents()
+    //     page.find('#block-4').css('background', 'black')
+    // })
 })

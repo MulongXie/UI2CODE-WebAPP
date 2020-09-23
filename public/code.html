@@ -45,6 +45,9 @@
 </nav>
 
 <main class="main">
+
+    <button id="test" class="btn btn-primary">btn</button>
+
     <div id="content" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 viewer-container">
@@ -97,7 +100,6 @@
 <footer>
     <div class="footer">
         <p>Copyright © 2020 <a href="http://www.uied.online/">UIED</a> All rights reserved</p>
-
         <address>
             Contact:
             <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
@@ -106,6 +108,15 @@
 </footer>
 
 <!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
+
+<script>
+    $(window).on('load', function () {
+        $('.page-viewer').contents().find('body').click(function (event) {
+            console.log(event.target)
+            event.target.style.background = 'red'
+        })
+    })
+</script>
 
 </body>
 </html>
