@@ -46,7 +46,7 @@ $(document).ready(function () {
     })
 
     /*********************
-    *** Coder Rendering ***
+    *** Coder Rendering on the Right CodeViewer***
      *********************/
     // HTML
     function renderHTMLLine(line) {
@@ -237,18 +237,12 @@ $(document).ready(function () {
             // $('#btn-reload').toggle('slide')
         }
     })
-    $('.code-viewer').on('input', function () {
-        console.log('aaaaa')
-    })
 
     // Run the new code
     $('#btn-run').on('click', function () {
         data_html = $('#HTML').text()
         data_css = $('#CSS').text()
-
-        // Embed the new css into html <style>
-        let iframe = data_html.replace('REPLACEME', '\n' + data_css + '\n')
-        $('.page-viewer').attr('srcdoc', iframe)
+        init_iframe()
     })
 
     // Reload code
@@ -258,21 +252,12 @@ $(document).ready(function () {
 
 
     /*********************
-     *** PageViewer Iframe ***
+     *** PageViewer Iframe on the Left ***
      *********************/
-    // let page = document.getElementsByClassName('page-viewer')[0].contentWindow.document
-    // console.log(page.getElementById('block-2'))
-
-    // let page = $('.page-viewer').contents()
-    // page.find('.div-16').click(function (){
-    //     alert('change')
-    // })
-
-    // $('#test').on('click', function () {
-    //     // let iframe = document.getElementsByClassName('page-viewer')[0].contentWindow.document
-    //     // console.log(iframe.getElementById('block-2'))
-    //
-    //     let page = $('.page-viewer').contents()
-    //     page.find('#block-4').css('background', 'black')
-    // })
+    // Render the iframe page
+    function init_iframe(){
+        // Embed the new css into html <style>
+        data_iframe = data_html.replace('REPLACEME', '\n' + data_css + '\n')
+        $('.page-viewer').attr('srcdoc', data_iframe)
+    }
 })
