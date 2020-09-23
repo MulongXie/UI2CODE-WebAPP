@@ -134,24 +134,14 @@ pre:before{
  *** Right PageViewer ***
  ******************/
 
-.viewer-container .panel-body{
-    position: relative;
-}
-
-/* Reminder mask */
-#page-mask{
-    height: 100%;
+/* Trace Reminder */
+#trace-info{
+    height: 20px;
     width: 100%;
-    background: grey;
-    position: absolute;
+    background: #d9534f;
     opacity: 80%;
-
+    color: whitesmoke;
     display: none;
-}
-#page-mask h3{
-    margin-top: 30vh;
-    color: white;
-    font-weight: bolder;
 }
 
 

@@ -270,7 +270,7 @@ $(document).ready(function () {
 
         if ($('#btn-close-trace').is(":hidden")){
             $('#btn-close-trace').toggle('slide')
-            $('#page-mask').show()
+            $('#trace-info').slideDown()
         }
 
         let css = '.ele-active{\n' +
@@ -296,11 +296,8 @@ $(document).ready(function () {
     })
     $('#btn-close-trace').on('click', function () {
         $('.btn-ele-trace').removeClass('active')
-        $('#page-mask').slideUp(100)
+        $('#trace-info').slideUp()
         $(this).toggle('slide')
         initIframe()
-    })
-    $('#page-mask').on('click', function () {
-        $(this).slideUp(100)
     })
 })
