@@ -112,11 +112,11 @@ pre:before{
     text-align: center;
 }
 .btn-code:hover{
-    background: #004a99;
+    background-color: #55ACEF;
     color: white;
 }
 .active-btn{
-    background-color: #55ACEE;
+    background: #004a99;
     color: white;
 }
 
@@ -129,6 +129,31 @@ pre:before{
 #btn-edit-panel:hover{
     background: #55ACEE;
 }
+
+/******************
+ *** Right PageViewer ***
+ ******************/
+
+.viewer-container .panel-body{
+    position: relative;
+}
+
+/* Reminder mask */
+#page-mask{
+    height: 100%;
+    width: 100%;
+    background: grey;
+    position: absolute;
+    opacity: 80%;
+
+    display: none;
+}
+#page-mask h3{
+    margin-top: 30vh;
+    color: white;
+    font-weight: bolder;
+}
+
 
 /******************
  *** Code Render ***

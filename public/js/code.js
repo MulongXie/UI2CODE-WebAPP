@@ -251,10 +251,9 @@ $(document).ready(function () {
      *** PageViewer Iframe on the Left ***
      *********************/
     // Render the iframe page
-    function initIframe(css, js){
+    function initIframe(css='', js=''){
         let code_css = $('#CSS').text()
         let code_html = $('#HTML').text()
-
         // Add element class
         code_css += css
         // Add js
@@ -265,7 +264,15 @@ $(document).ready(function () {
         $('.page-viewer').attr('srcdoc', iframe)
     }
 
-    $('#btn-test').on('click', function () {
+    // Start tracing by inserting css and js into iframe
+    $('.btn-ele-trace').on('click', function () {
+        $(this).addClass('active')
+
+        if ($('#btn-close-trace').is(":hidden")){
+            $('#btn-close-trace').toggle('slide')
+            $('#page-mask').show()
+        }
+
         let css = '.ele-active{\n' +
             '   background: red;\n' +
             '   opacity: 0.5;\n' +
@@ -286,5 +293,14 @@ $(document).ready(function () {
             '</script>\n'
 
         initIframe(css, js)
+    })
+    $('#btn-close-trace').on('click', function () {
+        $('.btn-ele-trace').removeClass('active')
+        $('#page-mask').slideUp(100)
+        $(this).toggle('slide')
+        initIframe()
+    })
+    $('#page-mask').on('click', function () {
+        $(this).slideUp(100)
     })
 })
