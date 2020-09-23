@@ -270,7 +270,8 @@ $(document).ready(function () {
 
         if ($('#btn-close-trace').is(":hidden")){
             $('#btn-close-trace').toggle('slide')
-            $('#trace-info').slideDown()
+            $('#trace-info').slideDown(200)
+            $('.page-viewer').css('height', 'calc(100% - 20px)')
         }
 
         let css = '.ele-active{\n' +
@@ -296,7 +297,8 @@ $(document).ready(function () {
     })
     $('#btn-close-trace').on('click', function () {
         $('.btn-ele-trace').removeClass('active')
-        $('#trace-info').slideUp()
+        $('#trace-info').slideUp(200)
+        $('.page-viewer').css('height', '100%')
         $(this).toggle('slide')
         initIframe()
     })
