@@ -236,32 +236,55 @@ $(document).ready(function () {
             $('#btn-reload').toggle('slide')
         }
     })
-
     // Run the new code
     $('#btn-run').on('click', function () {
         data_html = $('#HTML').text()
         data_css = $('#CSS').text()
-        init_iframe()
+        initIframe()
     })
-
     // Reload code
     $('#btn-reload').on('click', function () {
         loadHTMLandCSS()
     })
+
+    /*********************
+     *** PageViewer Iframe on the Left ***
+     *********************/
+    // Render the iframe page
+    function initIframe(css, js){
+        let code_css = $('#CSS').text()
+        let code_html = $('#HTML').text()
+
+        // Add element class
+        code_css += css
+        // Add js
+        code_html = code_html.replace('</body>', js + '</body>')
+
+        // Embed the new css into html <style>
+        let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
+        $('.page-viewer').attr('srcdoc', iframe)
+    }
+
+    $('#btn-test').on('click', function () {
+        let css = '.ele-active{\n' +
+            '   background: red;\n' +
+            '   opacity: 0.5;\n' +
+            '}'
+
+        let js = '<script>\n' +
+            '    window.onload = function () {\n' +
+            '        var pre_ele = ""\n' +
+            '        document.getElementsByTagName(\'body\')[0].onclick = function (event) {\n ' +
+            '            if (pre_ele !== ""){\n' +
+            '                pre_ele.classList.remove("ele-active")\n' +
+            '            }\n' +
+            '            var ele = event.target\n' +
+            '            ele.classList.add("ele-active")\n' +
+            '            pre_ele = ele\n'  +
+            '        }\n' +
+            '    }\n' +
+            '</script>\n'
+
+        initIframe(css, js)
+    })
 })
-
-/*********************
- *** PageViewer Iframe on the Left ***
- *********************/
-// Render the iframe page
-function init_iframe(){
-    let code_html = $('#HTML').text()
-    let code_css = $('#CSS').text()
-
-    // Add element class
-    code_css += '.ele-active{\n\tbackground: red;\n\topacity: 0.5;\n}'
-
-    // Embed the new css into html <style>
-    let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
-    $('.page-viewer').attr('srcdoc', iframe)
-}

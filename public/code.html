@@ -46,6 +46,8 @@
 
 <main class="main">
 
+    <button id="btn-test" class="btn btn-primary">test</button>
+
     <div id="content" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 viewer-container">
@@ -106,24 +108,6 @@
 </footer>
 
 <!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
-
-<script>
-    $(window).on('load', function () {
-        // init_iframe()
-        let pre_element = ''
-        $('.page-viewer').contents().find('body').click(function (event) {
-            let element = $(event.target)
-            console.log('html', element[0].outerHTML)
-
-            if (pre_element !== ''){
-                pre_element.removeClass('ele-active')
-            }
-            element.addClass('ele-active')
-            pre_element = element
-        })
-
-    })
-</script>
 
 </body>
 </html>
