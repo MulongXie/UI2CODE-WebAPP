@@ -120,9 +120,10 @@ $(document).ready(function () {
     function renderHTML(data){
         let gen_html_lines = data.split('\n');
         let html = ''
+
+        let ele_num = 0
         for(let i = 0; i < gen_html_lines.length; i ++){
             let line = gen_html_lines[i]
-            line = renderHTMLLine(line)
             // ignore outside stylesheet
             if (line.includes('link')){
                 line = '<span class="html-bracket">\t<</span>' +
@@ -136,7 +137,13 @@ $(document).ready(function () {
                 html += '<pre style="display: none">' + line + '</pre>'
             }
             else {
-                html += '<pre>' + line + '</pre>'
+                if (line.includes('<') && ! line.includes('</')){
+                    html += '<pre class="html-start" id="ele-' + ele_num.toString() +'">' + renderHTMLLine(line) + '</pre>'
+                    ele_num += 1
+                }
+                else {
+                    html += '<pre>' + renderHTMLLine(line) + '</pre>'
+                }
             }
         }
         return html
@@ -289,6 +296,7 @@ $(document).ready(function () {
             '            var ele = event.target\n' +
             '            ele.classList.add("ele-active")\n' +
             '            pre_ele = ele\n'  +
+            '            console.log(ele)' +
             '        }\n' +
             '    }\n' +
             '</script>\n'

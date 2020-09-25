@@ -124,5 +124,14 @@
 
 <!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
 
+<script>
+    window.onload = function () {
+        var iframe = document.getElementsByTagName("iframe")[0];
+        iframe.onclick = function (event) {
+            alert(event.target)
+        }
+    }
+</script>
+
 </body>
 </html>
