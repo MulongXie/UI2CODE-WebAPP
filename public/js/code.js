@@ -5,6 +5,7 @@ $(document).ready(function () {
 
     // var code_path = $('#code-path').attr('data-value')
     var code_path = 'generated-code'
+    
 
     /*********************
      *** Nav Options ***
@@ -214,6 +215,7 @@ $(document).ready(function () {
     }
     loadHTMLandCSS()
 
+
     /*********************
      *** Code Viewer Panel ***
      *********************/
@@ -231,9 +233,17 @@ $(document).ready(function () {
         }
     })
 
+
     /*********************
      *** Code Edition ***
      *********************/
+    function endEditing() {
+        $('.code-viewer').attr('contenteditable', false)
+        $('.btn-edit').removeClass('active-btn')
+        $('.btn-edit').attr('title', 'Edit the Code')
+        $('#btn-run').toggle('slide')
+        $('#btn-reload').toggle('slide')
+    }
     // Edit code
     $('.btn-edit').on('click', function () {
         if (! $(this).hasClass('active-btn')){
@@ -244,20 +254,11 @@ $(document).ready(function () {
             $('#btn-reload').toggle('slide')
         }
         else {
-            $('.code-viewer').attr('contenteditable', false)
-            $('.btn-edit').removeClass('active-btn')
-            $('.btn-edit').attr('title', 'Edit the Code')
-            $('#btn-run').toggle('slide')
-            $('#btn-reload').toggle('slide')
+            endEditing()
         }
-
         // end element tracing if it's open
         if ($('#btn-close-trace').is(':visible')){
-            $('.btn-ele-trace').removeClass('active')
-            $('#trace-info').slideUp(200)
-            $('.page-viewer').css('height', '100%')
-            $('#btn-close-trace').toggle('slide')
-            initIframe()
+            endTracing()
         }
     })
     // Run the new code
@@ -271,55 +272,32 @@ $(document).ready(function () {
         loadHTMLandCSS()
     })
 
+
     /*********************
-     *** PageViewer Iframe on the Left ***
+     *** Iframe Element Tracing ***
      *********************/
+    function endTracing() {
+        $('.btn-ele-trace').removeClass('active')
+        $('#trace-info').slideUp(200)
+        $('.page-viewer').css('height', '100%')
+        $('#btn-close-trace').toggle('slide')
+    }
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
         $(this).addClass('active')
-
         if ($('#btn-close-trace').is(":hidden")){
             $('#btn-close-trace').toggle('slide')
             $('#trace-info').slideDown(200)
             $('.page-viewer').css('height', 'calc(100% - 20px)')
         }
-
-        let css = '.ele-active{\n' +
-            '   background: red;\n' +
-            '   opacity: 0.5;\n' +
-            '}'
-        let js = '<script>\n' +
-            '    window.onload = function () {\n' +
-            '        var pre_ele = ""\n' +
-            '        document.getElementsByTagName(\'body\')[0].onclick = function (event) {\n ' +
-            '            if (pre_ele !== ""){\n' +
-            '                pre_ele.classList.remove("ele-active")\n' +
-            '            }\n' +
-            '            var ele = event.target\n' +
-            '            ele.classList.add("ele-active")\n' +
-            '            pre_ele = ele\n'  +
-            '            console.log(ele)' +
-            '        }\n' +
-            '    }\n' +
-            '</script>\n'
-
-        initIframe(css, js)
-
         // Close code editing if it's on
         if ($('.btn-edit').hasClass('active-btn')){
-            $('.code-viewer').attr('contenteditable', false)
-            $('.btn-edit').removeClass('active-btn')
-            $('.btn-edit').attr('title', 'Edit the Code')
-            $('#btn-run').toggle('slide')
-            $('#btn-reload').toggle('slide')
+            endEditing()
         }
     })
     // close tracing button
     $('#btn-close-trace').on('click', function () {
-        $('.btn-ele-trace').removeClass('active')
-        $('#trace-info').slideUp(200)
-        $('.page-viewer').css('height', '100%')
-        $(this).toggle('slide')
+        endTracing()
         initIframe()
     })
 })
