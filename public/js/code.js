@@ -282,6 +282,7 @@ $(document).ready(function () {
         $('.page-viewer').css('height', '100%')
         $('#btn-close-trace').toggle('slide')
     }
+    let pre_ele = "" // the last clicked element in the iframe
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
         $(this).addClass('active')
@@ -298,7 +299,6 @@ $(document).ready(function () {
 
         // access element in iframe
         let page = document.getElementsByTagName('iframe')[0].contentWindow.document
-        let pre_ele = ""
         let pre_code_offset = 0
         page.getElementsByTagName('body')[0].onclick = function (event){
             if (pre_ele !== ""){
@@ -308,6 +308,7 @@ $(document).ready(function () {
             ele.classList.add("ele-active")
             pre_ele = ele
 
+            // scroll the codeViewer to the corresponding code
             let displayed_code = $('#ele-' + ele.getAttribute('ele-num'))
             displayed_code.css('background', 'green')
             let code_offset = displayed_code.offset().top - $('.code-viewer').offset().top + pre_code_offset
@@ -322,6 +323,7 @@ $(document).ready(function () {
     // close tracing button
     $('#btn-close-trace').on('click', function () {
         endTracing()
+        pre_ele.classList.remove("ele-active")
     })
 })
 
