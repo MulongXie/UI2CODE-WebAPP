@@ -297,16 +297,26 @@ $(document).ready(function () {
         }
 
         // access element in iframe
-        var page = document.getElementsByTagName('iframe')[0].contentWindow.document
-        var pre_ele = ""
+        let page = document.getElementsByTagName('iframe')[0].contentWindow.document
+        let pre_ele = ""
+        let pre_code_offset = 0
         page.getElementsByTagName('body')[0].onclick = function (event){
             if (pre_ele !== ""){
                 pre_ele.classList.remove("ele-active")
             }
-            var ele = event.target
+            let ele = event.target
             ele.classList.add("ele-active")
             pre_ele = ele
-            console.log(event.target)
+
+            let displayed_code = $('#ele-' + ele.getAttribute('ele-num'))
+            displayed_code.css('background', 'green')
+            let code_offset = displayed_code.offset().top - $('.code-viewer').offset().top + pre_code_offset
+            $('.code-viewer').animate({
+                scrollTop : code_offset
+            })
+            pre_code_offset = code_offset
+            // console.log(event.target, displayed_code.offset().top)
+            $('.code-viewer')[0].scrollTo(0, displayed_code.offset().top)
         }
     })
     // close tracing button
