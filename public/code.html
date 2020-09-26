@@ -46,6 +46,8 @@
 
 <main class="main">
 
+    <!--<button id="btn-test" class="btn btn-primary">test</button>-->
+
     <div id="content" class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-xs-12 viewer-container">
@@ -125,12 +127,28 @@
 <!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
 
 <script>
-    window.onload = function () {
-        var iframe = document.getElementsByTagName("iframe")[0];
-        iframe.onclick = function (event) {
-            alert(event.target)
-        }
-    }
+    $(window).on('load', function () {
+        let css = '.ele-active{\n' +
+            '   background: red;\n' +
+            '   opacity: 0.5;\n' +
+            '}'
+        /*
+        let js = '<script>\n' +
+            '    window.onload = function () {\n' +
+            '        var pre_ele = ""\n' +
+            '        document.getElementsByTagName(\'body\')[0].onclick = function (event) {\n ' +
+            '            if (pre_ele !== ""){\n' +
+            '                pre_ele.classList.remove("ele-active")\n' +
+            '            }\n' +
+            '            var ele = event.target\n' +
+            '            ele.classList.add("ele-active")\n' +
+            '            pre_ele = ele\n'  +
+            '            console.log(ele)' +
+            '        }\n' +
+            '    }\n' +
+        */
+        initIframe(css)
+    })
 </script>
 
 </body>

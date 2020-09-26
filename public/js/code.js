@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // var code_path = $('#code-path').attr('data-value')
     var code_path = 'generated-code'
-    
+
 
     /*********************
      *** Nav Options ***
@@ -285,6 +285,7 @@ $(document).ready(function () {
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
         $(this).addClass('active')
+        // display close button and trace info
         if ($('#btn-close-trace').is(":hidden")){
             $('#btn-close-trace').toggle('slide')
             $('#trace-info').slideDown(200)
@@ -294,11 +295,23 @@ $(document).ready(function () {
         if ($('.btn-edit').hasClass('active-btn')){
             endEditing()
         }
+
+        // access element in iframe
+        var page = document.getElementsByTagName('iframe')[0].contentWindow.document
+        var pre_ele = ""
+        page.getElementsByTagName('body')[0].onclick = function (event){
+            if (pre_ele !== ""){
+                pre_ele.classList.remove("ele-active")
+            }
+            var ele = event.target
+            ele.classList.add("ele-active")
+            pre_ele = ele
+            console.log(event.target)
+        }
     })
     // close tracing button
     $('#btn-close-trace').on('click', function () {
         endTracing()
-        initIframe()
     })
 })
 
