@@ -242,6 +242,15 @@ $(document).ready(function () {
             $('#btn-run').toggle('slide')
             $('#btn-reload').toggle('slide')
         }
+
+        // end element tracing if it's open
+        if ($('#btn-close-trace').is(':visible')){
+            $('.btn-ele-trace').removeClass('active')
+            $('#trace-info').slideUp(200)
+            $('.page-viewer').css('height', '100%')
+            $('#btn-close-trace').toggle('slide')
+            initIframe()
+        }
     })
     // Run the new code
     $('#btn-run').on('click', function () {
@@ -302,6 +311,15 @@ $(document).ready(function () {
             '</script>\n'
 
         initIframe(css, js)
+
+        // Close code editing if it's on
+        if ($('.btn-edit').hasClass('active-btn')){
+            $('.code-viewer').attr('contenteditable', false)
+            $('.btn-edit').removeClass('active-btn')
+            $('.btn-edit').attr('title', 'Edit the Code')
+            $('#btn-run').toggle('slide')
+            $('#btn-reload').toggle('slide')
+        }
     })
     $('#btn-close-trace').on('click', function () {
         $('.btn-ele-trace').removeClass('active')
