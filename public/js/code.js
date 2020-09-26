@@ -1,9 +1,10 @@
+var data_html = ''  // html of subpage in iframe
+var data_css = ''   // css of subpage in iframe
+
 $(document).ready(function () {
 
     // var code_path = $('#code-path').attr('data-value')
     var code_path = 'generated-code'
-    var data_html = ''
-    var data_css = ''
 
     /*********************
      *** Nav Options ***
@@ -118,6 +119,7 @@ $(document).ready(function () {
         return html
     }
     function renderHTML(data){
+        let marked_data = ''  // original html data with element number mark
         let gen_html_lines = data.split('\n');
         let html = ''
 
@@ -126,7 +128,7 @@ $(document).ready(function () {
             let line = gen_html_lines[i]
             // ignore outside stylesheet
             if (line.includes('link')){
-                line = '<span class="html-bracket">\t<</span>' +
+                let spans = '<span class="html-bracket">\t<</span>' +
                     '<span class="html-tag">style</span>' +
                     '<span class="html-bracket">></span>' +
                     'REPLACEME' +
@@ -134,18 +136,24 @@ $(document).ready(function () {
                     '<span class="html-tag">/style</span>' +
                     '<span class="html-bracket">></span>'
 
-                html += '<pre style="display: none">' + line + '</pre>'
+                html += '<pre style="display: none">' + spans + '</pre>'
+                line = '<style>REPLACEME</style>'
             }
             else {
+                // mark the beginning of an element
                 if (line.includes('<') && ! line.includes('</')){
                     html += '<pre class="html-start" id="ele-' + ele_num.toString() +'">' + renderHTMLLine(line) + '</pre>'
+                    line = line.replace('>', ' ele-num="' + ele_num.toString() + '">')
                     ele_num += 1
                 }
                 else {
                     html += '<pre>' + renderHTMLLine(line) + '</pre>'
                 }
             }
+            marked_data += line + '\n'
         }
+        // renew data_html with element number
+        data_html = marked_data
         return html
     }
     // CSS
@@ -202,7 +210,7 @@ $(document).ready(function () {
             data_html = data
             $('#HTML').html(renderHTML(data_html))
         })
-        $('.page-viewer').attr('src', code_path + '/xml.html')
+        // $('.page-viewer').attr('src', code_path + '/xml.html')
     }
     loadHTMLandCSS()
 
@@ -266,20 +274,6 @@ $(document).ready(function () {
     /*********************
      *** PageViewer Iframe on the Left ***
      *********************/
-    // Render the iframe page
-    function initIframe(css='', js=''){
-        let code_css = $('#CSS').text()
-        let code_html = $('#HTML').text()
-        // Add element class
-        code_css += css
-        // Add js
-        code_html = code_html.replace('</body>', js + '</body>')
-
-        // Embed the new css into html <style>
-        let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
-        $('.page-viewer').attr('srcdoc', iframe)
-    }
-
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
         $(this).addClass('active')
@@ -294,7 +288,6 @@ $(document).ready(function () {
             '   background: red;\n' +
             '   opacity: 0.5;\n' +
             '}'
-
         let js = '<script>\n' +
             '    window.onload = function () {\n' +
             '        var pre_ele = ""\n' +
@@ -321,6 +314,7 @@ $(document).ready(function () {
             $('#btn-reload').toggle('slide')
         }
     })
+    // close tracing button
     $('#btn-close-trace').on('click', function () {
         $('.btn-ele-trace').removeClass('active')
         $('#trace-info').slideUp(200)
@@ -329,3 +323,14 @@ $(document).ready(function () {
         initIframe()
     })
 })
+
+// Render the iframe page
+function initIframe(css='', js=''){
+    // Add element class
+    let code_css = data_css + css
+    // Add js
+    let code_html = data_html.replace('</body>', js + '</body>')
+    // Embed the new css into html <style>
+    let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
+    $('.page-viewer').attr('srcdoc', iframe)
+}
