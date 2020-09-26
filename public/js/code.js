@@ -310,7 +310,8 @@ $(document).ready(function () {
 
             // scroll the codeViewer to the corresponding code
             let displayed_code = $('#ele-' + ele.getAttribute('ele-num'))
-            displayed_code.css('background', 'green')
+            $('.active-code-line').removeClass('active-code-line')
+            displayed_code.addClass('active-code-line')
             let code_offset = displayed_code.offset().top - $('.code-viewer').offset().top + pre_code_offset
             $('.code-viewer').animate({
                 scrollTop : code_offset

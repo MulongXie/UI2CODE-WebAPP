@@ -145,6 +145,14 @@ pre:before{
     display: none;
 }
 
+/******************
+ *** Left CodeViewer ***
+ ******************/
+.active-code-line{
+    background: #55ACEE;
+    opacity: 80%;
+    transition: 2s;
+}
 
 /******************
  *** Code Render ***
@@ -185,5 +193,5 @@ pre:before{
 }
 
 .html-start{
-    background: #2b669a;
+    /*background: #2b669a;*/
 }
