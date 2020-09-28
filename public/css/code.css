@@ -154,6 +154,13 @@ pre:before{
     transition: 2s;
 }
 
+.html-start{
+    cursor: pointer;
+}
+.html-start:hover{
+    background: lightgrey;
+}
+
 /******************
  *** Code Render ***
  ******************/
@@ -190,8 +197,4 @@ pre:before{
     border: 1px solid #e7e7e7;
     color: grey;
     font-size: 12px;
-}
-
-.html-start{
-    /*background: #2b669a;*/
 }
