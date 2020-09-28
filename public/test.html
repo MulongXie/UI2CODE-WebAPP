@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="myDiv" style="height: 50vh; margin-top: 100px; overflow: scroll">
+    <div style="height: 1000px; background: yellow">
+
+    </div>
+
+</div>
+
+<script>
+    window.onload = function () {
+        var div = $('#myDiv')
+        div.on('scroll', function () {
+            console.log(div.scrollTop())
+        })
+    }
+</script>
+
+</body>
+</html>
