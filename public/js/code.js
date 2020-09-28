@@ -31,7 +31,6 @@ $(document).ready(function () {
             $('.panel-body').css('height', '85vh')
         }
     })
-
     // download files
     $('#opt-download').on('click', function () {
         let zip = new JSZip()
@@ -326,6 +325,7 @@ $(document).ready(function () {
         endTracing()
         pre_ele.classList.remove("ele-active")
     })
+    
 })
 
 // Render the iframe page
