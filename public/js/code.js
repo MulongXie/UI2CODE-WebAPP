@@ -283,7 +283,7 @@ $(document).ready(function () {
         $('.active-code-line').removeClass('active-code-line')
 
     }
-    let pre_ele = "" // the last clicked element in the iframe
+    let last_ele = "" // the last clicked element in the iframe
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
         $(this).addClass('active')
@@ -301,12 +301,14 @@ $(document).ready(function () {
         // access element in iframe
         let page = document.getElementsByTagName('iframe')[0].contentWindow.document
         page.getElementsByTagName('body')[0].onclick = function (event){
-            if (pre_ele !== ""){
-                pre_ele.classList.remove("ele-active")
+            // highlight corresponding iframe element
+            let eles = page.querySelectorAll('.ele-active')
+            for (let i = 0; i < eles.length; i ++){
+                eles[i].classList.remove('ele-active')
             }
             let ele = event.target
             ele.classList.add("ele-active")
-            pre_ele = ele
+            last_ele = ele
 
             // scroll the codeViewer to the corresponding code
             let code_wrapper = $('.code-viewer')
@@ -317,13 +319,12 @@ $(document).ready(function () {
             code_wrapper.animate({
                 scrollTop : code_offset
             })
-            code_wrapper[0].scrollTo(0, code_line.offset().top)
         }
     })
     // close tracing button
     $('#btn-close-trace').on('click', function () {
         endTracing()
-        pre_ele.classList.remove("ele-active")
+        last_ele.classList.remove("ele-active")
     })
 
 })

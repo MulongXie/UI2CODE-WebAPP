@@ -157,17 +157,24 @@
 
             let ele_num = event.target.id.split('-')[1]
             console.log(ele_num)
+            if (ele_num === undefined){return}
             // access iframe page
-            let page = document.getElementsByTagName('iframe')[0].contentWindow.document
-            let element = page.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
+            let page = document.getElementsByTagName('iframe')[0].contentWindow
+            let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
             if (element === undefined){return}
+
+            // scroll iframe page to the selected element
+            console.log(element.offsetTop)
+            page.scrollTo(0, element.offsetTop)
+
             // highlight corresponding iframe element
-            let eles = page.querySelectorAll('.ele-active')
+            let eles = page.document.querySelectorAll('.ele-active')
             for (let i = 0; i < eles.length; i ++){
                 eles[i].classList.remove('ele-active')
             }
             element.classList.add('ele-active')
         })
+
     })
 </script>
 
