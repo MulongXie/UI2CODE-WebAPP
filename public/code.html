@@ -132,7 +132,10 @@
             '   background: red !important;\n' +
             '   opacity: 1;\n' +
             '   transition: 1s\n' +
-            '}'
+            '}\n' +
+            'html{\n' +
+            '   scroll-behavior: smooth;\n' +
+            '}\n'
         /*
         let js = '<script>\n' +
             '    window.onload = function () {\n' +
@@ -152,21 +155,25 @@
 
         // Jump to page element in Iframe by clicking code line in CodeViewer
         $('.html-start').on('click', function (event) {
+            // highlight clicked line
             $('.active-code-line').removeClass('active-code-line')
             $(this).addClass('active-code-line')
 
-            let ele_num = event.target.id.split('-')[1]
+            let target = event.target
+            if (target.tagName === 'SPAN'){
+                target = target.parentNode
+            }
+            console.log(target)
+            let ele_num = target.id.split('-')[1]
             console.log(ele_num)
             if (ele_num === undefined){return}
+
             // access iframe page
             let page = document.getElementsByTagName('iframe')[0].contentWindow
             let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
             if (element === undefined){return}
-
             // scroll iframe page to the selected element
-            console.log(element.offsetTop)
             page.scrollTo(0, element.offsetTop)
-
             // highlight corresponding iframe element
             let eles = page.document.querySelectorAll('.ele-active')
             for (let i = 0; i < eles.length; i ++){
