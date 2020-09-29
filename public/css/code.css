@@ -1,4 +1,8 @@
 
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
 pre{
     margin-bottom: 0;
     counter-increment: line;
@@ -31,14 +35,15 @@ pre:before{
 }
 
 .my-brand a{
+    color: #00366f;
     text-decoration: none;
     height: 100%;
 }
 
 .my-brand span{
-    color: #337ab7;
-    font-weight: 600;
-    font-size: 24px;
+    color: #00366f;
+    font-weight: 400;
+    font-size: 22px;
     margin-left: 5px;
 }
 
@@ -125,7 +130,7 @@ pre:before{
     color: whitesmoke;
     margin-left: 5px;
     margin-right: 3px;
-    padding-top: 8px;
+    padding-top: 9px;
 }
 #btn-edit-panel:hover{
     background: #55ACEE;
