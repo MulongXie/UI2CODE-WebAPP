@@ -132,36 +132,11 @@
 <script>
     $(window).on('load', function () {
         initIframe()
+        initCodeViewer()
 
-        // Jump to page element in Iframe by clicking code line in CodeViewer
-        $('.html-start').on('click', function (event) {
-            // highlight clicked line
-            $('.active-code-line').removeClass('active-code-line')
-            $(this).addClass('active-code-line')
-
-            let target = event.target
-            if (target.tagName === 'SPAN'){
-                target = target.parentNode
-            }
-            // console.log(target)
-            let ele_num = target.id.split('-')[1]
-            console.log(ele_num)
-            if (ele_num === undefined){return}
-
-            // access iframe page
-            let page = document.getElementsByTagName('iframe')[0].contentWindow
-            let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
-            console.log(element)
-            if (element === undefined){return}
-            // scroll iframe page to the selected element
-            page.scrollTo(0, element.offsetTop)
-            // highlight corresponding iframe element
-            let eles = page.document.querySelectorAll('.ele-active')
-            for (let i = 0; i < eles.length; i ++){
-                eles[i].classList.remove('ele-active')
-            }
-            element.classList.add('ele-active')
-        })
+        // document.onkeyup = function (e) {
+        //     console.log(e)
+        // }
 
     })
 </script>

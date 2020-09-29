@@ -127,7 +127,7 @@ $(document).ready(function () {
         for(let i = 0; i < gen_html_lines.length; i ++){
             let line = gen_html_lines[i]
             // ignore outside stylesheet
-            if (line.includes('link')){
+            if (line.includes('link') || line.includes('REPLACEME')){
                 let spans = '<span class="html-bracket">\t<</span>' +
                     '<span class="html-tag">style</span>' +
                     '<span class="html-bracket">></span>' +
@@ -198,17 +198,16 @@ $(document).ready(function () {
                 }
             }
         }
+        data_css = data
         return html
     }
     // Load from files
     function loadHTMLandCSS(){
         $.get(code_path + '/xml.css', function(data){
-            data_css = data
-            $('#CSS').html(renderCSS(data_css))
+            $('#CSS').html(renderCSS(data))
         })
         $.get(code_path + '/xml.html', function(data){
-            data_html = data
-            $('#HTML').html(renderHTML(data_html))
+            $('#HTML').html(renderHTML(data))
         })
         // $('.page-viewer').attr('src', code_path + '/xml.html')
     }
@@ -231,6 +230,17 @@ $(document).ready(function () {
             });
         }
     })
+    // control input in contenteditable
+    // $('.code-viewer').on('input', function () {
+    //     let code_lines = $('#HTML').children()
+    //     let new_code = ''
+    //     console.log(code_lines)
+    //     for (let i = 0; i < code_lines.length; i ++){
+    //         new_code += $(code_lines[i]).text() + '\n'
+    //     }
+    //     console.log(new_code)
+    //     $('#HTML').html(renderHTML(new_code))
+    // })
 
 
     /*********************
@@ -262,9 +272,25 @@ $(document).ready(function () {
     })
     // Run the new code
     $('#btn-run').on('click', function () {
-        data_html = $('#HTML').text()
-        data_css = $('#CSS').text()
+        let HTML = $('#HTML')
+        let CSS = $('#CSS')
+        // init HTML code viewer
+        let code_lines = HTML.children()
+        let new_code = ''
+        for (let i = 0; i < code_lines.length; i ++){
+            new_code += $(code_lines[i]).text() + '\n'
+        }
+        HTML.html(renderHTML(new_code))
+        // init CSS code viewer
+        code_lines = CSS.children()
+        new_code = ''
+        for (let i = 0; i < code_lines.length; i ++){
+            new_code += $(code_lines[i]).text() + '\n'
+        }
+        CSS.html(renderCSS(new_code))
+
         initIframe()
+        initCodeViewer()
     })
     // Reload code
     $('#btn-reload').on('click', function () {
@@ -361,4 +387,36 @@ function initIframe(css='', js=''){
     // Embed the new css into html <style>
     let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')
     $('.page-viewer').attr('srcdoc', iframe)
+}
+
+function initCodeViewer() {
+    // Jump to page element in Iframe by clicking code line in CodeViewer
+    $('.html-start').on('click', function (event) {
+        // highlight clicked line
+        $('.active-code-line').removeClass('active-code-line')
+        $(this).addClass('active-code-line')
+
+        let target = event.target
+        if (target.tagName === 'SPAN'){
+            target = target.parentNode
+        }
+        console.log(target)
+        let ele_num = target.id.split('-')[1]
+        console.log(ele_num)
+        if (ele_num === undefined){return}
+
+        // access iframe page
+        let page = document.getElementsByTagName('iframe')[0].contentWindow
+        let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
+        console.log(element)
+        if (element === undefined){return}
+        // scroll iframe page to the selected element
+        page.scrollTo(0, element.offsetTop)
+        // highlight corresponding iframe element
+        let eles = page.document.querySelectorAll('.ele-active')
+        for (let i = 0; i < eles.length; i ++){
+            eles[i].classList.remove('ele-active')
+        }
+        element.classList.add('ele-active')
+    })
 }
