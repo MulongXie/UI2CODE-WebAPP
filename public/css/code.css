@@ -163,13 +163,29 @@ pre:before{
 }
 
 /* Preview Modal */
+.modal-dialog{
+    max-width: 90vw;
+}
 .modal-title{
     float: left;
     font-size: 18px;
 }
+.modal-body{
+    padding-right: 30px;
+    padding-left: 30px;
+}
 .close{
     text-decoration: none;
     cursor: pointer;
+}
+.preview-img{
+    max-height: 70vh;
+    max-width: 400px;
+}
+.preview-blk{
+    background: lightgrey;
+    padding: 20px;
+    margin: 10px;
 }
 
 /******************
