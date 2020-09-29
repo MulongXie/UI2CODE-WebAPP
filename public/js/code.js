@@ -332,8 +332,31 @@ $(document).ready(function () {
 // Render the iframe page
 function initIframe(css='', js=''){
     // Add element class
+    css += '.ele-active{\n' +
+        '   background: red !important;\n' +
+        '   opacity: 1;\n' +
+        '   transition: 1s\n' +
+        '}\n' +
+        'html{\n' +
+        '   scroll-behavior: smooth;\n' +
+        '}\n'
     let code_css = data_css + css
     // Add js
+    /*
+        js += '<script>\n' +
+            '    window.onload = function () {\n' +
+            '        var pre_ele = ""\n' +
+            '        document.getElementsByTagName(\'body\')[0].onclick = function (event) {\n ' +
+            '            if (pre_ele !== ""){\n' +
+            '                pre_ele.classList.remove("ele-active")\n' +
+            '            }\n' +
+            '            var ele = event.target\n' +
+            '            ele.classList.add("ele-active")\n' +
+            '            pre_ele = ele\n'  +
+            '            console.log(ele)' +
+            '        }\n' +
+            '    }\n' +
+        */
     let code_html = data_html.replace('</body>', js + '</body>')
     // Embed the new css into html <style>
     let iframe = code_html.replace('REPLACEME', '\n' + code_css + '\n')

@@ -131,30 +131,7 @@
 
 <script>
     $(window).on('load', function () {
-        let css = '.ele-active{\n' +
-            '   background: red !important;\n' +
-            '   opacity: 1;\n' +
-            '   transition: 1s\n' +
-            '}\n' +
-            'html{\n' +
-            '   scroll-behavior: smooth;\n' +
-            '}\n'
-        /*
-        let js = '<script>\n' +
-            '    window.onload = function () {\n' +
-            '        var pre_ele = ""\n' +
-            '        document.getElementsByTagName(\'body\')[0].onclick = function (event) {\n ' +
-            '            if (pre_ele !== ""){\n' +
-            '                pre_ele.classList.remove("ele-active")\n' +
-            '            }\n' +
-            '            var ele = event.target\n' +
-            '            ele.classList.add("ele-active")\n' +
-            '            pre_ele = ele\n'  +
-            '            console.log(ele)' +
-            '        }\n' +
-            '    }\n' +
-        */
-        initIframe(css)
+        initIframe()
 
         // Jump to page element in Iframe by clicking code line in CodeViewer
         $('.html-start').on('click', function (event) {
@@ -166,7 +143,7 @@
             if (target.tagName === 'SPAN'){
                 target = target.parentNode
             }
-            console.log(target)
+            // console.log(target)
             let ele_num = target.id.split('-')[1]
             console.log(ele_num)
             if (ele_num === undefined){return}
@@ -174,6 +151,7 @@
             // access iframe page
             let page = document.getElementsByTagName('iframe')[0].contentWindow
             let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
+            console.log(element)
             if (element === undefined){return}
             // scroll iframe page to the selected element
             page.scrollTo(0, element.offsetTop)
