@@ -252,7 +252,11 @@ $(document).ready(function () {
         $('.btn-edit').attr('title', 'Edit the Code')
         $('#btn-run').toggle('slide')
         $('#btn-reload').toggle('slide')
+        $('#btn-close-edit').toggle('slide')
     }
+    $('#btn-close-edit').on('click', function () {
+        endEditing()
+    })
     // Edit code
     $('.btn-edit').on('click', function () {
         if (! $(this).hasClass('active-btn')){
@@ -261,6 +265,7 @@ $(document).ready(function () {
             $('.btn-edit').attr('title', 'Click again to exit editing')
             $('#btn-run').toggle('slide')
             $('#btn-reload').toggle('slide')
+            $('#btn-close-edit').toggle('slide')
         }
         else {
             endEditing()
