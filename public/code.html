@@ -95,8 +95,9 @@
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <h4 style="float: left">Web Page</h4>
-                                <a id="btn-page-preview" class="btn btn-side-icon" data-toggle="tooltip" title="Edit the Code">
+                                <a id="btn-page-preview" class="btn btn-side-icon" data-toggle="modal" data-target="#modal-preview">
                                     <i class="fa fa-image"></i>
+                                    <img src="generated-code/org.png">
                                 </a>
                             </div>
                             <div class="col-md-6 col-xs-12 text-right">
@@ -118,6 +119,21 @@
                         <iframe class="page-viewer">
                         </iframe>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Modal -->
+        <div id="modal-preview" class="modal fade">
+            <div class="modal-dialog modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Webpage Preview</h5>
+                    <a class="close text-right" data-dismiss="modal">
+                        x
+                    </a>
+                </div>
+                <div class="modal-body">
+                    ...
                 </div>
             </div>
         </div>

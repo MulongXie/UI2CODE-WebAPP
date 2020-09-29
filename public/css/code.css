@@ -150,6 +150,28 @@ pre:before{
     display: none;
 }
 
+/* Show img on hover of preview btn*/
+#btn-page-preview>img {
+    display: none;
+}
+#btn-page-preview:hover>img{
+    display: block;
+    height: 400px;
+    position: fixed;
+    border: #55ACEE 2px solid;
+    transition: .5s ease;
+}
+
+/* Preview Modal */
+.modal-title{
+    float: left;
+    font-size: 18px;
+}
+.close{
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /******************
  *** Left CodeViewer ***
  ******************/
