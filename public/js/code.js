@@ -286,7 +286,7 @@ $(document).ready(function () {
     let last_ele = "" // the last clicked element in the iframe
     // Start tracing by inserting css and js into iframe
     $('.btn-ele-trace').on('click', function () {
-        $(this).addClass('active')
+        $('.btn-ele-trace').addClass('active')
         // display close button and trace info
         if ($('#btn-close-trace').is(":hidden")){
             $('#btn-close-trace').toggle('slide')
