@@ -126,13 +126,13 @@ pre:before{
     color: white;
 }
 
-#btn-edit-panel{
+.btn-side-icon{
     color: whitesmoke;
     margin-left: 5px;
     margin-right: 3px;
     padding-top: 9px;
 }
-#btn-edit-panel:hover{
+.btn-side-icon:hover{
     background: #55ACEE;
 }
 
