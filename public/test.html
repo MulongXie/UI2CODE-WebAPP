@@ -128,18 +128,20 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Webpage Preview</h5>
+                        <h4 class="modal-title">Detection Result</h4>
                         <button class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6 text-center">
-                                <h5>Input Web GUI</h5>
-                                <img class="preview-img" src="generated-code/org.png">
+                            <div class="col-lg-5 col-md-5 text-center">
+                                <img id="show-input" class="preview-img" src="images/example/app/1.jpg">
                             </div>
-                            <div class="col-md-6 text-center ">
-                                <h5>Element Detection Result</h5>
-                                <img class="preview-img" src="generated-code/result.jpg">
+                            <div class="col-lg-2 col-md-2 text-center">
+                                <p class="glyphicon glyphicon-arrow-right display-result-arrow"></p>
+                                <button id="go-dashboard" class="btn my-btn">Dashboard</button>
+                            </div>
+                            <div class="col-lg-5 col-md-5 text-center">
+                                <img id="show-result" class="preview-img" src="images/example/app/1.jpg">
                             </div>
                         </div>
                     </div>
