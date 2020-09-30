@@ -311,6 +311,27 @@ $(document).ready(function () {
     /*********************
      *** Iframe Element Tracing ***
      *********************/
+    function markElement(event){
+        let page = document.getElementsByTagName('iframe')[0].contentWindow.document
+        // highlight corresponding iframe element
+        let eles = page.querySelectorAll('.ele-active')
+        for (let i = 0; i < eles.length; i ++){
+            eles[i].classList.remove('ele-active')
+        }
+        let ele = event.target
+        ele.classList.add("ele-active")
+        last_ele = ele
+
+        // scroll the codeViewer to the corresponding code
+        let code_wrapper = $('.code-viewer')
+        let code_line = $('#ele-' + ele.getAttribute('ele-num'))
+        let code_offset = code_line.offset().top - code_wrapper.offset().top + code_wrapper.scrollTop()
+        $('.active-code-line').removeClass('active-code-line')
+        code_line.addClass('active-code-line')
+        code_wrapper.animate({
+            scrollTop : code_offset
+        })
+    }
     function endTracing() {
         $('.btn-ele-trace').removeClass('active')
         $('#trace-info').slideUp(200)
@@ -318,6 +339,10 @@ $(document).ready(function () {
         $('#btn-close-trace').toggle('slide')
         $('.active-code-line').removeClass('active-code-line')
 
+        if (last_ele !== '') {last_ele.classList.remove("ele-active")}
+        // remove event listener
+        let page = document.getElementsByTagName('iframe')[0].contentWindow.document
+        page.getElementsByTagName('body')[0].removeEventListener('click', markElement)
     }
     let last_ele = "" // the last clicked element in the iframe
     // Start tracing by inserting css and js into iframe
@@ -336,31 +361,11 @@ $(document).ready(function () {
 
         // access element in iframe
         let page = document.getElementsByTagName('iframe')[0].contentWindow.document
-        page.getElementsByTagName('body')[0].onclick = function (event){
-            // highlight corresponding iframe element
-            let eles = page.querySelectorAll('.ele-active')
-            for (let i = 0; i < eles.length; i ++){
-                eles[i].classList.remove('ele-active')
-            }
-            let ele = event.target
-            ele.classList.add("ele-active")
-            last_ele = ele
-
-            // scroll the codeViewer to the corresponding code
-            let code_wrapper = $('.code-viewer')
-            let code_line = $('#ele-' + ele.getAttribute('ele-num'))
-            let code_offset = code_line.offset().top - code_wrapper.offset().top + code_wrapper.scrollTop()
-            $('.active-code-line').removeClass('active-code-line')
-            code_line.addClass('active-code-line')
-            code_wrapper.animate({
-                scrollTop : code_offset
-            })
-        }
+        page.getElementsByTagName('body')[0].addEventListener('click', markElement)
     })
     // close tracing button
     $('#btn-close-trace').on('click', function () {
         endTracing()
-        last_ele.classList.remove("ele-active")
     })
 
 })
