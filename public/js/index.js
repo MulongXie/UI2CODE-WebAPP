@@ -8,6 +8,11 @@ jQuery(document).ready(function( $ ) {
 		  $(this).remove();
 		});
 	  }
+	  // load pupup window
+		$('#popup-modal').modal('show')
+		$('#popup-direct-btn').on('click', function () {
+			$('#popup-modal').modal('hide')
+		})
 	});
   
 	// Back to top button

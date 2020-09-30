@@ -67,6 +67,36 @@ h6 {
   color: #fff;
 }
 
+/* Popup Window */
+#popup-modal .modal-content{
+  padding-top: 60px;
+}
+
+#popup-modal .side-label{
+  margin-left: 315px;
+  margin-top: -40px;
+}
+
+#popup-modal .magic-text{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#popup-modal h4{
+  margin-bottom: 50px;
+}
+
+.btn-popup{
+  width: 50%;
+  background: #55ACEE;
+  color: whitesmoke;
+}
+
+.btn-popup:hover{
+  background: #007bff;
+  color: lightgrey;
+}
+
 /* Prelaoder */
 
 #preloader {
@@ -1555,4 +1585,7 @@ option:disabled{
 }
 .purple{
   color: purple;
+}
+.pink{
+  color: pink;
 }
