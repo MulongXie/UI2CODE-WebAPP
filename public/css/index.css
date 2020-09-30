@@ -1202,6 +1202,12 @@ a.carousel-control.right {
   color: lightslategray;
 }
 
+.img-2code{
+  max-width: 400px;
+  border: 1px solid;
+  box-shadow: 5px 10px lightgrey;
+}
+
 .note{
   margin: 20px auto 0;
   font-style: italic;
@@ -1210,6 +1216,8 @@ a.carousel-control.right {
 .img-responsive{
   width: 300px;
   height: auto;
+  border: 1px solid;
+  box-shadow: 5px 10px lightgrey;
 }
 
 .display-pic{
