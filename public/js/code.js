@@ -241,6 +241,11 @@ $(document).ready(function () {
     //     console.log(new_code)
     //     $('#HTML').html(renderHTML(new_code))
     // })
+    // preview imag modal
+    $('.preview-img').on('click', function () {
+        console.log($(this).attr('src'))
+        $('#preview-img-full').attr('src', $(this).attr('src'))
+    })
 
 
     /*********************

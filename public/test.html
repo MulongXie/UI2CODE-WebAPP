@@ -1,179 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Icons -->
-    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Download Func -->
-    <script src="plugins/jszip/jszip.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
-    <!-- Customized -->
-    <link rel="stylesheet" href="css/code.css">
-    <script src="js/code.js"></script>
+    <style>
+        .fade-scale {
+            transform: scale(0);
+            opacity: 0;
+            -webkit-transition: all .25s linear;
+            -o-transition: all .25s linear;
+            transition: all .25s linear;
+        }
+
+        .fade-scale.in {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <div class="my-brand">
-                <a href="http://www.uied.online/">
-                    <img src="images/logo.png">
-                </a>
-                <span> <a href="http://www.uied.online/">UIED</a> - Code Generation</span>
-            </div>
-        </div>
-        <div class="nav navbar-nav navbar-right">
-            <a id="opt-layout" class="btn" data-toggle="tooltip" title="Change Display Layout">
-                <i class="material-icons fa-flip-horizontal">screen_rotation</i>
-            </a>
-            <a id="opt-download" class="btn" data-toggle="tooltip" title="Download Code">
-                <i class="fa fa-download"></i>
-            </a>
-            <a id="opt-edit" class="btn btn-edit" data-toggle="tooltip" title="Edit the Code">
-                <i class="fa fa-edit"></i>
-            </a>
-            <a id="opt-trace" class="btn btn-ele-trace" data-toggle="tooltip" title="Trace Element Code">
-                <i class="material-icons">my_location</i>
-            </a>
+<!-- Button trigger modal -->
+<img src="images/logo.png" data-toggle="modal" data-target="#exampleModal">
+
+<!-- Modal -->
+<div class="modal fade-scale" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <img src="generated-code/result.jpg">
         </div>
     </div>
-</nav>
-
-<main class="main">
-
-    <!--<button id="btn-test" class="btn btn-primary">test</button>-->
-
-    <div id="content" class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 col-xs-12 viewer-container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <h4 style="float: left">CODE</h4>
-
-                                <a id="btn-edit-panel" class="btn btn-side-icon" data-toggle="tooltip" title="Edit the Code">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-
-                                <a id="btn-run" class="btn btn-danger" style="display: none; font-size: 12px">
-                                    Run
-                                </a>
-
-                                <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">
-                                    Reload
-                                </a>
-
-                                <a id="btn-close-edit" class="btn btn-danger" style="display: none">
-                                    x
-                                </a>
-                            </div>
-                            <div class="col-md-6 col-xs-12 text-right">
-                                <a class="btn btn-code code-viewer-btn active-btn">HTML</a>
-                                <a class="btn btn-code code-viewer-btn">CSS</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="HTML" class="panel-body code-viewer">
-                    </div>
-                    <div id="CSS" class="panel-body code-viewer" style="display: none">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xs-12 viewer-container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <h4 style="float: left">Web Page</h4>
-                                <a id="btn-page-preview" class="btn btn-side-icon" data-toggle="modal" data-target="#modal-preview">
-                                    <i class="fa fa-image"></i>
-                                    <img src="generated-code/org.png">
-                                </a>
-                            </div>
-                            <div class="col-md-6 col-xs-12 text-right">
-                                <a class="btn btn-danger btn-ele-trace">
-                                    Trace Element
-                                </a>
-                                <a id="btn-close-trace" class="btn btn-danger" style="display: none">
-                                    x
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div id="trace-info" class="text-center">
-                            <p>
-                                Click Element To Trace
-                            </p>
-                        </div>
-                        <iframe class="page-viewer">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Preview Modal -->
-        <div id="modal-preview" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Detection Result</h4>
-                        <button class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 text-center">
-                                <img id="show-input" class="preview-img" src="images/example/app/1.jpg">
-                            </div>
-                            <div class="col-lg-2 col-md-2 text-center">
-                                <p class="glyphicon glyphicon-arrow-right display-result-arrow"></p>
-                                <button id="go-dashboard" class="btn my-btn">Dashboard</button>
-                            </div>
-                            <div class="col-lg-5 col-md-5 text-center">
-                                <img id="show-result" class="preview-img" src="images/example/app/1.jpg">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-
-<footer>
-    <div class="footer">
-        <p>Copyright © 2020 <a href="http://www.uied.online/">UIED</a> All rights reserved</p>
-        <address>
-            Contact:
-            <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
-        </address>
-    </div>
-</footer>
-
-<!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
-
-<script>
-    $(window).on('load', function () {
-        initIframe()
-        initCodeViewer()
-
-        // document.onkeyup = function (e) {
-        //     console.log(e)
-        // }
-
-    })
-</script>
+</div>
 
 </body>
 </html>
