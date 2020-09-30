@@ -62,6 +62,7 @@ pre:before{
 .nav i{
     color: #337ab7;
     font-size: 30px;
+    font-weight: lighter;
     cursor: pointer;
 }
 
@@ -69,9 +70,9 @@ pre:before{
     font-weight: bold;
     transition: 1s;
 }
-.material-icons:hover{
-    transform: rotate(90deg);
-}
+/*.material-icons:hover{*/
+/*    transform: rotate(90deg);*/
+/*}*/
 
 /******************
  *** Main ***
