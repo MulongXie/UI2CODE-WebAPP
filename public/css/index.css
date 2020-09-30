@@ -1209,6 +1209,14 @@ a.carousel-control.right {
   cursor: pointer;
 }
 
+#go-2code-btn{
+  margin-top: 0;
+}
+.modal-2code-note{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .side-label{
   height: 40px;
   width: 260px;

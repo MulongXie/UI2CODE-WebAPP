@@ -287,8 +287,16 @@ jQuery(document).ready(function( $ ) {
 	--------------------------------------------------------------*/
 	$('#quickstart-modal-btn-2code').on('click', function () {
 		$(".img-2code").on('click', function () {
+			$('#go-2code-btn').hide()
+			$('.loader').show()
+			setTimeout(function () {
+				$('#go-2code-btn').show()
+				$('.loader').slideUp()
+				$('.modal-2code-note').text('Code Generated!')
+			}, 3000)
+		})
+		$('#go-2code-btn').on('click', function () {
 			let url = '/code?codePath=generated-code/'
-			alert(url)
 			$(location).attr('href', url)
 		})
 	})

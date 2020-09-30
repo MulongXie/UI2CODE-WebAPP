@@ -594,6 +594,7 @@
                     </div>
                 </div>
 
+                <!-- Quick Start Modal -->
                 <div id="quickstart-modal-2code" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="quickstart" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -611,7 +612,7 @@
                             <div class="modal-body">
                                 <div id="carousel-app-2ocde">
                                     <div class="items text-center">
-                                        <img class="img-2code" data-toggle="tooltip" title="Select the input GUI by clicking" src="images/example/web/9.png" data-dismiss="modal"/>
+                                        <img class="img-2code" data-toggle="modal" data-target="#processing-modal-2code" title="Select the input GUI by clicking" src="images/example/web/9.png" data-dismiss="modal"/>
 <!--                                        <img class="img-responsive img-2code" src="images/example/web/4.png" data-dismiss="modal"/>-->
 <!--                                        <img class="img-responsive img-2code" src="images/example/web/10.png" data-dismiss="modal"/>-->
                                         <p style="margin-top: 10px">Select the input GUI by clicking</p>
@@ -619,6 +620,16 @@
                                     <div class="carousel-inner" role="listbox"> </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Processing Modal -->
+                <div id="processing-modal-2code" class="modal fade">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="loader"></div>
+                            <h4 class="modal-2code-note">Processing ...</h4>
+                            <button id="go-2code-btn" class="btn my-btn" style="display: none">Check Result</button>
                         </div>
                     </div>
                 </div>
