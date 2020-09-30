@@ -170,9 +170,13 @@
 
 <script>
     $(window).on('load', function () {
-        setTimeout(initIframe, 1000)
+        setTimeout(
+            function () {
+                initIframe()
+                initCodeViewer()
+            }, 1000)
         // initIframe()
-        initCodeViewer()
+        // initCodeViewer()
 
         // document.onkeyup = function (e) {
         //     console.log(e)
