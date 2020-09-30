@@ -1206,11 +1206,26 @@ a.carousel-control.right {
   max-width: 400px;
   border: 1px solid;
   box-shadow: 5px 10px lightgrey;
+  cursor: pointer;
+}
+
+.side-label{
+  height: 40px;
+  width: 260px;
+  background: #1EB8EB;
+  transform: rotate(30deg);
+  float: right;
+  margin-top: -67px;
+  margin-right: -100px;
+  padding-top: 7px;
+  font-size: 18px;
+  color: whitesmoke;
 }
 
 .note{
   margin: 20px auto 0;
   font-style: italic;
+  width: 85%;
 }
 
 .img-responsive{
@@ -1218,6 +1233,7 @@ a.carousel-control.right {
   height: auto;
   border: 1px solid;
   box-shadow: 5px 10px lightgrey;
+  cursor: pointer;
 }
 
 .display-pic{
