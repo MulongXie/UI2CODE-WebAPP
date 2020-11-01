@@ -42,10 +42,9 @@ def block_bin_erase_all_blk(binary, blocks, pad=0, show=False):
         cv2.waitKey()
 
 
-def block_division(grey, org,
+def block_division(grey, org, grad_thresh,
                    show=False, write_path=None,
                    step_h=10, step_v=10,
-                   grad_thresh=C.THRESHOLD_BLOCK_GRADIENT,
                    line_thickness=C.THRESHOLD_LINE_THICKNESS,
                    min_rec_evenness=C.THRESHOLD_REC_MIN_EVENNESS,
                    max_dent_ratio=C.THRESHOLD_REC_MAX_DENT_RATIO,
@@ -69,17 +68,15 @@ def block_division(grey, org,
 
                 # flood fill algorithm to get background (layout block)
                 mask_copy = mask.copy()
-                cv2.floodFill(grey, mask, (y,x), None, grad_thresh, grad_thresh, cv2.FLOODFILL_MASK_ONLY)
-                mask_copy = mask - mask_copy
-                region = np.nonzero(mask_copy[1:-1, 1:-1])
-                region = list(zip(region[0], region[1]))
-
+                ff = cv2.floodFill(grey, mask, (y, x), None, grad_thresh, grad_thresh, cv2.FLOODFILL_MASK_ONLY)
                 # ignore small regions
-                if len(region) < 500:
-                    continue
-                block = Block(region, grey.shape)
+                if ff[0] < 500: continue
+                mask_copy = mask - mask_copy
+                region = np.reshape(cv2.findNonZero(mask_copy[1:-1, 1:-1]), (-1, 2))
+                region = [(p[1], p[0]) for p in region]
 
-                draw.draw_region(region, broad_all)
+                block = Block(region, grey.shape)
+                # draw.draw_region(region, broad_all)
                 # if block.height < 40 and block.width < 40:
                 #     continue
                 if block.height < 30:
@@ -101,7 +98,7 @@ def block_division(grey, org,
                 # if block.height/row < min_block_height_ratio:
                 #     continue
                 blocks.append(block)
-                draw.draw_region(region, broad)
+                # draw.draw_region(region, broad)
     if show:
         cv2.imshow('flood-fill all', broad_all)
         cv2.imshow('block', broad)
