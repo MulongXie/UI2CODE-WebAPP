@@ -2,6 +2,7 @@ from os.path import join as pjoin
 import cv2
 import os
 import time
+import json
 
 
 def resize_height_by_longest_edge(img_path, resize_length=800):
@@ -14,7 +15,7 @@ def resize_height_by_longest_edge(img_path, resize_length=800):
 
 
 def uied(input_path, output_root, params=None,
-         is_ip=True, is_clf=True, is_ocr=False, is_merge=True):
+         is_ip=True, is_clf=False, is_ocr=False, is_merge=False):
 
     '''
             ele:min-grad: gradient threshold to produce binary map
@@ -36,6 +37,16 @@ def uied(input_path, output_root, params=None,
     if params is None:
         params = {'min-grad': 4, 'ffl-block': 5, 'min-ele-area': 25, 'merge-contained-ele': True,
                   'max-word-inline-gap': 4, 'max-line-gap': 4}
+    else:
+        params = json.loads(params)
+        for i in params:
+            if params[i] == 'True':
+                params[i] = True
+            elif params[i] == 'False':
+                params[i] = False
+            else:
+                params[i] = int(params[i])
+    print(params)
 
     start = time.clock()
     resized_height = resize_height_by_longest_edge(input_path)
