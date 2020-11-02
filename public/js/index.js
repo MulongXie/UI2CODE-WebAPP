@@ -185,9 +185,19 @@ jQuery(document).ready(function( $ ) {
 
         if (method == 'uied'){
             uied_params = {};
-        	let params = $(".slider");
+        	let params = $(".params");
         	for (let i = 0; i < params.length; i++){
-        		uied_params[params[i].id] = params[i].value
+				if (params[i].type == 'checkbox'){
+					if (params[i].checked){
+						uied_params[params[i].id] = 'True'
+					}
+					else{
+						uied_params[params[i].id] = 'False'
+					}
+				}
+				else {
+					uied_params[params[i].id] = params[i].value
+				}
 			}
 		}
 

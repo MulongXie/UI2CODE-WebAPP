@@ -397,12 +397,19 @@
                                     </form>
                                     <div id="uied-parameter" style="display: none;">
                                         <h5>You can adjust key parameters for UIED to change the detection result (or just leave it)</h5>
-                                        <p>Gradient Threshold: <span id="param-grad-show">5</span></p>
-                                        <input id="param-grad" type="range" min="1" max="10" value="5" class="slider">
-                                        <p>Block Threshold: <span id="param-block-show">5</span></p>
-                                        <input id="param-block" type="range" min="1" max="10" value="5" class="slider">
-                                        <p>Component Minimum Area: <span id="param-minarea-show">50</span></p>
-                                        <input id="param-minarea" type="range" min="10" max="200" value="50" class="slider">
+                                        <p>Gradient Threshold: <span id="min-grad-show">5</span></p>
+                                        <input id="min-grad" type="range" min="1" max="10" value="5" class="params slider">
+                                        <p>Component Minimum Area: <span id="min-ele-area-show">50</span></p>
+                                        <input id="min-ele-area" type="range" min="10" max="200" value="50" class="params slider">
+                                        <p>Max Text Word Gap to be Same Line: <span id="max-word-inline-gap-show">4</span></p>
+                                        <input id="max-word-inline-gap" type="range" min="1" max="15" value="4" class="params slider">
+                                        <p>Max Text Line Gap to be Same Paragraph: <span id="max-line-gap-show">4</span></p>
+                                        <input id="max-line-gap" type="range" min="1" max="20" value="4" class="params slider">
+                                        <p>Merge Nested Compos: <input id="merge-contained-ele" type="checkbox" value="True" class="params" checked></p>
+                                        <div style="display: none">
+                                            <p>Block Threshold: <span id="ffl-block-show">5</span></p>
+                                            <input id="ffl-block" type="range" min="1" max="10" value="5" class="params slider">
+                                        </div>
                                     </div>
                                     <div style="text-align: center">
                                         <button id="btn-process" class="btn my-btn">Process</button>

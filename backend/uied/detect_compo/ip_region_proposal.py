@@ -77,7 +77,7 @@ def compo_detection(input_img_path, output_root, uied_params,
     binary = pre.binarization(org, grad_min=int(uied_params['min-grad']), show=show)
 
     # *** Step 2 *** element detection
-    det.rm_line(binary, show=show)
+    # det.rm_line(binary, show=show)
     # det.rm_line_v_h(binary, show=show)
     uicompos = det.component_detection(binary, min_obj_area=int(uied_params['min-ele-area']))
     draw.draw_bounding_box(org, uicompos, show=show, name='components')
