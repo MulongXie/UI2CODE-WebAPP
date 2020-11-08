@@ -1,5 +1,7 @@
 var data_html = ''  // html of subpage in iframe
 var data_css = ''   // css of subpage in iframe
+var data_react_index = ''
+var data_react_blks =''
 
 $(document).ready(function () {
 
@@ -36,8 +38,12 @@ $(document).ready(function () {
         let zip = new JSZip()
 
         let export_html = data_html.replace('<style>REPLACEME</style>', '\n<link rel="stylesheet" href="xml.css">\n')
-        zip.file('xml.html', export_html)
-        zip.file('xml.css', data_css)
+        let page = zip.folder('page')
+        page.file('xml.html', export_html)
+        page.file('xml.css', data_css)
+        let react = zip.folder('react')
+        react.file('index.js', data_react_index)
+        react.file('blocks.js', data_react_blks)
         zip.generateAsync({type:"blob"}, function () {
         }).then(function(content) {
             // see FileSaver.js
@@ -210,12 +216,12 @@ $(document).ready(function () {
             $('#HTML').html(renderHTML(data))
         })
         $.get(code_path + '/react/index.txt', function (data) {
-            let hl = hljs.highlightAuto(data).value
-            $('#React-index code').html(hl)
+            data_react_index = data
+            $('#React-index code').html(hljs.highlightAuto(data).value)
         })
         $.get(code_path + '/react/blocks.txt', function (data) {
-            let hl = hljs.highlightAuto(data).value
-            $('#React-blocks code').html(hl)
+            data_react_blks = data
+            $('#React-blocks code').html(hljs.highlightAuto(data).value)
         })
         // $('.page-viewer').attr('src', code_path + '/xml.html')
     }
