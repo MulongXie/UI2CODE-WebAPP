@@ -3,11 +3,11 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
-pre{
+.line-wrapper{
     margin-bottom: 0;
     counter-increment: line;
 }
-pre:before{
+.line-wrapper:before{
     content: counter(line);
     display: inline-block;
     width: 30px; /* Fixed width */
@@ -113,7 +113,7 @@ pre:before{
     margin-top: 3px;
     padding: 5px;
     height: 30px;
-    width: 100px;
+    width: 80px;
     background-color: #3399ff;
     color: white;
     text-align: center;

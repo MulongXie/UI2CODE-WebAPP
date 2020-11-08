@@ -136,18 +136,18 @@ $(document).ready(function () {
                     '<span class="html-tag">/style</span>' +
                     '<span class="html-bracket">></span>'
 
-                html += '<pre style="display: none">' + spans + '</pre>'
+                html += '<pre style="display: none" class="line-wrapper">' + spans + '</pre>'
                 line = '<style>REPLACEME</style>'
             }
             else {
                 // mark the beginning of an element
                 if (line.includes('<') && ! line.includes('</')){
-                    html += '<pre class="html-start" id="ele-' + ele_num.toString() +'">' + renderHTMLLine(line) + '</pre>'
+                    html += '<pre class="line-wrapper html-start" id="ele-' + ele_num.toString() +'">' + renderHTMLLine(line) + '</pre>'
                     line = line.replace('>', ' ele-num="' + ele_num.toString() + '">')
                     ele_num += 1
                 }
                 else {
-                    html += '<pre>' + renderHTMLLine(line) + '</pre>'
+                    html += '<pre class="line-wrapper">' + renderHTMLLine(line) + '</pre>'
                 }
             }
             marked_data += line + '\n'
@@ -169,7 +169,7 @@ $(document).ready(function () {
                 if (is_content){
                     line = '<span class="css-content">' + line + '</span>'
                 }
-                html += '<pre>' + line + '</pre>'
+                html += '<pre class="line-wrapper">' + line + '</pre>'
                 line = ''
             }
             else{
@@ -209,6 +209,14 @@ $(document).ready(function () {
         $.get(code_path + '/xml.html', function(data){
             $('#HTML').html(renderHTML(data))
         })
+        $.get(code_path + '/react/index.txt', function (data) {
+            let hl = hljs.highlightAuto(data).value
+            $('#React-index code').html(hl)
+        })
+        $.get(code_path + '/react/blocks.txt', function (data) {
+            let hl = hljs.highlightAuto(data).value
+            $('#React-blocks code').html(hl)
+        })
         // $('.page-viewer').attr('src', code_path + '/xml.html')
     }
     loadHTMLandCSS()
@@ -217,7 +225,7 @@ $(document).ready(function () {
     /*********************
      *** Code Viewer Panel ***
      *********************/
-    // HTML/CSS Tab Switch Buttons
+    // HTML/CSS/React Tab Switch Buttons
     $('.code-viewer-btn').on('click', function () {
         let language = this.text;
 
@@ -245,6 +253,13 @@ $(document).ready(function () {
     $('.preview-img').on('click', function () {
         console.log($(this).attr('src'))
         $('#preview-img-full').attr('src', $(this).attr('src'))
+    })
+    $('#react-file-select').on('change', function () {
+        console.log()
+        let file = $('#react-file-select option:selected').val()
+        $('.wrapper-react').fadeOut(100).promise().done(function () {
+            $('#React-' + file).fadeIn(100);
+        });
     })
 
 
