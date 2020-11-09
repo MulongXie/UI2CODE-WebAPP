@@ -781,4 +781,21 @@ $(document).ready(function () {
         // });
 
     })
+
+    /*--------------------------------------------------------------
+    # Generate Code
+    --------------------------------------------------------------*/
+    $('#img-2code-org').attr('src', input_img_path)
+    $('#img-2code-det').attr('src', result_path + '/result.jpg')
+    $('#btn-2code-proc').on('click', function () {
+        console.log($('.loader').is(':visible'))
+        if (! $('.loader').is(':visible')){
+            $('.loader').slideToggle()
+        }
+        else{
+            $('.loader').slideToggle().promise().done(function () {
+                $('#btn-view-code').show()
+            })
+        }
+    })
 });

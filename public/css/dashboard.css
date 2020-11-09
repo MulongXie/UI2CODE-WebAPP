@@ -252,3 +252,34 @@ option:disabled{
     cursor: not-allowed;
     color:gainsboro;
 }
+
+/* Export / 2Code */
+#modal-2code img{
+    max-height: 90vh;
+    max-width: 95%;
+    border: 1px solid;
+    box-shadow: 5px 10px lightgrey;
+}
+
+/* Loader */
+.loader {
+    border: 7px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 7px solid #3399ff;
+    border-bottom: 7px solid #3399ff;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+
+    display: none;
+}
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
