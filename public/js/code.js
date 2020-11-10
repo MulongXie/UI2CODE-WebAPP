@@ -5,8 +5,9 @@ var data_react_blks =''
 
 $(document).ready(function () {
 
-    // var code_path = $('#code-path').attr('data-value')
-    var code_path = 'generated-code'
+    var code_path = $('#code-path').attr('data-value')
+    // var code_path = 'generated-code'
+    console.log(code_path)
 
 
     /*********************

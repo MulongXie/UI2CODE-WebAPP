@@ -35,8 +35,12 @@ class ComposDF:
 
     def trans_as_df(self):
         df = pd.DataFrame(columns=['id', 'column_min', 'column_max', 'row_min', 'row_max',
-                                   'center', 'center_column', 'center_row', 'height', 'width', 'area', 'class'])
+                                   'center', 'center_column', 'center_row', 'height', 'width', 'area', 'class', 'clip'])
         for i, compo in enumerate(self.compos_json):
+            compo['height'], compo['width'] = int(compo['height']), int(compo['width'])
+            compo['column_min'], compo['column_max'] = int(compo['column_min']), int(compo['column_max'])
+            compo['row_min'], compo['row_max'] = int(compo['row_min']), int(compo['row_max'])
+
             compo['id'] = i
             compo['area'] = compo['height'] * compo['width']
             compo['center'] = ((compo['column_min'] + compo['column_max']) / 2, (compo['row_min'] + compo['row_max']) / 2)

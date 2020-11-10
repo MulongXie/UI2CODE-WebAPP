@@ -726,10 +726,12 @@ $(document).ready(function () {
             // if (top < 0 || left < 0) continue;
             let c = {'id': i,
                 'class': compo.attr('id').split('_')[1],
-                'row_min': Math.round(top),
-                'column_min': Math.round(left),
-                'width': Math.round(compo.width()),
                 'height': Math.round(compo.height()),
+                'width': Math.round(compo.width()),
+                'row_min': Math.round(top),
+                'row_max': Math.round(top) + Math.round(compo.height()),
+                'column_min': Math.round(left),
+                'column_max': Math.round(left) + Math.round(compo.width()),
                 'clip': compo.find('img').attr('src')
             };
             compos_json['compos'].push(c);
@@ -785,17 +787,50 @@ $(document).ready(function () {
     /*--------------------------------------------------------------
     # Generate Code
     --------------------------------------------------------------*/
+    var code_dir = ''
     $('#img-2code-org').attr('src', input_img_path)
     $('#img-2code-det').attr('src', result_path + '/result.jpg')
+    // processing
     $('#btn-2code-proc').on('click', function () {
-        console.log($('.loader').is(':visible'))
-        if (! $('.loader').is(':visible')){
-            $('.loader').slideToggle()
-        }
-        else{
-            $('.loader').slideToggle().promise().done(function () {
-                $('#btn-view-code').show()
-            })
-        }
+        let compos_json = get_result_json();
+        $('#btn-view-code').hide()
+        $('.loader').slideDown()
+        $('#btn-2code-proc').prop('disabled', true)
+        $.ajax({
+            url: '/2code',
+            type: 'post',
+            async: true,
+            data:{
+                input_img_path: input_img_path,
+                det_compos: compos_json
+            },
+            success: function (resp) {
+                if (resp.code === 1){
+                    $('.loader').slideUp().promise().done(function () {
+                        code_dir = resp.result_path
+                        $('#btn-view-code').show()
+                    })
+                }
+                else{
+                    alert("Generate Failed!")
+                    $('.loader').slideToggle()
+                }
+                $('#btn-2code-proc').prop('disabled', false)
+            }
+        })
+    })
+    $('#btn-view-code').on('click', function () {
+        // $.ajax({
+        //     url: '/codeViewer',
+        //     type: 'get',
+        //     async: true,
+        //     data:{
+        //         code_dir: code_dir
+        //     },
+        //     success: function (res) {
+        //         window.location = '/codeViewer'
+        //     }
+        // })
+        window.location = '/codeViewer?code_dir=' + code_dir
     })
 });

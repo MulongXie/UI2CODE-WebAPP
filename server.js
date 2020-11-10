@@ -106,13 +106,24 @@ app.post('/export', function (req, res) {
 });
 
 
-app.get('/code', function (req, res) {
-    // console.log(req.query)
-    app.set('view engine', 'ejs');
-    app.set('views', 'public')
-    res.render('code', {codePath: req.query.codePath})
+app.post('/2code', function (req, res) {
+    let input_img = req.body.input_img_path;
+    let compos = req.body.det_compos;
+
+    let l = input_img.split('/')
+    let name = l[l.length - 2] + '_' + l[l.length - 1].split('.')[0]
+    let output_dir = 'data/outputs/code-generation/' + name
+    // console.log('path:', input_img, output_dir)
+    code_generation(res, input_img, compos, output_dir)
 })
 
+
+app.get('/codeViewer', function (req, res) {
+    console.log('Activate code viewer on ', req.query.code_dir, '\n\n')
+    app.set('view engine', 'ejs');
+    app.set('views', 'public')
+    res.render('code', {codePath: req.query.code_dir})
+})
 
 app.listen(8000,function(){
     console.log("Working on port 8000");
@@ -136,6 +147,29 @@ function element_detection(res, input_path, output_path, method, uied_params) {
             }else{
                 console.log('stdout: ' + stdout + '\n');
                 res.json({code:1, result_path:output_path, upload_path:input_path});
+            }
+        });
+
+    workerProcess.on('exit', function () {
+        console.log('Program Completed');
+    });
+}
+
+function code_generation(res, img_path, detection_result_json, output_dir){
+    console.log('Generating Code - Original img:', img_path, ' Code export directory:' + output_dir)
+    // console.log(detection_result_json)
+    var workerProcess = child_process.exec('python code-generation/main_2code.py ' + img_path + ' ' +
+        JSON.stringify(detection_result_json).replace(/"/g, '\\\"') + ' ' + output_dir,
+        function (error, stdout, stderr) {
+            if (error) {
+                console.log(stdout);
+                console.log(error.stack);
+                console.log('Error code: '+error.code);
+                console.log('Signal received: '+error.signal);
+                res.json({code:0});
+            }else{
+                console.log('stdout: ' + stdout + '\n');
+                res.json({code:1, result_path:output_dir});
             }
         });
 
