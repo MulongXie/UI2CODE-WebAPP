@@ -4,6 +4,7 @@ from random import randint as rint
 
 from obj.Compo_HTML import CompoHTML
 from obj.HTML import HTML
+from obj.React import React
 from obj.CSS import CSS
 
 block_id = 0
@@ -22,7 +23,6 @@ def slice_blocks(compos_html, direction='v'):
     non_blocked_compos = compos_html
     global block_id
 
-    dividers = []
     divider = -1
     prev_divider = 0
     if direction == 'v':
@@ -31,39 +31,33 @@ def slice_blocks(compos_html, direction='v'):
         compos_html.sort(key=lambda x: x.top)
         for compo in compos_html:
             # new block
-            # if divider is lefter than this compo's right, then gather the previous block_compos as a block
+            # if divider is above than this compo's top, then gather the previous block_compos as a block
             if divider < compo.top:
                 prev_divider = divider
-                dividers.append(compo.top)
                 divider = compo.bottom
-                dividers.append(divider)
 
                 margin = int(compo.top - prev_divider)
-                # a single compo is not be counted as a block
-                if len(block_compos) == 1:
-                    block_compos = []
-
                 # gather previous compos in a block
-                elif len(block_compos) > 1:
+                # a single compo is not be counted as a block
+                if len(block_compos) > 1:
                     block_id += 1
                     css_name = '#block-' + str(block_id)
-                    css = CSS(css_name, margin_top=str(margin) + 'px', clear='left', border="solid 2px black")
+                    css = CSS(css_name, margin_bottom=str(margin) + 'px', clear='left', border="solid 2px black")
                     blocks.append(Block(id=block_id, compos=block_compos, slice_sub_block_direction=next_direction,
                                         html_id='block-'+str(block_id), css={css_name: css}))
                     # remove blocked compos
                     non_blocked_compos = list(set(non_blocked_compos) - set(block_compos))
-                    block_compos = []
+                block_compos = []
             # extend block
             elif compo.top < divider < compo.bottom:
                 divider = compo.bottom
-                dividers[-1] = divider
             block_compos.append(compo)
 
         # if there are some sub-blocks, gather the left compos as a block
         if len(blocks) > 0 and len(block_compos) > 1:
             block_id += 1
             css_name = '#block-' + str(block_id)
-            css = CSS(css_name, margin_top=str(int(block_compos[0].top - prev_divider)) + 'px', clear='left', border="solid 2px black")
+            css = CSS(css_name, margin_bottom=str(int(block_compos[0].top - prev_divider)) + 'px', clear='left', border="solid 2px black")
             blocks.append(Block(id=block_id, compos=block_compos, slice_sub_block_direction=next_direction,
                                 html_id='block-' + str(block_id), css={css_name: css}))
             # remove blocked compos
@@ -78,36 +72,30 @@ def slice_blocks(compos_html, direction='v'):
             # if divider is lefter than this compo's right, then gather the previous block_compos as a block
             if divider < compo.left:
                 prev_divider = divider
-                dividers.append(compo.left)
                 divider = compo.right
-                dividers.append(divider)
 
                 margin = int(compo.left - prev_divider)
-                # a single compo is not be counted as a block
-                if len(block_compos) == 1:
-                    block_compos = []
-
                 # gather previous compos in a block
-                elif len(block_compos) > 1:
+                # a single compo is not to be counted as a block
+                if len(block_compos) > 1:
                     block_id += 1
                     css_name = '#block-' + str(block_id)
-                    css = CSS(css_name, margin_left=str(margin) + 'px', float='left', border="solid 2px black")
+                    css = CSS(css_name, margin_right=str(margin) + 'px', float='left', border="solid 2px black")
                     blocks.append(Block(id=block_id, compos=block_compos, slice_sub_block_direction=next_direction,
                                         html_id='block-' + str(block_id), css={css_name: css}))
                     # remove blocked compos
                     non_blocked_compos = list(set(non_blocked_compos) - set(block_compos))
-                    block_compos = []
+                block_compos = []
             # extend block
             elif compo.left < divider < compo.right:
                 divider = compo.right
-                dividers[-1] = divider
             block_compos.append(compo)
 
         # if there are some sub-blocks, gather the left compos as a block
         if len(blocks) > 0 and len(block_compos) > 1:
             block_id += 1
             css_name = '#block-' + str(block_id)
-            css = CSS(css_name, margin_left=str(int(block_compos[0].left - prev_divider)) + 'px', float='left', border="solid 2px black")
+            css = CSS(css_name, margin_right=str(int(block_compos[0].left - prev_divider)) + 'px', float='left', border="solid 2px black")
             blocks.append(Block(id=block_id, compos=block_compos, slice_sub_block_direction=next_direction,
                                 html_id='block-' + str(block_id), css={css_name: css}))
             # remove blocked compos
@@ -147,7 +135,9 @@ class Block:
         self.html_id = html_id
         self.html_class_name = html_class_name
         self.html_script = ''   # sting
-        self.css = css           # CSS objs
+        self.react = None       # React obj
+        self.react_html_script = ''  # string
+        self.css = css          # dictionary: {'css-name': CSS obj}
         self.css_script = ''    # string
 
         # slice sub-block comprising multiple compos
@@ -160,12 +150,15 @@ class Block:
         self.init_html()
         self.init_css()
         self.init_children_css()
+        self.init_react()
 
     def init_boundary(self):
         self.top = min(self.compos + self.sub_blocks, key=lambda x: x.top).top
         self.bottom = max(self.compos + self.sub_blocks, key=lambda x: x.bottom).bottom
         self.left = min(self.compos + self.sub_blocks, key=lambda x: x.left).left
         self.right = max(self.compos + self.sub_blocks, key=lambda x: x.right).right
+        self.height = self.bottom - self.top
+        self.width = self.right - self.left
 
     def init_html(self):
         self.html = HTML(tag=self.html_tag, id=self.html_id, class_name=self.html_class_name)
@@ -174,6 +167,14 @@ class Block:
             self.html.add_child(child.html_script)
 
         self.html_script = self.html.html_script
+
+    def init_react(self):
+        self.react = React(tag=self.html_tag, react_compo_name='Block' + str(self.block_id), id=self.html_id, class_name=self.html_class_name)
+
+        for child in self.children:
+            self.react.add_child(child.react_html_script)
+
+        self.react_html_script = self.react.react_html_script
 
     def init_css(self):
         for sub_block in self.sub_blocks:
@@ -286,7 +287,7 @@ class Block:
         for sub_block in self.sub_blocks:
             board = sub_block.visualize_block(board, color=(200,200,0))
         if show:
-            print(len(self.sub_blocks), len(self.compos))
+            print('Num of sub_block:%i; Num of element: %i' % (len(self.sub_blocks), len(self.compos)))
             cv2.imshow('sub_blocks', board)
             cv2.waitKey()
             cv2.destroyWindow('sub_blocks')

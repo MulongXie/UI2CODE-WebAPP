@@ -13,9 +13,9 @@ import lib.list_item_gethering as lst
 
 
 class ComposDF:
-    def __init__(self, json_file, img_file):
+    def __init__(self, json_file=None, img_file=None, json_data=None):
         self.json_file = json_file
-        self.json_data = json.load(open(self.json_file))
+        self.json_data = json_data if json_data is not None else json.load(open(self.json_file))
         self.compos_json = self.json_data['compos']
         self.compos_dataframe = self.trans_as_df()
 
@@ -75,6 +75,7 @@ class ComposDF:
         df = df.merge(df_nontext, how='left')
         df.loc[df['alignment'].isna(), 'alignment'] = df_text['alignment']
         df = df.merge(df_text, how='left')
+        df.rename({'alignment': 'alignment_in_group'}, axis=1, inplace=True)
 
         if clean_attrs:
             df = df.drop(list(df.filter(like='cluster')), axis=1)
@@ -86,7 +87,13 @@ class ComposDF:
                 elif df.iloc[i]['group_text'] != -1:
                     df.loc[i, 'group'] = 't-' + str(int(df.iloc[i]['group_text']))
 
-        df.rename({'alignment': 'alignment_in_group'}, axis=1, inplace=True)
+            groups = df.groupby('group').groups
+            for i in groups:
+                if len(groups[i]) == 1:
+                    df.loc[groups[i], 'group'] = -1
+            df.group = df.group.fillna(-1)
+
+        # df = rep.rm_invalid_groups(df)
         self.compos_dataframe = df
 
     def cluster_dbscan_by_attr(self, attr, eps, min_samples=1, show=True, show_method='line'):
@@ -219,7 +226,7 @@ class ComposDF:
         # fill nan and change type
         df_all = df_all.fillna(-1)
         # df_all[list(df_all.filter(like='group'))] = df_all[list(df_all.filter(like='group'))].astype(int)
-        df_all['pair'] = df_all['pair'].astype(int)
+        df_all['group_pair'] = df_all['group_pair'].astype(int)
         df_all['pair_to'] = df_all['pair_to'].astype(int)
         self.compos_dataframe = df_all
 
@@ -230,7 +237,7 @@ class ComposDF:
     '''
     def list_item_partition(self):
         compos = self.compos_dataframe
-        groups = compos.groupby("pair").groups
+        groups = compos.groupby("group_pair").groups
         listed_compos = pd.DataFrame()
         for i in groups:
             if i == -1:
