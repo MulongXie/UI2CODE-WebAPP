@@ -14,7 +14,8 @@ from config.CONFIG import Config
 C = Config()
 
 
-def draw_bounding_box_class(org, compos, color_map=C.COLOR, line=2, show=False, is_return=False, name='img'):
+def draw_bounding_box_class(org, compos, color_map=C.COLOR, line=2,
+                            show=False, is_return=False, name='img', wait_key=0):
     if not show and not is_return: return
     board = org.copy()
 
@@ -29,18 +30,20 @@ def draw_bounding_box_class(org, compos, color_map=C.COLOR, line=2, show=False, 
         #                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, class_colors[compo_class[i]], 2)
     if show:
         cv2.imshow(name, board)
-        cv2.waitKey(0)
+        if wait_key is not None:
+            cv2.waitKey(wait_key)
     return board
 
 
-def draw_bounding_box(org, compos,  color=(0, 255, 0), line=2, show=False, name='board'):
+def draw_bounding_box(org, compos,  color=(0, 255, 0), line=2, show=False, name='board', wait_key=0):
     board = org.copy()
     for compo in compos:
         corner = compo.put_bbox()
         board = cv2.rectangle(board, (corner[0], corner[1]), (corner[2], corner[3]), color, line)
     if show:
         cv2.imshow(name, board)
-        cv2.waitKey(0)
+        if wait_key is not None:
+            cv2.waitKey(wait_key)
     return board
 
 
@@ -58,8 +61,9 @@ def draw_bounding_box_non_text(org, compos, org_shape=None, color=(0, 255, 0), l
     return board
 
 
-def save_corners_json(file_path, background, compos, img_shape):
+def save_corners_json(output_dir, background, compos, img_shape):
     components = {'compos': [], 'img': {'shape': img_shape}}
+    clip_dir = pjoin(output_dir, 'clips')
     if background is not None: components['compos'].append(background)
 
     for i, compo in enumerate(compos):
@@ -67,9 +71,11 @@ def save_corners_json(file_path, background, compos, img_shape):
         c = {'id':i, 'class': compo.category,
              'height': corner[3] - corner[1], 'width': corner[2] - corner[0],
              'column_min': corner[0], 'row_min': corner[1], 'column_max': corner[2], 'row_max': corner[3]}
+        c_path = pjoin(clip_dir, c['class'], str(i) + '.jpg')
+        c['clip_path'] = c_path
         components['compos'].append(c)
 
-    json.dump(components, open(file_path, 'w'), indent=4)
+    json.dump(components, open(pjoin(output_dir, 'compo.json'), 'w'), indent=4)
     return components['compos']
 
 
@@ -180,6 +186,7 @@ def dissemble_clip_img_fill(clip_root, org, compos, flag='most'):
         cls = compo['class']
         c_root = pjoin(clip_root, cls)
         c_path = pjoin(c_root, str(compo['id']) + '.jpg')
+        compo['path'] = c_path
         if cls not in cls_dirs:
             os.mkdir(c_root)
             cls_dirs.append(cls)

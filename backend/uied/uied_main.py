@@ -15,7 +15,7 @@ def resize_height_by_longest_edge(img_path, resize_length=800):
 
 
 def uied(input_path, output_root, params=None,
-         is_ip=True, is_clf=False, is_ocr=False, is_merge=False):
+         is_ip=True, is_clf=False, is_ocr=True, is_merge=True):
 
     '''
             ele:min-grad: gradient threshold to produce binary map
