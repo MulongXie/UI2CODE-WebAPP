@@ -1274,6 +1274,11 @@ a.carousel-control.right {
   cursor: pointer;
 }
 
+.img-shadow{
+  border: 1px solid;
+  box-shadow: 5px 10px lightgrey;
+}
+
 .display-pic{
   /* max-width: 300px;
   max-height: 500px; */
@@ -1390,7 +1395,7 @@ a.carousel-control.right {
 .display-result-arrow{
   font-size: 50px;
   color: #7FB3D5;
-  margin-bottom: 10px;
+  margin-bottom: 45px;
   top:40%;
   position: relative;
 }
