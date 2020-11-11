@@ -49,8 +49,8 @@ def compound_img(compos):
         bkg[row_min: row_max, col_min: col_max] = clip[clip_top: clip_bottom, clip_left: clip_right]
         # print(bkg_cp.shape)
         # print(compo['row_min'], int(compo['row_min']) + int(compo['height']), compo['column_min'], int(compo['column_min']) + int(compo['width']))
-    cv2.imshow('compo', bkg)
-    cv2.waitKey()
+    # cv2.imshow('compo', bkg)
+    # cv2.waitKey()
     return bkg
 
 

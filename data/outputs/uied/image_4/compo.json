@@ -1,0 +1,219 @@
+{
+    "compos": [
+        {
+            "column_min": 0,
+            "width": 497,
+            "height": 800,
+            "id": 0,
+            "row_min": 0,
+            "row_max": 800,
+            "class": "Background",
+            "column_max": 497
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\0.jpg",
+            "column_min": 20,
+            "row_max": 46,
+            "height": 21,
+            "id": 0,
+            "row_min": 25,
+            "width": 26,
+            "class": "Compo",
+            "column_max": 46
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\1.jpg",
+            "column_min": 76,
+            "row_max": 46,
+            "height": 22,
+            "id": 1,
+            "row_min": 24,
+            "width": 62,
+            "class": "Text",
+            "column_max": 138
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\2.jpg",
+            "column_min": 457,
+            "row_max": 46,
+            "height": 23,
+            "id": 2,
+            "row_min": 23,
+            "width": 23,
+            "class": "Compo",
+            "column_max": 480
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\3.jpg",
+            "column_min": 104,
+            "row_max": 107,
+            "height": 17,
+            "id": 3,
+            "row_min": 90,
+            "width": 39,
+            "class": "Text",
+            "column_max": 143
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\4.jpg",
+            "column_min": 335,
+            "row_max": 107,
+            "height": 18,
+            "id": 4,
+            "row_min": 89,
+            "width": 77,
+            "class": "Text",
+            "column_max": 412
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\5.jpg",
+            "column_min": 18,
+            "row_max": 198,
+            "height": 44,
+            "id": 5,
+            "row_min": 154,
+            "width": 40,
+            "class": "Compo",
+            "column_max": 58
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\6.jpg",
+            "column_min": 69,
+            "row_max": 193,
+            "height": 35,
+            "id": 6,
+            "row_min": 158,
+            "width": 140,
+            "class": "Text",
+            "column_max": 209
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\7.jpg",
+            "column_min": 64,
+            "row_max": 352,
+            "height": 148,
+            "id": 7,
+            "row_min": 204,
+            "width": 60,
+            "class": "Compo",
+            "column_max": 124
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\8.jpg",
+            "column_min": 187,
+            "row_max": 265,
+            "height": 50,
+            "id": 8,
+            "row_min": 215,
+            "width": 266,
+            "class": "Text",
+            "column_max": 453
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\9.jpg",
+            "column_min": 16,
+            "row_max": 439,
+            "height": 41,
+            "id": 9,
+            "row_min": 398,
+            "width": 42,
+            "class": "Compo",
+            "column_max": 58
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\10.jpg",
+            "column_min": 70,
+            "row_max": 435,
+            "height": 34,
+            "id": 10,
+            "row_min": 401,
+            "width": 138,
+            "class": "Text",
+            "column_max": 208
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\11.jpg",
+            "column_min": 61,
+            "row_max": 594,
+            "height": 148,
+            "id": 11,
+            "row_min": 446,
+            "width": 60,
+            "class": "Compo",
+            "column_max": 121
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\12.jpg",
+            "column_min": 187,
+            "row_max": 481,
+            "height": 25,
+            "id": 12,
+            "row_min": 456,
+            "width": 175,
+            "class": "Text",
+            "column_max": 362
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\13.jpg",
+            "column_min": 366,
+            "row_max": 479,
+            "height": 23,
+            "id": 13,
+            "row_min": 456,
+            "width": 80,
+            "class": "Text",
+            "column_max": 446
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\14.jpg",
+            "column_min": 18,
+            "row_max": 681,
+            "height": 40,
+            "id": 14,
+            "row_min": 641,
+            "width": 40,
+            "class": "Compo",
+            "column_max": 58
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\15.jpg",
+            "column_min": 69,
+            "row_max": 678,
+            "height": 34,
+            "id": 15,
+            "row_min": 644,
+            "width": 139,
+            "class": "Text",
+            "column_max": 208
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Compo\\16.jpg",
+            "column_min": 18,
+            "row_max": 799,
+            "height": 110,
+            "id": 16,
+            "row_min": 689,
+            "width": 125,
+            "class": "Compo",
+            "column_max": 143
+        },
+        {
+            "clip_path": "data/outputs/uied/image_4\\clips\\Text\\17.jpg",
+            "column_min": 187,
+            "row_max": 749,
+            "height": 50,
+            "id": 17,
+            "row_min": 699,
+            "width": 275,
+            "class": "Text",
+            "column_max": 462
+        }
+    ],
+    "img": {
+        "shape": [
+            800,
+            497,
+            3
+        ]
+    }
+}
