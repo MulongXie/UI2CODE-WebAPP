@@ -568,7 +568,13 @@
                                     </div>
                                     <div class="col-lg-2 col-md-2 text-center">
                                         <p class="glyphicon glyphicon-arrow-right display-result-arrow"></p>
-                                        <button id="go-dashboard" class="btn my-btn">Dashboard</button>
+                                        <!-- <button id="go-dashboard" class="btn my-btn">Dashboard</button> -->
+                                        <form action="dashboard" method="post">
+                                            <input id="dash_method" name="method" style="display: none">
+                                            <input id="dash_input_img" name="input_img" style="display: none">
+                                            <input id="dash_output_root" name="output_root" style="display: none">
+                                            <input id="go-dashboard" type="submit" class="btn my-btn" value="Check Result">
+                                        </form>
                                     </div>
                                     <div class="col-lg-5 col-md-5 text-center">
                                         <img id="show-result" class="display-result-img" src="images/example/app/1.jpg">
@@ -636,7 +642,11 @@
                         <div class="modal-content">
                             <div class="loader"></div>
                             <h4 class="modal-2code-note">Processing ...</h4>
-                            <button id="go-2code-btn" class="btn my-btn" style="display: none">Check Result</button>
+                            <!-- <button id="go-2code-btn" class="btn my-btn" style="display: none">Check Result</button>-->
+                            <form action="codeViewer" method="post">
+                                <input name="code_dir" value="public/generated-" style="display: none">
+                                <input id="go-2code-btn" type="submit" class="btn my-btn" value="Check Result">
+                            </form>
                         </div>
                     </div>
                 </div>

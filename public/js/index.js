@@ -226,7 +226,6 @@ jQuery(document).ready(function( $ ) {
                     if (resp.code == 1){
                         result_root = resp.result_path;
                         upload_path = resp.upload_path;
-                        console.log(resp);
 
                         // Allocate image and result on modal
                         $('#proc-status').text('Process Done!');
@@ -237,6 +236,11 @@ jQuery(document).ready(function( $ ) {
                         $('#btn-show-res').attr('data-target', '#result-modal');
                         // $('#btn-show-res').css('margin-top', '50px');
                         $('.modal-title').text('Detection Result - ' + method.toUpperCase())
+
+						// Set dashboard properties
+						$('#dash_method').attr('value' ,method)
+						$('#dash_input_img').attr('value' ,upload_path)
+						$('#dash_output_root').attr('value' ,result_root)
                     }
                     else{
                         $('#proc-status').text('Process Failed!');
@@ -261,20 +265,13 @@ jQuery(document).ready(function( $ ) {
 		}
     });
 
-    $('#go-dashboard').click(function () {
-        let method = $("#method-select option:selected").attr('value');
-
-        let url = '/dashboard?method=' + method + '&input_img=' + upload_path + '&output_root=' + result_root;
-        console.log(url);
-        $(location).attr('href', url);
-
-        // let url = new URL('https:/test');
-        // url.searchParams.append('method', method);
-        // url.searchParams.append('input_img', input_img);
-        // url.searchParams.append('out_root', output_root);
-        // console.log(url.href.replace('https:/', ''));
-        // $(location).attr('href',  url.href.replace('https:/', ''));
-    });
+    // $('#go-dashboard').click(function () {
+    //     let method = $("#method-select option:selected").attr('value');
+	//
+    //     let url = '/dashboard?method=' + method + '&input_img=' + upload_path + '&output_root=' + result_root;
+    //     console.log(url);
+    //     $(location).attr('href', url);
+    // });
 
 	/* Adjust uied's parameters */
 	$('#method-select').on('change', function () {
@@ -310,10 +307,9 @@ jQuery(document).ready(function( $ ) {
 				$('.modal-2code-note').text('Code Generated!')
 			}, 3000)
 		})
-		$('#go-2code-btn').on('click', function () {
-			let url = '/code?codePath=generated-code/'
-			$(location).attr('href', url)
-		})
+		// $('#go-2code-btn').on('click', function () {
+		// 	let url = '/codeViewer?codePath=generated-code/'
+		// })
 	})
 
 });

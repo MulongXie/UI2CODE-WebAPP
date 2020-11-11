@@ -110,7 +110,11 @@
                 </div>
                 <div class="modal-footer">
                     <div class="loader"></div>
-                    <button id="btn-view-code" class="btn btn-danger" style="display: none">View Generated Code</button>
+                    <form action="codeViewer" method="post">
+                        <input id="codeViewer_code_dir" name="code_dir" style="display: none">
+                        <input id="btn-view-code" type="submit" class="btn btn-danger" value="View Generated Code" style="display: none">
+                    </form>
+                    <!-- <button id="btn-view-code" class="btn btn-danger" style="display: none">View Generated Code</button>-->
                     <button id="btn-2code-proc" type="button" class="btn btn-primary">Generate Code</button>
                 </div>
             </div>

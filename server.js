@@ -10,6 +10,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use(express.static("public"));
+app.use(express.static("public/generated-code"));
 app.use(express.static("data/inputs"));
 app.use(express.static("data/outputs"));
 app.use(express.static("backend"));
@@ -64,10 +65,10 @@ app.post('/process', function (req, res) {
     }
 });
 
-app.get('/dashboard',function(req,res){
-    var input_image = req.query.input_img;
-    var output_root = req.query.output_root;
-    var method = req.query.method;
+app.post('/dashboard',function(req,res){
+    var input_image = req.body.input_img;
+    var output_root = req.body.output_root;
+    var method = req.body.method;
     console.log("Activate Dashboard on", input_image, output_root, method, '\n\n');
     // using ejs to set result path dynamically
     app.set('view engine', 'ejs');
@@ -113,16 +114,15 @@ app.post('/2code', function (req, res) {
     let l = input_img.split('/')
     let name = l[l.length - 2] + '_' + l[l.length - 1].split('.')[0]
     let output_dir = 'data/outputs/code-generation/' + name
-    // console.log('path:', input_img, output_dir)
     code_generation(res, input_img, compos, output_dir)
 })
 
 
-app.get('/codeViewer', function (req, res) {
-    console.log('Activate code viewer on ', req.query.code_dir, '\n\n')
+app.post('/codeViewer', function (req, res) {
+    console.log('Activate code viewer on ', req.body.code_dir, '\n\n')
     app.set('view engine', 'ejs');
     app.set('views', 'public')
-    res.render('code', {codePath: req.query.code_dir})
+    res.render('code', {codePath: req.body.code_dir})
 })
 
 app.listen(8000,function(){
@@ -156,24 +156,31 @@ function element_detection(res, input_path, output_path, method, uied_params) {
 }
 
 function code_generation(res, img_path, detection_result_json, output_dir){
-    console.log('Generating Code - Original img:', img_path, ' Code export directory:' + output_dir)
-    // console.log(detection_result_json)
-    var workerProcess = child_process.exec('python code-generation/main_2code.py ' + img_path + ' ' +
-        JSON.stringify(detection_result_json).replace(/"/g, '\\\"') + ' ' + output_dir,
-        function (error, stdout, stderr) {
-            if (error) {
-                console.log(stdout);
-                console.log(error.stack);
-                console.log('Error code: '+error.code);
-                console.log('Signal received: '+error.signal);
-                res.json({code:0});
-            }else{
-                console.log('stdout: ' + stdout + '\n');
-                res.json({code:1, result_path:output_dir});
-            }
-        });
+    let json_file = output_dir + '/compos.json'
+    console.log('Generating Code - Original img:', img_path, 'Compos:', json_file, ' Code export directory:' + output_dir)
+    if (!fs.existsSync(output_dir)){
+        fs.mkdirSync(output_dir)
+    }
+    fs.writeFile(json_file, JSON.stringify(detection_result_json), function (err) {
+        if (! err){
+            console.log('Write down to file', json_file)
+            var workerProcess = child_process.exec('python code-generation/main_2code.py ' + img_path + ' ' + json_file  + ' ' + output_dir,
+                function (error, stdout, stderr) {
+                    if (error) {
+                        console.log(stdout);
+                        console.log(error.stack);
+                        console.log('Error code: '+error.code);
+                        console.log('Signal received: '+error.signal);
+                        res.json({code:0});
+                    }else{
+                        console.log('stdout: ' + stdout + '\n', 'Output directory:', output_dir)
+                        res.json({code:1, result_path:output_dir});
+                    }
+                });
 
-    workerProcess.on('exit', function () {
-        console.log('Program Completed');
-    });
+            workerProcess.on('exit', function () {
+                console.log('Program Completed');
+            });
+        }
+    })
 }

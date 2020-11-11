@@ -20,11 +20,9 @@ if __name__ == '__main__':
         output_page_path: output directory containing html+css and react
     '''
     img_path, detection_result_json, output_page_path = sys.argv[1:4]
-    detection_result_json = json.loads(detection_result_json)
     # print(detection_result_json, img_path, output_page_path)
 
-    # compos = ComposDF(img_file=img_path, json_data=detection_result_json)
-    #
+    compos = ComposDF(img_file=img_path, json_file=detection_result_json)
     # # ***Step 1*** repetitive ui compos recognition
     # compos.repetitive_group_recognition()  # group_nontext, group_text
     # check_valid_group_by_interleaving(compos.compos_dataframe)
