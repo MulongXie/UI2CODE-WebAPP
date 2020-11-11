@@ -724,6 +724,8 @@ $(document).ready(function () {
             let top = parseInt(compo.css('top')) - offset_top;
             let left = parseInt(compo.css('left')) - offset_left;
             // if (top < 0 || left < 0) continue;
+            // let clip_path = compo.find('img').attr('src').split('/')
+            // clip_path = clip_path.slice(5, clip_path.length).join('/')
             let c = {'id': i,
                 'class': compo.attr('id').split('_')[1],
                 'height': Math.round(compo.height()),

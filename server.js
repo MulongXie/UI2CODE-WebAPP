@@ -161,7 +161,7 @@ function code_generation(res, img_path, detection_result_json, output_dir){
     if (!fs.existsSync(output_dir)){
         fs.mkdirSync(output_dir)
     }
-    fs.writeFile(json_file, JSON.stringify(detection_result_json), function (err) {
+    fs.writeFile(json_file, JSON.stringify(detection_result_json, null, '\t'), function (err) {
         if (! err){
             console.log('Write down to file', json_file)
             var workerProcess = child_process.exec('python code-generation/main_2code.py ' + img_path + ' ' + json_file  + ' ' + output_dir,
