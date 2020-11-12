@@ -300,10 +300,11 @@ jQuery(document).ready(function( $ ) {
 	$('#quickstart-modal-btn-2code').on('click', function () {
 		$(".img-2code").on('click', function () {
 			$('#go-2code-btn').hide()
-			$('.loader').show()
+			$('#loader-2code').show()
+			$('.modal-2code-note').text('Processing ...')
 			setTimeout(function () {
 				$('#go-2code-btn').show()
-				$('.loader').slideUp()
+				$('#loader-2code').slideUp()
 				$('.modal-2code-note').text('Code Generated!')
 			}, 3000)
 		})
