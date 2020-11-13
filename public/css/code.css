@@ -99,6 +99,11 @@ body{
     transition: 0.3s;
 }
 
+.wrapper-react{
+    height: calc(100% - 34px);
+    overflow: auto;
+}
+
 
 .page-viewer{
     width: 100%;
