@@ -523,6 +523,14 @@ h6 {
   margin-left: 5px;
 }
 
+.icon-img-small{
+  height: 15px;
+  width: 15px;
+  margin-top: -3px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 #branch{
   margin-top: -25px;
   z-index: 1;
