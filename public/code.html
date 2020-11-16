@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147420901-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-147420901-1');
+    </script>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,7 +101,7 @@
                     </div>
                     <div id="CSS" class="panel-body code-viewer" style="display: none">
                     </div>
-                    <div id="React" class="panel-body code-viewer" style="display: none">
+                    <div id="React" class="panel-body code-viewer" style="display: none; overflow: unset">
                         <select id="react-file-select" class="form-control">
                             <option value="index">index.js</option>
                             <option value="blocks">blocks.js</option>
@@ -164,13 +173,13 @@
                 </div>
             </div>
         </div>
-<!--        <div id="modal-full-img" class="modal fade">-->
-<!--            <div class="modal-dialog">-->
-<!--                <div class="modal-content">-->
-<!--                    <img id="preview-img-full">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div id="modal-full-img" class="modal fade">-->
+        <!--            <div class="modal-dialog">-->
+        <!--                <div class="modal-content">-->
+        <!--                    <img id="preview-img-full">-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </div>
 </main>
 
@@ -184,7 +193,7 @@
     </div>
 </footer>
 
-<!--<div id="code-path" data-value=<%-JSON.stringify(codePath)%>></div>-->
+<div id="code-path" data-value=<%-codePath%>></div>
 
 <script>
     $(window).on('load', function () {
