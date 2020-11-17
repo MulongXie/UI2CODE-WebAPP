@@ -408,8 +408,13 @@ $(document).ready(function () {
             e.stopPropagation();
         });
     });
-    $('#btn-side-tree').on('click', function () {
-        $('.wrapper-tree').toggle('slow')
+    $('.btn-sidebar').on('click', function () {
+        if (!$(this).hasClass('btn-sidebar-active')){
+            $('.btn-sidebar-active').removeClass('btn-sidebar-active')
+            $(this).addClass('btn-sidebar-active')
+            $('.wrapper-active').removeClass('wrapper-active')
+            $('.' + $(this).attr('data-target')).addClass('wrapper-active')
+        }
     })
 })
 
