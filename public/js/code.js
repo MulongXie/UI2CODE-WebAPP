@@ -389,6 +389,17 @@ $(document).ready(function () {
         code_wrapper.animate({
             scrollTop : code_offset
         })
+
+        // highlight the node in TreeViewer
+        let treeViewer = $('.tree')
+        let node = $('#node-' + ele.getAttribute('ele-num'))
+        let tree_offset = node.offset().top - treeViewer.offset().top + treeViewer.scrollTop()
+        $('.active-tree-node').removeClass('active-tree-node')
+        node.addClass('active-tree-node')
+        console.log(tree_offset)
+        treeViewer.animate({
+            scrollTop : tree_offset
+        })
     }
     function endTracing() {
         $('.btn-ele-trace').removeClass('active')
