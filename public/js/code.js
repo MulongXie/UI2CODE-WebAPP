@@ -415,6 +415,10 @@ $(document).ready(function () {
             $('.wrapper-active').removeClass('wrapper-active')
             $('.' + $(this).attr('data-target')).addClass('wrapper-active')
         }
+        else {
+            $(this).removeClass('btn-sidebar-active')
+            $('.wrapper-active').removeClass('wrapper-active')
+        }
     })
 })
 
