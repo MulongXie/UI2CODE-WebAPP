@@ -1,6 +1,6 @@
 
-body{
-    font-family: "Open Sans", sans-serif;
+body html p h1 h2 h3 h4 h5 span{
+    font-family: "Ubuntu", sans-serif;
 }
 
 .line-wrapper{
@@ -186,7 +186,7 @@ body{
  ******************/
 .wrapper-tree{
     height: 100vh;
-    width: 350px;
+    width: 320px;
 }
 
 .tree {
@@ -313,6 +313,57 @@ body{
     border: 1px solid black;
 }
 
+.wrapper-right-attrs{
+    height: 100vh;
+    width: 230px;
+    background: #f8f8f8;
+    border-left: 1px solid #e7e7e7;
+}
+
+.right-bar-head{
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 0 8px;
+}
+
+.right-bar-head h5{
+    float: left;
+}
+
+.right-bar-close{
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin-top: 7px;
+    text-decoration: none;
+    cursor: pointer;
+    padding-left: 10px;
+    color: #999999;
+}
+
+.right-bar-close:hover{
+    text-decoration: none;
+    color: #999999;
+}
+
+.right-bar-input-grp{
+    margin-top: 20px;
+}
+
+.right-bar-input{
+    width: 40%;
+    height: 25px;
+    border-radius: 0;
+}
+
+.input-prepend{
+    float: left;
+    margin: 2px 10px;
+    width: 39px;
+    color: #999999;
+}
+
 /******************
  *** Right PageViewer ***
  ******************/
@@ -428,8 +479,8 @@ body{
  *** Footer ***
  ******************/
 .footer{
-    height: 90px;
-    padding-top: 25px;
+    height: 60px;
+    padding-top: 6px;
     text-align: center;
     background: #f8f8f8;
     border: 1px solid #e7e7e7;

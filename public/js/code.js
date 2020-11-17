@@ -46,6 +46,8 @@ $(document).ready(function () {
         let react = zip.folder('react')
         react.file('index.js', data_react_index)
         react.file('blocks.js', data_react_blks)
+        let tree = zip.folder('tree')
+        tree.file('tree.json', JSON.stringify(data_tree, null, '\t'))
         zip.generateAsync({type:"blob"}, function () {
         }).then(function(content) {
             // see FileSaver.js
@@ -459,6 +461,13 @@ $(document).ready(function () {
             // $('.wrapper-active')
         }
     })
+
+    /*********************
+     *** RightBar ***
+     *********************/
+    $('.right-bar-close').on('click', function () {
+        $('.wrapper-right-attrs').hide('fast')
+    })
 })
 
 // Render the iframe page
@@ -544,28 +553,37 @@ function initTreeViewer() {
     // });
 
     // Jump to page element in Iframe by clicking code line in CodeViewer
+    let element
     $('.tree-node').on('click', function (event) {
-        // highlight clicked line
-        $('.active-tree-node').removeClass('active-tree-node')
-        $(this).addClass('active-tree-node')
+        if (!$(this).hasClass('active-tree-node')){
+            $('.wrapper-right-attrs').show('fast')
+            // highlight clicked node
+            $('.active-tree-node').removeClass('active-tree-node')
+            $(this).addClass('active-tree-node')
 
-        let target = event.target
-        let ele_num = target.id.split('-')[1]
-        console.log(ele_num)
-        if (ele_num === undefined){return}
+            let target = event.target
+            let ele_num = target.id.split('-')[1]
+            console.log(ele_num)
+            if (ele_num === undefined){return}
 
-        // access iframe page
-        let page = document.getElementsByTagName('iframe')[0].contentWindow
-        let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
-        console.log(element)
-        if (element === undefined){return}
-        // scroll iframe page to the selected element
-        page.scrollTo(0, element.offsetTop)
-        // highlight corresponding iframe element
-        let eles = page.document.querySelectorAll('.ele-active')
-        for (let i = 0; i < eles.length; i ++){
-            eles[i].classList.remove('ele-active')
+            // access iframe page
+            let page = document.getElementsByTagName('iframe')[0].contentWindow
+            element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
+            console.log(element)
+            if (element === undefined){return}
+            // scroll iframe page to the selected element
+            page.scrollTo(0, element.offsetTop)
+            // highlight corresponding iframe element
+            let eles = page.document.querySelectorAll('.ele-active')
+            for (let i = 0; i < eles.length; i ++){
+                eles[i].classList.remove('ele-active')
+            }
+            element.classList.add('ele-active')
         }
-        element.classList.add('ele-active')
+        else {
+            $(this).removeClass('active-tree-node')
+            $('.wrapper-right-attrs').hide('fast')
+            element.classList.remove('ele-active')
+        }
     })
 }
