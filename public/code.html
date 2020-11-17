@@ -91,11 +91,14 @@
 
 <div class="main">
     <div class="sidebar">
-        <a id="btn-side-tree" class="btn btn-sidebar btn-sidebar-active" data-target="wrapper-tree">
+        <a class="btn btn-sidebar btn-sidebar-active" data-target="wrapper-tree">
             <i class="fa fa-code-fork"></i>
         </a>
-        <a id="btn-side-code" class="btn btn-sidebar" data-target="wrapper-code">
+        <a class="btn btn-sidebar" data-target="wrapper-code">
             <i class="fa fa-file-code-o"></i>
+        </a>
+        <a class="btn btn-sidebar" data-target="wrapper-img">
+            <i class="fa fa-file-image-o"></i>
         </a>
     </div>
     <div class="wrapper-tree wrapper wrapper-active">
@@ -232,11 +235,13 @@
 <!--            </div>-->
 <!--        </div>-->
     </div>
+    <div class="wrapper-img wrapper text-center" style="display: none">
+        <img src="generated-code/result.jpg">
+    </div>
     <div class="wrapper-page">
         <iframe class="page-viewer" src="generated-code/xml.html">
         </iframe>
     </div>
-
 </div>
 
 <footer>
@@ -249,7 +254,7 @@
     </div>
 </footer>
 
-<div id="code-path" data-value=<%-codePath%>></div>
+<!--<div id="code-path" data-value=<%-codePath%>></div>-->
 
 <script>
     $(window).on('load', function () {
