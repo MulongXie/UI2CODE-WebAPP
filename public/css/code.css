@@ -364,6 +364,11 @@ body html p h1 h2 h3 h4 h5 span{
     color: #999999;
 }
 
+.btn-apply-attr{
+    background: #5cb85c;
+    color: white;
+}
+
 /******************
  *** Right PageViewer ***
  ******************/
