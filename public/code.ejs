@@ -27,7 +27,6 @@
     <!-- Download Func -->
     <script src="plugins/jszip/jszip.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
-
     <!-- Customized -->
     <link rel="stylesheet" href="css/code.css">
     <script src="js/code.js"></script>
@@ -42,11 +41,16 @@
                     <img src="images/logo.png">
                 </a>
                 <span> <a href="http://www.uied.online/">UIED</a> - Code Generation</span>
+
             </div>
         </div>
         <div class="nav navbar-nav navbar-right">
-            <a id="opt-layout" class="btn" data-toggle="tooltip" title="Change Display Layout">
-                <i class="material-icons fa-flip-horizontal">screen_rotation</i>
+            <!--            <a id="opt-layout" class="btn" data-toggle="tooltip" title="Change Display Layout">-->
+            <!--                <i class="material-icons fa-flip-horizontal">screen_rotation</i>-->
+            <!--            </a>-->
+            <a id="btn-page-preview" class="btn btn-side-icon" data-toggle="modal" data-target="#modal-preview">
+                <i class="fa fa-image"></i>
+                <img src="generated-code/org.png">
             </a>
             <a id="opt-download" class="btn" data-toggle="tooltip" title="Download Code">
                 <i class="fa fa-download"></i>
@@ -61,139 +65,172 @@
     </div>
 </nav>
 
-<main class="main">
-
-    <!--<button id="btn-test" class="btn btn-primary">test</button>-->
-
-    <div id="content" class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 col-xs-12 viewer-container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <h4 style="float: left">CODE</h4>
-
-                                <a id="btn-edit-panel" class="btn btn-edit btn-side-icon" data-toggle="tooltip" title="Edit the Code">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-
-                                <a id="btn-run" class="btn btn-danger" style="display: none; font-size: 12px">
-                                    Run
-                                </a>
-
-                                <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">
-                                    Reload
-                                </a>
-
-                                <a id="btn-close-edit" class="btn btn-danger" style="display: none">
-                                    x
-                                </a>
-                            </div>
-                            <div class="col-md-6 col-xs-12 text-right">
-                                <a class="btn btn-code code-viewer-btn active-btn">HTML</a>
-                                <a class="btn btn-code code-viewer-btn">CSS</a>
-                                <a class="btn btn-code code-viewer-btn">React</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="HTML" class="panel-body code-viewer">
-                    </div>
-                    <div id="CSS" class="panel-body code-viewer" style="display: none">
-                    </div>
-                    <div id="React" class="panel-body code-viewer" style="display: none; overflow: unset">
-                        <select id="react-file-select" class="form-control">
-                            <option value="index">index.js</option>
-                            <option value="blocks">blocks.js</option>
-                        </select>
-                        <pre id="React-index" class="wrapper-react">
-                            <code class="javascript"></code>
-                        </pre>
-                        <pre id="React-blocks" class="wrapper-react" style="display: none">
-                            <code class="javascript"></code>
-                        </pre>
-                    </div>
-                </div>
+<!-- Preview Modal -->
+<div id="modal-preview" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Webpage Preview</h5>
+                <button class="close" data-dismiss="modal">&times;</button>
             </div>
-
-            <div class="col-md-6 col-xs-12 viewer-container">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                                <h4 style="float: left">Web Page</h4>
-                                <a id="btn-page-preview" class="btn btn-side-icon" data-toggle="modal" data-target="#modal-preview">
-                                    <i class="fa fa-image"></i>
-                                    <img src="generated-code/org.png">
-                                </a>
-                            </div>
-                            <div class="col-md-6 col-xs-12 text-right">
-                                <a class="btn btn-danger btn-ele-trace">
-                                    Trace Element
-                                </a>
-                                <a id="btn-close-trace" class="btn btn-danger" style="display: none">
-                                    x
-                                </a>
-                            </div>
-                        </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <h5>Input Web GUI</h5>
+                        <img class="preview-img" src="generated-code/org.png" data-toggle="modal" data-target="#modal-full-img">
                     </div>
-                    <div class="panel-body">
-                        <div id="trace-info" class="text-center">
-                            <p>
-                                Click Element To Trace
-                            </p>
-                        </div>
-                        <iframe class="page-viewer">
-                        </iframe>
+                    <div class="col-md-6 text-center ">
+                        <h5>Element Detection Result</h5>
+                        <img class="preview-img" src="generated-code/result.jpg" data-toggle="modal" data-target="#modal-full-img">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Preview Modal -->
-        <div id="modal-preview" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Webpage Preview</h5>
-                        <button class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <h5>Input Web GUI</h5>
-                                <img class="preview-img" src="generated-code/org.png" data-toggle="modal" data-target="#modal-full-img">
-                            </div>
-                            <div class="col-md-6 text-center ">
-                                <h5>Element Detection Result</h5>
-                                <img class="preview-img" src="generated-code/result.jpg" data-toggle="modal" data-target="#modal-full-img">
-                            </div>
-                        </div>
-                    </div>
+<div class="main">
+    <div class="sidebar">
+        <a class="btn btn-sidebar btn-sidebar-active" data-target="wrapper-tree">
+            <i class="fa fa-code-fork"></i>
+        </a>
+        <a class="btn btn-sidebar" data-target="wrapper-code">
+            <i class="fa fa-file-code-o"></i>
+        </a>
+        <a class="btn btn-sidebar" data-target="wrapper-img">
+            <i class="fa fa-file-image-o"></i>
+        </a>
+    </div>
+    <div class="wrapper-tree wrapper wrapper-active">
+        <div class="wrapper-head text-center" style="padding-top: 10px">
+            <p>Component Tree</p>
+        </div>
+        <div class="tree">
+        </div>
+    </div>
+    <div class="wrapper-code wrapper" style="display: none">
+        <div class="wrapper-head">
+            <h5 style="float: left; margin: 12px 8px">CODE</h5>
+            <a id="btn-edit-panel" class="btn btn-edit btn-side-icon" data-toggle="tooltip" title="Edit the Code">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a id="btn-run" class="btn btn-danger" style="display: none; font-size: 12px">
+                Run
+            </a>
+            <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">
+                Reload
+            </a>
+
+            <!--            <a id="btn-close-edit" class="btn btn-danger" style="display: none">-->
+            <!--                x-->
+            <!--            </a>-->
+            <div class="dropdown code-switch">
+                <a class="nav-link dropdown-toggle btn btn-code-switch" style="margin:3px; color: whitesmoke" href="#" data-toggle="dropdown">
+                    Language
+                </a>
+                <div class="dropdown-menu" style="padding: 0">
+                    <a class="dropdown-item btn btn-code code-viewer-btn active-btn">HTML</a>
+                    <a class="dropdown-item btn btn-code code-viewer-btn">CSS</a>
+                    <a class="dropdown-item btn btn-code code-viewer-btn">React</a>
                 </div>
             </div>
         </div>
-        <!--        <div id="modal-full-img" class="modal fade">-->
-        <!--            <div class="modal-dialog">-->
-        <!--                <div class="modal-content">-->
-        <!--                    <img id="preview-img-full">-->
+        <div class="code-viewers">
+            <div id="HTML" class="code-viewer">
+            </div>
+            <div id="CSS" class="code-viewer" style="display: none">
+            </div>
+            <div id="React" class="code-viewer" style="display: none; overflow: unset">
+                <select id="react-file-select" class="form-control">
+                    <option value="index">index.js</option>
+                    <option value="blocks">blocks.js</option>
+                </select>
+                <pre id="React-index" class="wrapper-react">
+                        <code class="javascript"></code>
+                    </pre>
+                <pre id="React-blocks" class="wrapper-react" style="display: none">
+                        <code class="javascript"></code>
+                    </pre>
+            </div>
+        </div>
+        <!--        <div class="viewer-container container-fluid">-->
+        <!--            <div class="panel panel-primary">-->
+        <!--                <div class="panel-heading">-->
+        <!--                    <div class="row">-->
+        <!--                        <div class="col-md-6 col-xs-12">-->
+        <!--                            <h4 style="float: left">CODE</h4>-->
+
+        <!--                            <a id="btn-edit-panel" class="btn btn-edit btn-side-icon" data-toggle="tooltip" title="Edit the Code">-->
+        <!--                                <i class="fa fa-edit"></i>-->
+        <!--                            </a>-->
+
+        <!--                            <a id="btn-run" class="btn btn-danger" style="display: none; font-size: 12px">-->
+        <!--                                Run-->
+        <!--                            </a>-->
+
+        <!--                            <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">-->
+        <!--                                Reload-->
+        <!--                            </a>-->
+
+        <!--                            <a id="btn-close-edit" class="btn btn-danger" style="display: none">-->
+        <!--                                x-->
+        <!--                            </a>-->
+        <!--                        </div>-->
+        <!--                        <div class="col-md-6 col-xs-12 text-right">-->
+        <!--                            <a class="btn btn-code code-viewer-btn active-btn">HTML</a>-->
+        <!--                            <a class="btn btn-code code-viewer-btn">CSS</a>-->
+        <!--                            <a class="btn btn-code code-viewer-btn">React</a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
         <!--                </div>-->
+
         <!--            </div>-->
         <!--        </div>-->
     </div>
-</main>
+    <div class="wrapper-img wrapper text-center" style="display: none">
+        <img src="generated-code/result.jpg">
+    </div>
+    <div class="wrapper-page">
+        <iframe class="page-viewer">
+        </iframe>
+    </div>
+    <div class="wrapper-right-attrs" style="display: none">
+        <div class="right-bar-head">
+            <h5>Attributes</h5>
+            <a class="right-bar-close">x</a>
+        </div>
+        <div class="right-bar-input-grp">
+            <span class="input-prepend">Class</span>
+            <input class="right-bar-input form-control">
+        </div>
+
+        <div class="right-bar-input-grp">
+            <span class="input-prepend">Width</span>
+            <input class="right-bar-input form-control">
+        </div>
+
+        <div class="right-bar-input-grp">
+            <span class="input-prepend">Height</span>
+            <input class="right-bar-input form-control right">
+        </div>
+
+        <div class="text-center" style="width: 100%; margin-top: 50px">
+            <a class="btn btn-apply-attr">Apply</a>
+        </div>
+    </div>
+</div>
 
 <footer>
     <div class="footer">
         <p>Copyright © 2020 <a href="http://www.uied.online/">UIED</a> All rights reserved</p>
-        <address>
+        <address style="margin: 0">
             Contact:
             <a href="mailto:mulong.xie@anu.edu.au">mulong.xie@anu.edu.au</a>
         </address>
     </div>
 </footer>
 
-<div id="code-path" data-value=<%-codePath%>></div>
+<!--<div id="code-path" data-value=<%-codePath%>></div>-->
 
 <script>
     $(window).on('load', function () {
@@ -201,9 +238,8 @@
             function () {
                 initIframe()
                 initCodeViewer()
+                initTreeViewer()
             }, 1000)
-        // initIframe()
-        // initCodeViewer()
 
         // document.onkeyup = function (e) {
         //     console.log(e)
