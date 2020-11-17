@@ -5,8 +5,8 @@ var data_react_blks =''
 
 $(document).ready(function () {
 
-    var code_path = $('#code-path').attr('data-value')
-    // var code_path = 'generated-code'
+    // var code_path = $('#code-path').attr('data-value')
+    var code_path = 'generated-code'
     console.log('path:', code_path)
 
 
@@ -409,15 +409,21 @@ $(document).ready(function () {
         });
     });
     $('.btn-sidebar').on('click', function () {
+        let this_wrapper = $('.' + $(this).attr('data-target'))
         if (!$(this).hasClass('btn-sidebar-active')){
             $('.btn-sidebar-active').removeClass('btn-sidebar-active')
             $(this).addClass('btn-sidebar-active')
-            $('.wrapper-active').removeClass('wrapper-active')
-            $('.' + $(this).attr('data-target')).addClass('wrapper-active')
+            $('.wrapper-active').hide('fast').promise().done(function () {
+                $('.wrapper-active').removeClass('wrapper-active')
+                this_wrapper.show('fast')
+                this_wrapper.addClass('wrapper-active')
+            })
         }
         else {
-            $(this).removeClass('btn-sidebar-active')
-            $('.wrapper-active').removeClass('wrapper-active')
+            $('.btn-sidebar-active').removeClass('btn-sidebar-active')
+            this_wrapper.hide('fast')
+            this_wrapper.removeClass('wrapper-active')
+            // $('.wrapper-active')
         }
     })
 })

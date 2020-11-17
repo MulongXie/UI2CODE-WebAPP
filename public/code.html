@@ -153,17 +153,15 @@
             </ul>
         </div>
     </div>
-    <div class="wrapper-code wrapper">
-        <div class="wrapper-head"><h5 style="float: left; margin: 12px 8px">CODE</h5>
-
+    <div class="wrapper-code wrapper" style="display: none">
+        <div class="wrapper-head">
+            <h5 style="float: left; margin: 12px 8px">CODE</h5>
             <a id="btn-edit-panel" class="btn btn-edit btn-side-icon" data-toggle="tooltip" title="Edit the Code">
                 <i class="fa fa-edit"></i>
             </a>
-
             <a id="btn-run" class="btn btn-danger" style="display: none; font-size: 12px">
                 Run
             </a>
-
             <a id="btn-reload" class="btn btn-danger" style="display: none; font-size: 12px">
                 Reload
             </a>
@@ -255,13 +253,13 @@
 
 <script>
     $(window).on('load', function () {
-        // setTimeout(
-        //     function () {
-        //         initIframe()
-        //         initCodeViewer()
-        //     }, 1000)
-        // initIframe()
-        // initCodeViewer()
+        setTimeout(
+            function () {
+                initIframe()
+                initCodeViewer()
+            }, 1000)
+        initIframe()
+        initCodeViewer()
 
         // document.onkeyup = function (e) {
         //     console.log(e)
