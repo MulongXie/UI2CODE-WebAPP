@@ -21,9 +21,9 @@ body{
  ******************/
 .navbar{
     top: 0;
-    height: 60px;
+    height: 50px;
     width: 100%;
-    padding-top: 12px;
+    padding-top: 9px;
     padding-left: 20px;
     position: fixed;
     z-index: 1;
@@ -74,11 +74,48 @@ body{
 /*    transform: rotate(90deg);*/
 /*}*/
 
+
+/******************
+ *** Side Bar ***
+ ******************/
+.sidebar{
+    background: #f8f8f8;
+    border: solid 1px #e7e7e7;
+    height: 100vh;
+    width: 50px;
+    /*top: 0;*/
+    /*position: fixed;*/
+    z-index: 0;
+    padding-top: 48px;
+}
+
+.btn-sidebar{
+    margin: 0;
+    width: 100%;
+    height: 40px;
+    /*background: #E9E6E6 ;*/
+    border: solid 1px #e7e7e7;
+    border-radius: 0;
+}
+
+.btn-sidebar:hover{
+    color: #337ab7;
+    background: #E9E6E6;
+}
+
+.btn-sidebar-active{
+    background: #E9E6E6;
+}
+
 /******************
  *** Main ***
  ******************/
 .main{
-    margin-top: 80px;
+    display: flex;
+}
+
+#content{
+    margin: 80px;
 }
 
 .panel-heading{
@@ -142,6 +179,102 @@ body{
     background: #55ACEE;
 }
 
+
+/******************
+ *** Tree Viewer ***
+ ******************/
+.wrapper-tree{
+    height: 100vh;
+    width: 350px;
+    padding-top: 48px;
+    overflow: auto;
+}
+
+.tree {
+    font-size: 11px;
+    height: 100vh;
+    margin-bottom:20px;
+    background-color:#fbfbfb;
+    border:1px solid #e7e7e7;
+    border-radius:4px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    padding: 0;
+}
+.tree li {
+    list-style-type:none;
+    margin:0;
+    padding:10px 5px 0 5px;
+    position:relative
+}
+.tree li::before, .tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+.tree li::before {
+    border-left:1px solid #999;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    border-top:1px solid #999;
+    height:20px;
+    top:25px;
+    width:25px
+}
+.tree li span {
+    border:1px solid #999;
+    border-radius:5px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none
+}
+.tree span {
+    cursor:pointer
+}
+.tree>ul>li::before, .tree>ul>li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:30px
+}
+.tree span:hover, .tree li.parent_li>span:hover+ul li span {
+    background:#eee;
+    border:1px solid #94a0b4;
+    color:#000
+}
+.tree i{
+    font-size: 14px;
+}
+
+/******************
+ *** Wrapper Page ***
+ ******************/
+.wrapper{
+    display: flex;
+}
+
+.wrapper-page{
+    width: 100%;
+    height: 100vh;
+    background: whitesmoke;
+    float: left;
+    padding: 60px 20px 10px;
+}
+
+.wrapper-page iframe{
+    border: 1px solid black;
+}
+
+.wrapper-attrs{
+    width: 300px;
+    height: 100vh;
+    background: #2b669a;
+}
+
 /******************
  *** Right PageViewer ***
  ******************/
@@ -167,6 +300,7 @@ body{
     border: #55ACEE 2px solid;
     transition: .5s ease;
     z-index: 2;
+    right: 10px;
 }
 
 /* Preview Modal */
@@ -245,4 +379,6 @@ body{
     border: 1px solid #e7e7e7;
     color: grey;
     font-size: 12px;
+    position: relative;
+    z-index: 2;
 }
