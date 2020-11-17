@@ -249,6 +249,12 @@ body{
     font-size: 14px;
 }
 
+.active-tree-node{
+    background: #55ACEE;
+    opacity: 80%;
+    transition: 2s;
+}
+
 /******************
  *** Wrapper Page ***
  ******************/

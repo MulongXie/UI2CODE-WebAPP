@@ -210,10 +210,11 @@ $(document).ready(function () {
         return html
     }
     // Tree
+    var node_num = 3
     function renderTreeBranch(branch) {
-        console.log(branch)
         // node's html
-        let branch_html = '<li><span><i class="material-icons">widgets</i> ' + branch['class'] + '</span>'
+        let branch_html = '<li><span id="node-' + node_num.toString() + '" class="tree-node"><i class="material-icons">widgets</i> ' + branch['class'] + '</span>'
+        node_num += 1
         // children's html
         if ('children' in branch){
             branch_html += '<ul>'
@@ -226,9 +227,9 @@ $(document).ready(function () {
         return branch_html
     }
     function renderTree(data) {
-        let html = '<ul style="padding: 0"><li><span><i class="fa fa-newspaper-o"></i> Page</span>'
+        let html = '<ul style="padding: 0"><li><span id="node-' + node_num.toString() + '" class="tree-node"><i class="fa fa-newspaper-o"></i> Page</span>'
+        node_num += 1
         if (data.length > 0){
-            let compos = []
             html += '<ul>'
             for (let i = 0; i < data.length; i++){
                 html += renderTreeBranch(data[i])
@@ -236,21 +237,6 @@ $(document).ready(function () {
             html += '</ul>'
         }
         html += '</li></ul>'
-
-        $(function () {
-            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-            $('.tree li.parent_li > span').on('click', function (e) {
-                var children = $(this).parent('li.parent_li').find(' > ul > li');
-                if (children.is(":visible")) {
-                    children.hide('fast');
-                    $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
-                } else {
-                    children.show('fast');
-                    $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
-                }
-                e.stopPropagation();
-            });
-        });
 
         return html
     }
@@ -394,7 +380,7 @@ $(document).ready(function () {
         ele.classList.add("ele-active")
         last_ele = ele
 
-        // scroll the codeViewer to the corresponding code
+        // scroll the codeViewer to the corresponding code line
         let code_wrapper = $('.code-viewer')
         let code_line = $('#ele-' + ele.getAttribute('ele-num'))
         let code_offset = code_line.offset().top - code_wrapper.offset().top + code_wrapper.scrollTop()
@@ -510,6 +496,49 @@ function initCodeViewer() {
             target = target.parentNode
         }
         console.log(target)
+        let ele_num = target.id.split('-')[1]
+        console.log(ele_num)
+        if (ele_num === undefined){return}
+
+        // access iframe page
+        let page = document.getElementsByTagName('iframe')[0].contentWindow
+        let element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
+        console.log(element)
+        if (element === undefined){return}
+        // scroll iframe page to the selected element
+        page.scrollTo(0, element.offsetTop)
+        // highlight corresponding iframe element
+        let eles = page.document.querySelectorAll('.ele-active')
+        for (let i = 0; i < eles.length; i ++){
+            eles[i].classList.remove('ele-active')
+        }
+        element.classList.add('ele-active')
+    })
+}
+
+function initTreeViewer() {
+    // $(function () {
+    //     $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+    //     $('.tree li.parent_li > span').on('click', function (e) {
+    //         var children = $(this).parent('li.parent_li').find(' > ul > li');
+    //         if (children.is(":visible")) {
+    //             children.hide('fast');
+    //             $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+    //         } else {
+    //             children.show('fast');
+    //             $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+    //         }
+    //         e.stopPropagation();
+    //     });
+    // });
+
+    // Jump to page element in Iframe by clicking code line in CodeViewer
+    $('.tree-node').on('click', function (event) {
+        // highlight clicked line
+        $('.active-tree-node').removeClass('active-tree-node')
+        $(this).addClass('active-tree-node')
+
+        let target = event.target
         let ele_num = target.id.split('-')[1]
         console.log(ele_num)
         if (ele_num === undefined){return}
