@@ -2,6 +2,7 @@ var data_html = ''  // html of subpage in iframe
 var data_css = ''   // css of subpage in iframe
 var data_react_index = ''
 var data_react_blks =''
+var data_tree = ''
 
 $(document).ready(function () {
 
@@ -208,12 +209,57 @@ $(document).ready(function () {
         data_css = data
         return html
     }
+    // Tree
+    function renderTreeBranch(branch) {
+        console.log(branch)
+        // node's html
+        let branch_html = '<li><span><i class="material-icons">widgets</i> ' + branch['class'] + '</span>'
+        // children's html
+        if ('children' in branch){
+            branch_html += '<ul>'
+            for (let i = 0; i < branch['children'].length; i++){
+                branch_html += renderTreeBranch(branch['children'][i])
+            }
+            branch_html += '</ul>'
+        }
+        branch_html += '</li>'
+        return branch_html
+    }
+    function renderTree(data) {
+        let html = '<ul style="padding: 0"><li><span><i class="fa fa-newspaper-o"></i> Page</span>'
+        if (data.length > 0){
+            let compos = []
+            html += '<ul>'
+            for (let i = 0; i < data.length; i++){
+                html += renderTreeBranch(data[i])
+            }
+            html += '</ul>'
+        }
+        html += '</li></ul>'
+
+        $(function () {
+            $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+            $('.tree li.parent_li > span').on('click', function (e) {
+                var children = $(this).parent('li.parent_li').find(' > ul > li');
+                if (children.is(":visible")) {
+                    children.hide('fast');
+                    $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+                } else {
+                    children.show('fast');
+                    $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+                }
+                e.stopPropagation();
+            });
+        });
+
+        return html
+    }
     // Load from files
     function loadHTMLandCSS(){
-        $.get(code_path + '/xml.css', function(data){
+        $.get(code_path + '/page/xml.css', function(data){
             $('#CSS').html(renderCSS(data))
         })
-        $.get(code_path + '/xml.html', function(data){
+        $.get(code_path + '/page/xml.html', function(data){
             $('#HTML').html(renderHTML(data))
         })
         $.get(code_path + '/react/index.txt', function (data) {
@@ -223,6 +269,10 @@ $(document).ready(function () {
         $.get(code_path + '/react/blocks.txt', function (data) {
             data_react_blks = data
             $('#React-blocks code').html(hljs.highlightAuto(data).value)
+        })
+        $.get(code_path + '/tree/tree.json', function (data) {
+            data_tree = data
+            $('.tree').html(renderTree(data))
         })
         // $('.page-viewer').attr('src', code_path + '/xml.html')
     }
@@ -394,20 +444,6 @@ $(document).ready(function () {
     /*********************
      *** Wrapper ***
      *********************/
-    $(function () {
-        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-        $('.tree li.parent_li > span').on('click', function (e) {
-            var children = $(this).parent('li.parent_li').find(' > ul > li');
-            if (children.is(":visible")) {
-                children.hide('fast');
-                $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
-            } else {
-                children.show('fast');
-                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
-            }
-            e.stopPropagation();
-        });
-    });
     $('.btn-sidebar').on('click', function () {
         let this_wrapper = $('.' + $(this).attr('data-target'))
         if (!$(this).hasClass('btn-sidebar-active')){
