@@ -215,7 +215,7 @@ $(document).ready(function () {
     var node_num = 3
     function renderTreeBranch(branch) {
         // node's html
-        let branch_html = '<li><span id="node-' + node_num.toString() + '" class="tree-node"><i class="material-icons">widgets</i> ' + branch['class'] + '</span>'
+        let branch_html = '<li><span id="node-' + node_num.toString() + '" class="tree-node"><i class="fa fa-sitemap"></i> ' + branch['class'] + '</span>'
         node_num += 1
         // children's html
         if ('children' in branch){
@@ -398,7 +398,6 @@ $(document).ready(function () {
         let tree_offset = node.offset().top - treeViewer.offset().top + treeViewer.scrollTop()
         $('.active-tree-node').removeClass('active-tree-node')
         node.addClass('active-tree-node')
-        console.log(tree_offset)
         treeViewer.animate({
             scrollTop : tree_offset
         })
@@ -468,7 +467,24 @@ $(document).ready(function () {
     $('.right-bar-close').on('click', function () {
         $('.wrapper-right-attrs').hide('fast')
     })
+
+    $('.btn-apply-attr').on('click', function () {
+        activeNode.html('<i class="fa fa-sitemap"></i> ' + $('#attr-class').val())
+        activeElement.style.width = $('#attr-width').val().toString() + 'px'
+        activeElement.style.height = $('#attr-height').val().toString() + 'px'
+    })
 })
+
+// selected node in treeViewer and element in iframe page
+var activeNode
+var activeElement
+
+// Show current compo attrs in the right bar
+function initAttrBar(tree_node, page_element){
+    $('#attr-class').val(tree_node.text())
+    $('#attr-width').val(page_element.offsetWidth)
+    $('#attr-height').val(page_element.offsetHeight)
+}
 
 // Render the iframe page
 function initIframe(css='', js=''){
@@ -563,13 +579,13 @@ function initTreeViewer() {
 
             let target = event.target
             let ele_num = target.id.split('-')[1]
-            console.log(ele_num)
+            // console.log(ele_num)
             if (ele_num === undefined){return}
 
             // access iframe page
             let page = document.getElementsByTagName('iframe')[0].contentWindow
             element = page.document.body.querySelectorAll('[ele-num="'+ ele_num.toString() +'"]')[0]
-            console.log(element)
+            // console.log(element)
             if (element === undefined){return}
             // scroll iframe page to the selected element
             page.scrollTo(0, element.offsetTop)
@@ -579,6 +595,11 @@ function initTreeViewer() {
                 eles[i].classList.remove('ele-active')
             }
             element.classList.add('ele-active')
+
+            // init right attributes bar
+            activeNode = $(this)
+            activeElement = element
+            initAttrBar($(this), element)
         }
         else {
             $(this).removeClass('active-tree-node')

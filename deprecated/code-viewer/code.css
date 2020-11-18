@@ -1,0 +1,248 @@
+
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
+.line-wrapper{
+    margin-bottom: 0;
+    counter-increment: line;
+}
+.line-wrapper:before{
+    content: counter(line);
+    display: inline-block;
+    width: 30px; /* Fixed width */
+    border-right: 1px solid lightgrey;
+    margin-right: 10px;
+}
+
+
+/******************
+ *** Navigation ***
+ ******************/
+.navbar{
+    top: 0;
+    height: 60px;
+    width: 100%;
+    padding-top: 12px;
+    padding-left: 20px;
+    position: fixed;
+    z-index: 1;
+}
+
+.my-brand img{
+    max-height: 28px;
+    margin-top: -9px;
+}
+
+.my-brand a{
+    color: #00366f;
+    text-decoration: none;
+    height: 100%;
+}
+
+.my-brand span{
+    color: #00366f;
+    font-weight: 400;
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+.navbar-right{
+    padding-right: 20px;
+}
+
+.navbar-right a{
+    margin-top: -8px;
+}
+
+.navbar-right a:hover{
+    background: lightgrey;
+}
+
+.nav i{
+    color: #337ab7;
+    font-size: 30px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.material-icons{
+    font-weight: bold;
+    transition: 1s;
+}
+/*.material-icons:hover{*/
+/*    transform: rotate(90deg);*/
+/*}*/
+
+/******************
+ *** Main ***
+ ******************/
+.main{
+    margin-top: 80px;
+}
+
+.panel-heading{
+    padding-top: 6px;
+    height: 50px;
+}
+
+.panel-body{
+    padding: 0;
+    height: 85vh;
+}
+
+.code-viewer{
+    overflow: auto;
+}
+
+.viewer-container{
+    transition: 0.3s;
+}
+
+.wrapper-react{
+    height: calc(100% - 34px);
+    overflow: auto;
+}
+
+
+.page-viewer{
+    width: 100%;
+    height: 100%;
+    border: none;
+    transition: 300ms;
+}
+
+
+/* Button style */
+.btn-code{
+    margin-top: 3px;
+    padding: 5px;
+    height: 30px;
+    width: 80px;
+    background-color: #3399ff;
+    color: white;
+    text-align: center;
+}
+.btn-code:hover{
+    background-color: #55ACEF;
+    color: white;
+}
+.active-btn{
+    background: #004a99;
+    color: white;
+}
+
+.btn-side-icon{
+    color: whitesmoke;
+    margin-left: 5px;
+    margin-right: 3px;
+    padding-top: 9px;
+}
+.btn-side-icon:hover{
+    background: #55ACEE;
+}
+
+/******************
+ *** Right PageViewer ***
+ ******************/
+
+/* Trace Reminder */
+#trace-info{
+    height: 20px;
+    width: 100%;
+    background: #d9534f;
+    opacity: 80%;
+    color: whitesmoke;
+    display: none;
+}
+
+/* Show img on hover of preview btn*/
+#btn-page-preview>img {
+    display: none;
+}
+#btn-page-preview:hover>img{
+    display: block;
+    height: 400px;
+    position: fixed;
+    border: #55ACEE 2px solid;
+    transition: .5s ease;
+    z-index: 2;
+}
+
+/* Preview Modal */
+.modal-title{
+    float: left;
+    font-size: 18px;
+}
+.modal-body{
+    padding-bottom: 30px;
+}
+.close{
+    text-decoration: none;
+    cursor: pointer;
+}
+.preview-img{
+    max-height: 90vh;
+    max-width: 95%;
+    border: 1px solid;
+    box-shadow: 5px 10px lightgrey;
+}
+.preview-blk{
+    background: lightgrey;
+    padding: 20px;
+    margin: 10px;
+}
+
+/******************
+ *** Left CodeViewer ***
+ ******************/
+.active-code-line{
+    background: #55ACEE;
+    opacity: 80%;
+    transition: 2s;
+}
+
+.html-start{
+    cursor: pointer;
+}
+.html-start:hover{
+    background: lightgrey;
+}
+
+/******************
+ *** Code Render ***
+ ******************/
+.html-bracket{
+    color: #004a99;
+}
+.html-tag{
+    color: saddlebrown;
+}
+.html-quotation{
+    color: red;
+}
+.css-tag{
+    color: red;
+}
+.css-content{
+    color: dimgrey;
+}
+.css-brace{
+    color: saddlebrown;
+}
+.css-attr{
+    color: #55ACEE;
+}
+
+/******************
+ *** Footer ***
+ ******************/
+.footer{
+    height: 90px;
+    padding-top: 25px;
+    text-align: center;
+    background: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    color: grey;
+    font-size: 12px;
+}
