@@ -355,7 +355,7 @@
                 <h3>Tool</h3>
             </header>
 
-            <!-- UIED -->
+            <!--====== UIED ======-->
             <div>
                 <div class="text-center mb-5">
                     <h4 class="text-center lead"><b>GUI Element Detection</b></h4>
@@ -372,7 +372,7 @@
                     <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
                         <div class="box">
                             <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
-                            <h4 class="title"><a href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
+                            <h4 class="title"><a id="upload-uied" class="upload-btn" href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
                             <p class="description">Try the tool with your upload UI image</p>
                         </div>
                     </div>
@@ -434,6 +434,7 @@
                     </div>
                 </div>
                 <!-- Modals -->
+                <!-- Quick Start Modal -->
                 <div id="quickstart-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="quickstart" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -504,7 +505,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Upload Modal -->
                 <div id="avatar-modal" class="modal fade" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -564,7 +565,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Result Modal -->
                 <div id="result-modal" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -598,19 +599,26 @@
             </div>
 
 
-            <!-- UI2CODE -->
-            <div id="2code" class="text-center container">
+            <!--====== UI2CODE ======-->
+            <div id="2code">
                 <div class="my-divider"></div>
-                <div class="mb-5">
+                <div class="mb-5 text-center">
                     <h4 class="text-center lead"><b>Web Code Generation</b></h4>
                     <p class="lead">Generate Web Code (HTML + CSS) from the Input GUI Image</p>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-lg-8 offset-lg-2 wow bounceInUp" data-wow-duration="0.5s">
+                    <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="0.5s">
                         <div class="box">
                             <div class="icon"><i class="ion-gear-b" style="color: #4680ff;"></i></div>
-                            <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal-2code" id="quickstart-modal-btn-2code">Quick Start</a></h4>
+                            <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal" id="quickstart-modal-btn-2code">Quick Start</a></h4>
                             <p class="description">Using examples to see how the tool works</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="box">
+                            <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
+                            <h4 class="title"><a id="upload-2code" class="upload-btn" href="" data-toggle="modal" data-target="#avatar-modal">Upload Web UI Image</a></h4>
+                            <p class="description">Try the tool with your upload UI image</p>
                             <div class="side-label">
                                 Test Version
                             </div>
