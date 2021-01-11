@@ -82,6 +82,12 @@ jQuery(document).ready(function( $ ) {
 	/*--------------------------------------------------------------
 	# Upload
 	--------------------------------------------------------------*/
+	var uploadFunc;
+	$('.upload-btn').on('click', function () {
+		alert($(this).attr('id'))
+		uploadFunc = $(this).attr('id')
+	})
+
 	$('#avatarInput').on('change', function(){
 		this.$avatarModal = $("body").find('#avatar-modal');
 
@@ -132,13 +138,17 @@ jQuery(document).ready(function( $ ) {
 		});
 
 		this.$avatarSave.click(function() {
-			var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png"); 
-			$(".display-pic").attr('src', croppedImageDataURL);
-			$("#display-content").removeClass("hide");
-			$("#display-content").attr('data-type', 'base64');
-			// $(".display-content").fadeIn(1000);
-			$('html, body').animate({scrollTop:   $('#display-content').offset().top - 100}, 1500, 'easeInOutExpo');
-     	});
+			if (uploadFunc === 'upload-uied'){
+				var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
+				$("#display-pic-uied").attr('src', croppedImageDataURL);
+				$("#display-content").removeClass("hide");
+				$("#display-content").attr('data-type', 'base64');
+				$('html, body').animate({scrollTop:   $('#display-content').offset().top - 100}, 1500, 'easeInOutExpo');
+			}
+			else if(uploadFunc === 'upload-2code'){
+
+			}
+		});
 	});
 
 
@@ -147,7 +157,7 @@ jQuery(document).ready(function( $ ) {
 	--------------------------------------------------------------*/
 	$("#quickstart-modal-btn").on('click', function() {
 		$(".carousel-inner .img-uied").on('click', function() {
-			$(".display-pic").attr('src', this.src);
+			$("#display-pic-uied").attr('src', this.src);
 			$("#display-content").removeClass("hide");
             $("#display-content").attr('data-type', 'image');
             console.log($('#display-content').offset().top);
@@ -179,7 +189,7 @@ jQuery(document).ready(function( $ ) {
         }
 
         let method = $("#method-select option:selected").attr('value');
-        let input_img = $(".display-pic").attr('src');
+        let input_img = $("#display-pic-uied").attr('src');
         let input_type = $("#display-content").attr('data-type');
         let uied_params = null;
 

@@ -1261,11 +1261,12 @@ a.carousel-control.right {
   background: #1EB8EB;
   transform: rotate(30deg);
   float: right;
-  margin-top: -67px;
-  margin-right: -100px;
+  margin-top: -72px;
+  margin-right: -110px;
   padding-top: 7px;
   font-size: 18px;
   color: whitesmoke;
+  text-align: center;
 }
 
 .note{
