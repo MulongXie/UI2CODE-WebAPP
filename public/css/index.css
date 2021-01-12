@@ -1291,6 +1291,7 @@ a.carousel-control.right {
 .display-pic{
   /* max-width: 300px;
   max-height: 500px; */
+  margin-top: 20px;
   width: 100%;
   height: auto;
 }
@@ -1564,6 +1565,28 @@ option:disabled{
   margin-left: -40px;
   margin-top: -35px;
   margin-bottom: -5px;
+}
+
+.step{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+
+  margin-top: -2px;
+  margin-right: 3px;
+
+  background: #2b669a;
+  color: whitesmoke;
+  text-align: center;
+
+  float: left;
+  clear: both;
+}
+
+.code-step-img{
+  width: 100%;
+  border: 1px solid black;
+  margin-bottom: 15px;
 }
 
 .my-divider{

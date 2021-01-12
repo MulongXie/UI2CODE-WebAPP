@@ -355,7 +355,7 @@
                 <h3>Tool</h3>
             </header>
 
-            <!-- UIED -->
+            <!--====== UIED ======-->
             <div>
                 <div class="text-center mb-5">
                     <h4 class="text-center lead"><b>GUI Element Detection</b></h4>
@@ -372,7 +372,7 @@
                     <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
                         <div class="box">
                             <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
-                            <h4 class="title"><a href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
+                            <h4 class="title"><a id="upload-uied" class="upload-btn" href="" data-toggle="modal" data-target="#avatar-modal">Upload Custom UI</a></h4>
                             <p class="description">Try the tool with your upload UI image</p>
                         </div>
                     </div>
@@ -434,6 +434,7 @@
                     </div>
                 </div>
                 <!-- Modals -->
+                <!-- Quick Start Modal -->
                 <div id="quickstart-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="quickstart" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -504,7 +505,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Upload Modal -->
                 <div id="avatar-modal" class="modal fade" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -564,7 +565,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Result Modal -->
                 <div id="result-modal" class="modal fade">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -597,22 +598,58 @@
                 </div>
             </div>
 
-            
-            <!-- UI2CODE -->
-            <div id="2code" class="text-center">
+
+            <!--====== UI2CODE ======-->
+            <div id="2code">
                 <div class="my-divider"></div>
-                <div class="mb-5">
+                <div class="mb-5 text-center">
                     <h4 class="text-center lead"><b>Web Code Generation</b></h4>
                     <p class="lead">Generate Web Code (HTML + CSS) from the Input GUI Image</p>
                 </div>
+
+                <!-- Input Image -->
                 <div class="row">
-                    <div class="col-md-8 col-lg-8 offset-lg-2 wow bounceInUp" data-wow-duration="0.5s">
+                    <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="0.5s">
                         <div class="box">
                             <div class="icon"><i class="ion-gear-b" style="color: #4680ff;"></i></div>
                             <h4 class="title"><a href="#" data-toggle="modal" data-target="#quickstart-modal-2code" id="quickstart-modal-btn-2code">Quick Start</a></h4>
                             <p class="description">Using examples to see how the tool works</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+                        <div class="box">
+                            <div class="icon"><i class="ion-ios-cloud-upload-outline" style="color: #ff689b;"></i></div>
+                            <h4 class="title"><a id="upload-2code" class="upload-btn" href="" data-toggle="modal" data-target="#avatar-modal">Upload Web UI Image</a></h4>
+                            <p class="description">Try the tool with your upload UI image</p>
                             <div class="side-label">
                                 Test Version
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Input GUI -->
+                <div class="row">
+                    <div class="col-md-10 col-lg-10 offset-lg-1">
+                        <div id="display-content-2code" class="display-content wow box fadeInUp hide">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 offset-lg-1">
+                                    <div class="note text-center">
+                                        <p style="margin: auto auto"> <span class="fa fa-exclamation-circle"></span> Code Generation Currently only Supports <span style="background: yellow">Web GUI</span></p>
+                                    </div>
+                                    <img class="display-pic img-shadow"/>
+                                    <a id="start-2code-btn" class="btn my-btn" style="color: whitesmoke">Get Started</a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 offset-lg-1">
+                                    <div class="code-step">
+                                        <div class="step">1</div><h4>GUI Element Detection</h4>
+                                        <img class="code-step-img" src="images/2code/1.jpg">
+                                    </div>
+                                    <div class="code-step">
+                                        <div class="step">2</div><h4>Web Codes Generation</h4>
+                                        <img class="code-step-img" src="images/2code/2.jpg">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -650,7 +687,7 @@
                 <!-- Processing Modal -->
                 <div id="processing-modal-2code" class="modal fade">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content text-center">
                             <div id="loader-2code" class="loader"></div>
                             <h4 class="modal-2code-note">Processing ...</h4>
                             <!-- <button id="go-2code-btn" class="btn my-btn" style="display: none">Check Result</button>-->

@@ -82,6 +82,11 @@ jQuery(document).ready(function( $ ) {
 	/*--------------------------------------------------------------
 	# Upload
 	--------------------------------------------------------------*/
+	var displaySection;
+	$('.upload-btn').on('click', function () {
+		displaySection = $(this).attr('id')
+	})
+
 	$('#avatarInput').on('change', function(){
 		this.$avatarModal = $("body").find('#avatar-modal');
 
@@ -134,10 +139,18 @@ jQuery(document).ready(function( $ ) {
 		this.$avatarSave.click(function() {
 			var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
 			$(".display-pic").attr('src', croppedImageDataURL);
-			$("#display-content").removeClass("hide");
-			$("#display-content").attr('data-type', 'base64');
-			// $(".display-content").fadeIn(1000);
-			$('html, body').animate({scrollTop:   $('#display-content').offset().top - 100}, 1500, 'easeInOutExpo');
+			if (displaySection === 'upload-uied'){
+				$('#display-content-2code').addClass('hide');
+				$("#display-content").removeClass("hide");
+				$("#display-content").attr('data-type', 'base64');
+				$('html, body').animate({scrollTop:   $('#display-content').offset().top - 100}, 1500);
+			}
+			else if(displaySection === 'upload-2code'){
+				$('#display-content').addClass('hide');
+				$("#display-content-2code").removeClass("hide");
+				$("#display-content-2code").attr('data-type', 'base64');
+				$('html, body').animate({scrollTop:   $('#display-content-2code').offset().top - 100}, 1500);
+			}
 		});
 	});
 
@@ -146,12 +159,12 @@ jQuery(document).ready(function( $ ) {
 	# Quick Start with Examples
 	--------------------------------------------------------------*/
 	$("#quickstart-modal-btn").on('click', function() {
-		$(".carousel-inner .img-uied").on('click', function() {
+		$(".carousel-inner .img-uied").on('click', function (keyframes, options) {
 			$(".display-pic").attr('src', this.src);
 			$("#display-content").removeClass("hide");
             $("#display-content").attr('data-type', 'image');
-            console.log($('#display-content').offset().top);
-			$('html, body').animate({scrollTop: $('#display-content').offset().top - 100}, 1500, 'easeInOutExpo');
+            // console.log($('#display-content').offset().top);
+			$('html, body').animate({scrollTop: $('#display-content').offset().top - 100}, 1500);
 		});
    	});
 
@@ -313,4 +326,11 @@ jQuery(document).ready(function( $ ) {
 		// })
 	})
 
+	// Get start with uploaded image
+	$('#start-2code-btn').on('click', function () {
+		// $('#display-content-2code').addClass('hide');
+		$("#display-content").removeClass("hide");
+		$("#display-content").attr('data-type', 'base64');
+		$('html, body').animate({scrollTop: $('#display-content').offset().top - 100}, 1000)
+	})
 });
