@@ -35,7 +35,7 @@ app.post('/process', function (req, res) {
         var id = index;
         index ++;
         var output_path = 'data/outputs/' + method + '/' + input_type + '_' + id.toString();
-        var img_base64 = req.body.input_img.replace(/^data:image\/png;base64,/, "");
+        var img_base64 = req.body.input_img.replace(/^data:image.*base64,/, "");
         var upload_path = 'data/inputs/' + id.toString() + '.jpg';
         // Convert the uploaded base64 image to jpg and process
         fs.writeFile(upload_path, img_base64, 'base64', function (err) {
